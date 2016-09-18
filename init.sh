@@ -6,15 +6,10 @@
 #----- ~/ clean up--------#
 
 #removes all dot files that will be added
-echo "cleaning up home directory\n"
 
 rm -v ~/.vim ~/.vimrc ~/.bash_aliases ~/.bashrc 
 
-echo "\nclean up complete\n"
-
 #------install section-----#
-
-echo "Adding symlinks to ~/\n"
 
 #.vimrc
 ln -sv $HOME/.dotFiles/vimrc $HOME/.vimrc
@@ -27,10 +22,6 @@ ln -sv $HOME/.dotFiles/bashrc $HOME/.bashrc
 
 #.bash_aliases
 ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
-
-echo "\nSymlinks added\n"
-
-echo "Vundle install\n"
 
 #adds vundle to vim folder
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
