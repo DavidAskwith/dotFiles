@@ -13,4 +13,4 @@ ln -sv $HOME/.dotFiles/vim $HOME/.vim
 ln -sv $HOME/.dotFiles/bashrc $HOME/.bashrc
 
 #.bash_aliases
-ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliase
+ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
