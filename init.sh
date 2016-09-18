@@ -14,3 +14,12 @@ ln -sv $HOME/.dotFiles/bashrc $HOME/.bashrc
 
 #.bash_aliases
 ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
+
+#adds vundle to vim folder
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+#adds the packages included in the vimrc
+vim +PluginInstall +qall
+
+
+
