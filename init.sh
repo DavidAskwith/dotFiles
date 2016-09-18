@@ -9,7 +9,6 @@
 echo "cleaning up home directory\n"
 
 rm -v ~/.vim ~/.vimrc ~/.bash_aliases ~/.bashrc 
-rm -v ~/.dotFiles 
 
 echo "\nclean up complete\n"
 
