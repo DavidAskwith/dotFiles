@@ -28,6 +28,27 @@ Plugin 'scrooloose/nerdcommenter'
 "superTAB- auto complete with tab
 Plugin 'ervandew/supertab'
 
+"NERDtree
+Plugin 'scrooloose/nerdtree'
+
+"Vim-airline makes things prety
+Plugin 'bling/vim-airline'
+
+"vim airline thems repo
+Plugin 'vim-airline/vim-airline-themes'
+
+"vim-javascript for javascript sybtax and indent
+Plugin 'pangloss/vim-javascript'
+
+"----plugin Settings----"
+
+"--vim-airline
+"display status bar all the time
+set laststatus=2
+
+"used to set the theme
+let g:airline_theme='powerlineish'
+
 
 "----------Help---------"
 
@@ -76,11 +97,15 @@ filetype plugin indent on    " required
 " It is recommended to make changes after sourcing debian.vim since it alters
 " the value of the 'compatible' option.
 
-
+"------miscilanious----"
+"
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
 "set compatible
+
+"used to allow 256 colors in vim
+set t_Co=256
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -121,13 +146,13 @@ set tabstop=3
 set shiftwidth=3
 
 " Sets the number of columns for a TAB
-set softtabstop=3 
+set softtabstop=3
 
 " Expand TABs to spaces
 set expandtab
 
 " Used to set the search to allways highlight
-set hls 
+set hls
 
 "Used to disable the 'incremental Search'
 set noic
@@ -156,6 +181,12 @@ highlight Comment ctermfg=7
 noremap <C-c> "+y
 noremap <C-p> "+p
 
+"used for mapping split navigation
+nmap <silent><C-l> :wincmd l<CR>
+nmap <silent><C-h> :wincmd h<CR>
+nmap <silent><C-j> :wincmd j<CR>
+nmap <silent><C-k> :wincmd k<CR>
+
 
 "-----------------------"
 "------For Web Dev------"
@@ -182,5 +213,5 @@ au FileType php noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:
 "used to compile java curent java file
 au FileType java noremap <F5> :w <bar> :!javac %<CR>
 
-"used to run the curent java file 
+"used to run the curent java file
 au FileType java noremap <f6> :!java %:r<CR>
