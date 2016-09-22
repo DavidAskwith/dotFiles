@@ -2,10 +2,11 @@
 #--this file holds all my custom aliases--#
 #-----------------------------------------#
 
-
 #opening files in gui
 alias op='xdg-open'
 
+#alias for logout 
+alias logout='xfce4-session-logout --logout'
 
 #--------below for apt-get actions--------#
 
