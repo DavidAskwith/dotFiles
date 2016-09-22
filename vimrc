@@ -40,7 +40,12 @@ Plugin 'vim-airline/vim-airline-themes'
 "vim-javascript for javascript sybtax and indent
 Plugin 'pangloss/vim-javascript'
 
+"tern auto complete for js
+"Plugin 'marijnh/tern_for_vim'
+
+
 "----plugin Settings----"
+
 
 "--vim-airline
 "display status bar all the time
@@ -215,3 +220,10 @@ au FileType java noremap <F5> :w <bar> :!javac %<CR>
 
 "used to run the curent java file
 au FileType java noremap <f6> :!java %:r<CR>
+
+"---------------------"
+"-----For Python------"
+"---------------------"
+
+"used to run a python file
+au FileType python noremap <F5> :w <bar> :!python %<CR>
