@@ -40,6 +40,12 @@ Plugin 'vim-airline/vim-airline-themes'
 "vim-javascript for javascript sybtax and indent
 Plugin 'pangloss/vim-javascript'
 
+"auto-pairs used to autop pair brackets and quotes
+Plugin 'jiangmiao/auto-pairs'
+
+"a git plugin
+Plugin 'tpope/vim-fugitive'
+
 "tern auto complete for js
 "Plugin 'marijnh/tern_for_vim'
 
@@ -52,7 +58,14 @@ Plugin 'pangloss/vim-javascript'
 set laststatus=2
 
 "used to set the theme
-let g:airline_theme='powerlineish'
+let g:airline_theme='luna'
+
+"used to remove powerline stuff
+" the separator used on the left side
+let g:airline_left_sep=''
+
+" the separator used on the right side
+let g:airline_right_sep=''
 
 
 "----------Help---------"
