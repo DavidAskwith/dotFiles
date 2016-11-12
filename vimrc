@@ -66,10 +66,16 @@ let g:airline_left_sep=''
 " the separator used on the right side
 let g:airline_right_sep=''
 
+"remove encoding
+let g:airline_section_y=''
+
+
 "----NERCTree---"
-"
+
 "used to toggle nerd tree
 map <C-n> :NERDTreeToggle<CR>
+
+
 "----------Help---------"
 
 " The following are examples of different formats supported.
