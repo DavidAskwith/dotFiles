@@ -52,7 +52,6 @@ Plugin 'tpope/vim-fugitive'
 
 "----plugin Settings----"
 
-
 "--vim-airline
 "display status bar all the time
 set laststatus=2
@@ -67,7 +66,10 @@ let g:airline_left_sep=''
 " the separator used on the right side
 let g:airline_right_sep=''
 
-
+"----NERCTree---"
+"
+"used to toggle nerd tree
+map <C-n> :NERDTreeToggle<CR>
 "----------Help---------"
 
 " The following are examples of different formats supported.
@@ -179,7 +181,7 @@ set noic
 set nowrap
 
 "setd the max line length to 89 characters
-set textwidth=89
+set textwidth=60
 
 "used to set the terminals title to show the file name in xterm title
 let &titlestring =expand("%:t")
