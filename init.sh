@@ -27,7 +27,7 @@ ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 #prompt for install of curl
-echo "Password for install of curl\n"
+echo "#---Password for install of curl---#\n"
 
 #installs the curl dependency for vundle
 sudo apt-get install curl
