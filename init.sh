@@ -30,14 +30,8 @@ ln -sv $HOME/.dotFiles/bashrc $HOME/.bashrc
 #.bash_aliases
 ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
 
-#.profile 
-ln -sv $HOME/.dotFiles/profile $HOME/.profile
-
 #.gitconfig
 ln -sv $HOME/.dotFiles/gitconfig $HOME/.gitconfig
-
-#.startScript
-lv -s $HOME/.dotFiles/startScript $HOME/.startScript
 
 
 #adds vundle to vim folder
