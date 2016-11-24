@@ -36,6 +36,10 @@ ln -sv $HOME/.dotFiles/profile $HOME/.profile
 #.gitconfig
 ln -sv $HOME/.dotFiles/gitconfig $HOME/.gitconfig
 
+#.startScript
+lv -s $HOME/.dotFiles/startScript $HOME/.startScript
+
+
 #adds vundle to vim folder
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
