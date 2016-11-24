@@ -75,6 +75,23 @@ let g:airline_section_y=''
 "used to toggle nerd tree
 map <C-n> :NERDTreeToggle<CR>
 
+"makes nerd tree prettier
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+"used to make nerd tree open files as tabs
+"--curently can't open dir with enter 
+"with these changes.
+"let NERDTreeMapOpenInTab='\r'
+"let NERDTreeMapOpenInTab='<ENTER>'
+
+"----Auto-Pairs----"
+
+"mapping for fast wrap
+let g:AutoPairsShortcutFastWrap = '<C-e>'
+
+"enables fly mode
+let g:AutoPairsFlyMode = 1
 
 "----------Help---------"
 
@@ -186,7 +203,7 @@ set noic
 "used to stop wrapping of text
 set nowrap
 
-"setd the max line length to 89 characters
+"sets the max line length to 89 characters
 set textwidth=60
 
 "used to set the terminals title to show the file name in xterm title
@@ -200,12 +217,8 @@ if &term == "screen" || &term == "xterm"
   set title
 endif
 
-"sets the coment color
+"sets the comment color
 highlight Comment ctermfg=7
-
-"used to add copy and paste comands
-noremap <C-c> "+y
-noremap <C-p> "+p
 
 "used for mapping split navigation
 nmap <silent><C-l> :wincmd l<CR>
@@ -213,17 +226,25 @@ nmap <silent><C-h> :wincmd h<CR>
 nmap <silent><C-j> :wincmd j<CR>
 nmap <silent><C-k> :wincmd k<CR>
 
+"used to enable spell check
+map <F2> :setlocal spell! spelllang=en_us<CR>
+
+"used to change colors of auto complete menu
+"menu
+highlight Pmenu ctermfg=cyan ctermbg=black
+"selected
+highlight PmenuSel ctermfg=black ctermbg=cyan
 
 "-----------------------"
 "------For Web Dev------"
 "-----------------------"
 
-"used to launch curent html in CHROME
+"used to launch current html in CHROME
 au FileType javascript noremap <F5> :!google-chrome %<CR>
 au FileType html noremap <F5> :!google-chrome %<CR>
 au FileType php  noremap <F5> :!google-chrome %<CR>
 
-"used to transfer just the curent file
+"used to transfer just the current file
 au FileType javascript noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
 au FileType html noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
 au FileType php noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>

@@ -1,5 +1,10 @@
 #!/usr/bin/bash
 
+#TO DO
+
+#Research and change the file promitions for generated 
+#symbolic links
+
 #this file is used to setup symlinks for all the source 
 #controlled dot files
 
@@ -22,6 +27,10 @@ ln -sv $HOME/.dotFiles/bashrc $HOME/.bashrc
 
 #.bash_aliases
 ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
+
+#.profile 
+ln -sv $HOME/.dotFiles/profile $HOME/.profile
+
 
 #adds vundle to vim folder
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
