@@ -1,0 +1,10 @@
+[user]
+	email = dkaskwith@hotmail.com
+	name = David Askwith
+[push]
+	default = simple
+
+[diff]
+  external = git_diff_wrapper
+[pager]
+  diff =

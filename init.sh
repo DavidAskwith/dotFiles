@@ -16,6 +16,8 @@ rm -v ~/.vim ~/.vimrc ~/.bash_aliases ~/.bashrc
 
 #------install section-----#
 
+#creating symbolic links for . folders
+
 #.vimrc
 ln -sv $HOME/.dotFiles/vimrc $HOME/.vimrc
 
@@ -31,6 +33,8 @@ ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
 #.profile 
 ln -sv $HOME/.dotFiles/profile $HOME/.profile
 
+#.gitconfig
+ln -sv $HOME/.dotFiles/gitconfig $HOME/.gitconfig
 
 #adds vundle to vim folder
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
