@@ -2,7 +2,7 @@
 "are properly set to work with the Vim-related packages available 
 "in Debian.
 runtime! debian.vim
-"#conflict dsfhsdhfhhhhsdhafs
+"creating a conflict for sure
 
 "------------------------"
 "---------Vundle---------"
