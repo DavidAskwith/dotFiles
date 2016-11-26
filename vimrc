@@ -1,5 +1,6 @@
-"This line should not be removed as it ensures that various options are
-"properly set to work with the Vim-related packages available in Debian.
+"This line should not be removed as it ensures that various options 
+"are properly set to work with the Vim-related packages available 
+"in Debian.
 runtime! debian.vim
 
 
@@ -46,6 +47,9 @@ Plugin 'jiangmiao/auto-pairs'
 "a git plugin
 Plugin 'tpope/vim-fugitive'
 
+"syntastic for syntax error checking
+Plugin 'vim-syntastic/syntastic'
+
 "tern auto complete for js
 "Plugin 'marijnh/tern_for_vim'
 
@@ -80,7 +84,7 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 "used to make nerd tree open files as tabs
-"--curently can't open dir with enter 
+"--curently can't open dir with enter
 "with these changes.
 "let NERDTreeMapOpenInTab='\r'
 "let NERDTreeMapOpenInTab='<ENTER>'
@@ -92,6 +96,18 @@ let g:AutoPairsShortcutFastWrap = '<C-e>'
 
 "enables fly mode
 let g:AutoPairsFlyMode = 1
+
+"----Syntastic---"
+
+"default settings to make shit usable asap
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "----------Help---------"
 
@@ -175,7 +191,7 @@ set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
+"set mouse=a		" Enable mouse usage (all modes)
 
 
 "used to set the line numbers on load of vim
@@ -201,10 +217,19 @@ set hls
 set noic
 
 "used to stop wrapping of text
-set nowrap
+"set nowrap
 
 "sets the max line length to 89 characters
-set textwidth=60
+"set textwidth=69
+
+"used to set a marker for number of columns
+set colorcolumn=70
+
+"for colr of marker
+highlight ColorColumn ctermbg=black
+
+"to wrap text at 69
+set wrapmargin=69
 
 "used to set the terminals title to show the file name in xterm title
 let &titlestring =expand("%:t")
