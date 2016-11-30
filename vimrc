@@ -1,12 +1,23 @@
-"This line should not be removed as it ensures that various options 
-"are properly set to work with the Vim-related packages available 
-"in Debian.
+"lets vim play nice with debian
 runtime! debian.vim
-"creating a conflict for sure
 
-"------------------------"
-"---------Vundle---------"
-"------------------------"
+"TO DO {{{1
+"
+"
+"
+"
+" * folding
+" * ctags
+" * ctrl-x ctrl-f
+" * html skeleton/other snippets
+"
+"
+"
+"}}}
+
+"Plugins {{{1
+
+"Vundle Config{{{2
 
 "required for for vundle to run properly
 set nocompatible              " be iMproved, required
@@ -15,48 +26,29 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-"---------Plugins-------"
+"}}}
 
-" let Vundle manage Vundle, required
+
+"Plugin Links{{{2
+
 Plugin 'VundleVim/Vundle.vim'
-
-"NERD Comenter
 Plugin 'scrooloose/nerdcommenter'
-
-"superTAB- auto complete with tab
 Plugin 'ervandew/supertab'
-
-"NERDtree
 Plugin 'scrooloose/nerdtree'
-
-"Vim-airline makes things prety
 Plugin 'bling/vim-airline'
-
-"vim airline thems repo
 Plugin 'vim-airline/vim-airline-themes'
-
-"vim-javascript for javascript sybtax and indent
 Plugin 'pangloss/vim-javascript'
-
-"auto-pairs used to autop pair brackets and quotes
 Plugin 'jiangmiao/auto-pairs'
-
-"a git plugin
 Plugin 'tpope/vim-fugitive'
-
-"syntastic for syntax error checking
 Plugin 'vim-syntastic/syntastic'
 
-"tern auto complete for js
-"Plugin 'marijnh/tern_for_vim'
-
+"}}}
 
 "----plugin Settings----"
 
-"--vim-airline
+"Vim-Airline {{{2
+
 "display status bar all the time
 set laststatus=2
 
@@ -73,8 +65,8 @@ let g:airline_right_sep=''
 "remove encoding
 let g:airline_section_y=''
 
-
-"----NERCTree---"
+"}}}
+"NERCTree {{{2
 
 "used to toggle nerd tree
 map <C-n> :NERDTreeToggle<CR>
@@ -83,13 +75,8 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-"used to make nerd tree open files as tabs
-"--curently can't open dir with enter
-"with these changes.
-"let NERDTreeMapOpenInTab='\r'
-"let NERDTreeMapOpenInTab='<ENTER>'
-
-"----Auto-Pairs----"
+"}}}
+"----Auto-Pairs----"{{{2
 
 "mapping for fast wrap
 let g:AutoPairsShortcutFastWrap = '<C-e>'
@@ -97,7 +84,8 @@ let g:AutoPairsShortcutFastWrap = '<C-e>'
 "enables fly mode
 let g:AutoPairsFlyMode = 1
 
-"----Syntastic---"
+"}}}
+"----Syntastic---"{{{2
 
 "default settings to make shit usable asap
 set statusline+=%#warningmsg#
@@ -109,64 +97,25 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"----------Help---------"
+"}}}
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"------Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"------Plugin 'L9'
-" Git plugin not hosted on GitHub
-"------Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"------Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"------Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"------Plugin 'ascenator/L9', {'name': 'newL9'}
+
+"----Vundle Config----"{{{2
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+"}}}
 
-" ---------Help-------------"
-"
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+"}}}
 
-
-"--------------------------"
-"--------------------------"
-
-
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by " the call to :runtime you can find below.  If you wish to change any of those
-" settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
-" will be overwritten everytime an upgrade of the vim packages is performed.
-" It is recommended to make changes after sourcing debian.vim since it alters
-" the value of the 'compatible' option.
-
-"------miscilanious----"
-"
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+"---miscellaneous---"
 
 "used to allow 256 colors in vim
 set t_Co=256
 
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
+" Vim5 and later versions support syntax highlighting. uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
   syntax on
@@ -178,9 +127,9 @@ set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -193,11 +142,13 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
 
+"sets more bash like completion for comands
+
 
 "used to set the line numbers on load of vim
 set number
 
-" The width of a TAB is set to 3. Still it is a \t. It is just that
+" The width of a TAB is set to . Still it is a \t. It is just that
 " Vim will interpret it to be having width of 3.
 set tabstop=3
 
@@ -210,7 +161,7 @@ set softtabstop=3
 " Expand TABs to spaces
 set expandtab
 
-" Used to set the search to allways highlight
+" Used to set the search to always highlight
 set hls
 
 "Used to disable the 'incremental Search'
@@ -225,8 +176,21 @@ set noic
 "used to set a marker for number of columns
 set colorcolumn=70
 
-"for colr of marker
+"for color of marker
 highlight ColorColumn ctermbg=black
+
+"sets the comment color
+highlight Comment ctermfg=7
+
+"used to change colors of auto complete menu
+"menu
+highlight Pmenu ctermfg=cyan ctermbg=black
+"selected
+highlight PmenuSel ctermfg=black ctermbg=cyan
+
+"sets spell colors
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
 
 "to wrap text at 69
 set wrapmargin=69
@@ -242,9 +206,6 @@ if &term == "screen" || &term == "xterm"
   set title
 endif
 
-"sets the comment color
-highlight Comment ctermfg=7
-
 "used for mapping split navigation
 nmap <silent><C-l> :wincmd l<CR>
 nmap <silent><C-h> :wincmd h<CR>
@@ -254,15 +215,16 @@ nmap <silent><C-k> :wincmd k<CR>
 "used to enable spell check
 map <F2> :setlocal spell! spelllang=en_us<CR>
 
-"used to change colors of auto complete menu
-"menu
-highlight Pmenu ctermfg=cyan ctermbg=black
-"selected
-highlight PmenuSel ctermfg=black ctermbg=cyan
+"Remove all trailing whitespace by pressing F3
+nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 
 "-----------------------"
 "------For Web Dev------"
 "-----------------------"
+
+"for auto save on unfocus
+autocmd BufLeave,FocusLost * silent! wall<CR>
 
 "used to launch current html in CHROME
 au FileType javascript noremap <F5> :!google-chrome %<CR>
@@ -274,18 +236,15 @@ au FileType javascript noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' 
 au FileType html noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
 au FileType php noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
 
-"---IN PROGRESS used to automate ftp transfer for web dev
-"noremap <F7> :! /etc/vim/scripts/ftpProject.sh<CR>
-
 
 "----------------------"
 "-----For Java Dev-----"
 "----------------------"
 
-"used to compile java curent java file
+"used to compile java current java file
 au FileType java noremap <F5> :w <bar> :!javac %<CR>
 
-"used to run the curent java file
+"used to run the current java file
 au FileType java noremap <f6> :!java %:r<CR>
 
 "---------------------"
@@ -294,3 +253,8 @@ au FileType java noremap <f6> :!java %:r<CR>
 
 "used to run a python file
 au FileType python noremap <F5> :w <bar> :!python %<CR>
+
+"---------------------"
+"------For Vim--------"
+"---------------------"
+
