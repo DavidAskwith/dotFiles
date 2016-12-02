@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+"This line should not be removed as it ensures that various options
+"are properly set to work with the Vim-related packages available
+"in Debian.
 "lets vim play nice with debian
 runtime! debian.vim
 
@@ -8,9 +12,10 @@ runtime! debian.vim
 "
 " * folding
 " * ctags
-" * ctrl-x ctrl-f
 " * html skeleton/other snippets
-"
+" * better colors for merge! and Diff!
+" * shortcuts for errors
+" * backewards ctrl e brackets
 "
 "
 "}}}
@@ -170,13 +175,16 @@ set hls
 set noic
 
 "used to stop wrapping of text
-"set nowrap
+set nowrap
 
 "sets the max line length to 89 characters
 "set textwidth=69
 
 "used to set a marker for number of columns
 "set colorcolumn=70
+
+"for colr of marker
+highlight ColorColumn ctermbg=darkgrey
 
 "for color of marker
 highlight ColorColumn ctermbg=black
@@ -220,6 +228,11 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 "Remove all trailing whitespace by pressing F3
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
+"used to change colors of auto complete menu
+"menu
+highlight Pmenu ctermfg=cyan ctermbg=black
+"selected
+highlight PmenuSel ctermfg=black ctermbg=cyan
 
 "-----------------------"
 "------For Web Dev------"

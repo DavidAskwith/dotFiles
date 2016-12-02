@@ -19,8 +19,8 @@ alias apti='sudo apt-get install'
 #used for searching packages
 alias apts='sudo apt-cache search'
 
-#used for updating
-alias aptupd='sudo apt-get update'
+#used for updateing
+alias aptu='sudo apt-get update'
 
-#used to upgrading
+#used for upgrade
 alias aptupg='sudo apt-get dist-upgrade'
