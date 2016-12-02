@@ -1,5 +1,5 @@
-"This line should not be removed as it ensures that various options 
-"are properly set to work with the Vim-related packages available 
+"This line should not be removed as it ensures that various options
+"are properly set to work with the Vim-related packages available
 "in Debian.
 runtime! debian.vim
 "creating a conflict for sure
@@ -191,7 +191,7 @@ set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
+set mouse=a		" Enable mouse usage (all modes)
 
 
 "used to set the line numbers on load of vim
@@ -217,19 +217,16 @@ set hls
 set noic
 
 "used to stop wrapping of text
-"set nowrap
+set nowrap
 
 "sets the max line length to 89 characters
 "set textwidth=69
 
 "used to set a marker for number of columns
-set colorcolumn=70
+"set colorcolumn=70
 
 "for colr of marker
-highlight ColorColumn ctermbg=black
-
-"to wrap text at 69
-set wrapmargin=69
+highlight ColorColumn ctermbg=darkgrey
 
 "used to set the terminals title to show the file name in xterm title
 let &titlestring =expand("%:t")
@@ -253,6 +250,9 @@ nmap <silent><C-k> :wincmd k<CR>
 
 "used to enable spell check
 map <F2> :setlocal spell! spelllang=en_us<CR>
+
+"Remove all trailing whitespace by pressing F3
+nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 "used to change colors of auto complete menu
 "menu
