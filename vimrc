@@ -87,6 +87,10 @@ let g:AutoPairsFlyMode = 1
 "}}}
 "----Syntastic---"{{{2
 
+"allows toggle of syntastic
+
+nmap <silent><C-s> :w <bar> :SyntasticToggleMode<CR> <bar>:SyntasticCheck<CR>
+
 "default settings to make shit usable asap
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -94,8 +98,6 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 "}}}
 
@@ -140,7 +142,7 @@ set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
+set mouse=a		" Enable mouse usage (all modes)
 
 "sets more bash like completion for comands
 
@@ -174,7 +176,7 @@ set noic
 "set textwidth=69
 
 "used to set a marker for number of columns
-set colorcolumn=70
+"set colorcolumn=70
 
 "for color of marker
 highlight ColorColumn ctermbg=black
