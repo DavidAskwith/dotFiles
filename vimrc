@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-"This line should not be removed as it ensures that various options
-"are properly set to work with the Vim-related packages available
 "in Debian.
 "lets vim play nice with debian
 runtime! debian.vim
@@ -16,7 +13,8 @@ runtime! debian.vim
 " * better colors for merge! and Diff!
 " * shortcuts for errors
 " * backewards ctrl e brackets
-"
+" * omni completion ??
+" * vim wiki
 "
 "}}}
 
@@ -178,16 +176,16 @@ set noic
 set nowrap
 
 "sets the max line length to 89 characters
-"set textwidth=69
+set textwidth=69
 
 "used to set a marker for number of columns
 "set colorcolumn=70
 
 "for colr of marker
-highlight ColorColumn ctermbg=darkgrey
+"highlight ColorColumn ctermbg=darkgrey
 
 "for color of marker
-highlight ColorColumn ctermbg=black
+"highlight ColorColumn ctermbg=black
 
 "sets the comment color
 highlight Comment ctermfg=7
@@ -201,6 +199,10 @@ highlight PmenuSel ctermfg=black ctermbg=cyan
 "sets spell colors
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
+
+"vim diff colors temp location
+hi DiffText   cterm=none ctermfg=Black ctermbg=Red gui=none guifg=Black guibg=Red
+hi DiffChange cterm=none ctermfg=Black ctermbg=LightMagenta gui=none guifg=Black guibg=LightMagenta
 
 "to wrap text at 69
 set wrapmargin=69
