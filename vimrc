@@ -90,9 +90,6 @@ let g:AutoPairsFlyMode = 1
 "}}}
 "----Syntastic---"{{{2
 
-"allows toggle of syntastic
-
-nmap <silent><C-s> :w <bar> :SyntasticToggleMode<CR> <bar>:SyntasticCheck<CR>
 
 "default settings to make shit usable asap
 set statusline+=%#warningmsg#

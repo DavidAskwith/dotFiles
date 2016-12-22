@@ -8,7 +8,7 @@ alias op='xdg-open'
 #alias for logout
 alias logout='xfce4-session-logout --logout'
 
-#--------below for apt-get actions--------#
+#--------apt-get actions
 
 #used to for completely removing package and dependencies
 alias aptp='sudo apt-get purge --auto-remove'
@@ -24,3 +24,7 @@ alias aptu='sudo apt-get update'
 
 #used for upgrade
 alias aptupg='sudo apt-get dist-upgrade'
+
+#--------shortcut to media/dave/
+#you have to take in an argument for the usb name
+#alias usb=''
