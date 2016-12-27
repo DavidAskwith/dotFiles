@@ -59,7 +59,7 @@ Plugin 'vim-syntastic/syntastic'
 set laststatus=2
 
 "used to set the theme
-let g:airline_theme='luna'
+let g:airline_theme='solarized'
 
 "used to remove powerline stuff
 " the separator used on the left side
@@ -102,7 +102,6 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 
-"}}}
 
 
 "----Vundle Config----"{{{2
@@ -119,6 +118,15 @@ filetype plugin indent on    " required
 
 "used to allow 256 colors in vim
 set t_Co=256
+
+"sets the color scheme
+colorscheme solarized
+
+"makes solarized work well in terminal 
+let g:solarized_termcolors=256
+
+"allows transparency
+let g:solarized_termtrans=1
 
 " Vim5 and later versions support syntax highlighting. uncommenting the next
 " line enables syntax highlighting by default.
