@@ -1,0 +1,82 @@
+!----------------!
+!----SETTINGS----!
+!----------------!
+
+!----Display Settings---!
+
+! changes the dpi of chrome and other apps
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintfull
+Xft.dpi:       125
+
+
+!----RXVT settings----!
+
+!font
+URxvt.font: xft:Monospace Regular:pixelsize=20
+
+!fonts spacing
+URxvt.letterSpace: -6
+
+!removes scrollbar
+URxvt.scrollBar: false
+
+! do not scroll with output
+!URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+!URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+!URxvt*scrollTtyKeypress: true
+
+!--------------!
+!----COLORS----!
+!--------------!
+
+!----variables---!
+
+#define bg              #262626
+#define text            #008787
+#define purpleText      #af87d7
+#define blueText        #87d7ff
+
+!----ROFI Color----!
+
+rofi.color-enabled: true
+rofi.color-window: bg, text, bg
+rofi.color-normal: bg, text, bg, bg, purpleText
+rofi.color-active: bg, text, bg, bg, purpleText
+rofi.color-urgent: bg, text, bg, bg, purpleText
+
+!----RXVT Color----!
+
+*background:              bg
+*foreground:              text
+*fading:                  40
+*fadeColor:               bg
+*cursorColor:             purpleText
+*pointerColorBackground:  red
+*pointerColorForeground:  red
+
+*color0:                  red
+*color1:                  red
+*color2:                  red
+*color3:                  red
+*color4:                  red
+*color5:                  red
+*color6:                  red
+*color7:                  red
+*color9:                  red
+*color8:                  red
+*color10:                 red
+*color11:                 red
+! Most folders
+*color12:                 text
+! File Path
+*color13:                 purpleText
+! Comp Name
+*color14:                 blueText
+*color15:                 S_base3

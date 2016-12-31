@@ -59,7 +59,7 @@ Plugin 'vim-syntastic/syntastic'
 set laststatus=2
 
 "used to set the theme
-let g:airline_theme='solarized'
+let g:airline_theme='violet'
 
 "used to remove powerline stuff
 " the separator used on the left side
@@ -120,13 +120,7 @@ filetype plugin indent on    " required
 set t_Co=256
 
 "sets the color scheme
-colorscheme solarized
-
-"makes solarized work well in terminal 
-let g:solarized_termcolors=256
-
-"allows transparency
-let g:solarized_termtrans=1
+colorscheme space-vim-dark
 
 " Vim5 and later versions support syntax highlighting. uncommenting the next
 " line enables syntax highlighting by default.
@@ -192,25 +186,14 @@ set textwidth=69
 "for colr of marker
 "highlight ColorColumn ctermbg=darkgrey
 
-"for color of marker
-"highlight ColorColumn ctermbg=black
-
-"sets the comment color
-highlight Comment ctermfg=7
-
-"used to change colors of auto complete menu
-"menu
-highlight Pmenu ctermfg=cyan ctermbg=black
-"selected
-highlight PmenuSel ctermfg=black ctermbg=cyan
-
+"comeneted out due to the new theme with suport for spelling
 "sets spell colors
-hi clear SpellBad
-hi SpellBad cterm=underline ctermfg=red
+"hi clear SpellBad
+"hi SpellBad cterm=underline ctermfg=red
 
 "vim diff colors temp location
-hi DiffText   cterm=none ctermfg=Black ctermbg=Red gui=none guifg=Black guibg=Red
-hi DiffChange cterm=none ctermfg=Black ctermbg=LightMagenta gui=none guifg=Black guibg=LightMagenta
+"hi DiffText   cterm=none ctermfg=Black ctermbg=Red gui=none guifg=Black guibg=Red
+"hi DiffChange cterm=none ctermfg=Black ctermbg=LightMagenta gui=none guifg=Black guibg=LightMagenta
 
 "to wrap text at 69
 set wrapmargin=69
@@ -238,11 +221,6 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 "Remove all trailing whitespace by pressing F3
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-"used to change colors of auto complete menu
-"menu
-highlight Pmenu ctermfg=cyan ctermbg=black
-"selected
-highlight PmenuSel ctermfg=black ctermbg=cyan
 
 "-----------------------"
 "------For Web Dev------"

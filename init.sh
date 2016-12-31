@@ -1,37 +1,47 @@
 #!/usr/bin/bash
 
-#TO DO
+#TODO
 
 #Research and change the file promitions for generated 
 #symbolic links
+#add .colors to .dotfile
 
 #this file is used to setup symlinks for all the source 
 #controlled dot files
 
 #----- ~/ clean up--------#
 
-#removes all dot files that will be added
+##removes all dot files that will be added
 
-rm -v ~/.vim ~/.vimrc ~/.bash_aliases ~/.bashrc 
+#rm -v ~/.vim ~/.vimrc ~/.bash_aliases ~/.bashrc 
 
 #------install section-----#
 
 #creating symbolic links for . folders
 
 #.vimrc
-ln -sv $HOME/.dotFiles/vimrc $HOME/.vimrc
+ln -sv /home/dave/.dotFiles/vimrc /home/dave/.vimrc
 
 #.vim
-ln -sv $HOME/.dotFiles/vim $HOME/.vim
+ln -sv /home/dave/.dotFiles/vim /home/dave/.vim
 
 #.bashrc
-ln -sv $HOME/.dotFiles/bashrc $HOME/.bashrc
+ln -sv /home/dave/.dotFiles/bashrc /home/dave/.bashrc
 
 #.bash_aliases
-ln -sv $HOME/.dotFiles/bash_aliases $HOME/.bash_aliases
+ln -sv /home/dave/.dotFiles/bash_aliases /home/dave/.bash_aliases
 
 #.gitconfig
-ln -sv $HOME/.dotFiles/gitconfig $HOME/.gitconfig
+ln -sv /home/dave/.dotFiles/gitconfig /home/dave/.gitconfig
+
+#.i3
+ln -sv /home/dave/.dotFiles/i3 /home/dave/.i3
+
+#.Xresources
+ln -sv /home/dave/.dotFiles/Xresources /home/dave/.Xresources
+
+#.fonts
+ln -sv /home/dave/.dotFiles/fonts /home/dave/.fonts
 
 
 #adds vundle to vim folder
