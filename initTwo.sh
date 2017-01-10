@@ -15,26 +15,16 @@
 #xorg
 #apt-get --assume-yes install xorg
 
-#lightdm display manager 
-#apt-get --assume-yes install lightdm
-
 #programs needed for install of i3gaps
 #apt-get --assume-yes install autoconf make gcc
-
-#git 
-#apt-get --assume-yes install git
 
 #i3gaps
 
 #dependencies
-apt-get --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev  
-
-
-#makes folder for git installed programs
-#mkdir /home/dave/.gitInstalled
+#apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev  
 
 #clones the i3gaps repo to ~/.gitInstalled 
-#git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps 
+git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps 
 
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script 
@@ -45,6 +35,12 @@ apt-get --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-de
 #make
 #sudo make install 
 
+#lightdm display manager 
+#apt-get --assume-yes install lightdm
+
 #for i3 
 #apt-get --assume-yes install i3lock i3blocks 
+
+#installs rofi
+#apt-get -t jessie-backports --assume-yes install rofi
 
