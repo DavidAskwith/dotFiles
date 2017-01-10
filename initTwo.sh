@@ -2,18 +2,19 @@
 
 #-----Install notes----#
 
-#below is for the install of i 3gaps and configureing its dependency to update from stretch
-#added sid repo to /etc/apt/sources.list in order to install dependencies 
-#added APT: : Default-Release "jessie"; to /etc/apt/apt.cond.d/70debconf to stop updates from stretch
-#TODO: create /etc/apt/preferences.d/stretch and pin all depeendenies to update from stretch
+#jessie backports must be enabled for i3 dependencies
 
-#
 #remove the cdrom repo from /etc/apt/sources.list
+#TODO:set up pinning for the stretch repo
 
 #----Installs Programs----#
 
+#echo "\n#-----xorg Install----#\n"
+
 #xorg
 #apt-get --assume-yes install xorg
+
+#echo "\n#-----aoutconf make gcc for i3gaps compilation from source----#\n"
 
 #programs needed for install of i3gaps
 #apt-get --assume-yes install autoconf make gcc
@@ -21,10 +22,13 @@
 #i3gaps
 
 #dependencies
-#apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev libcairo2-dev  
+#apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev 
+
+#must be installed from stretch!!!!!!! not backports
+#apt-get --assume-yes install libcairo2-dev  
 
 #clones the i3gaps repo to ~/.gitInstalled 
-git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps 
+#git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps 
 
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script 
@@ -39,8 +43,19 @@ git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps
 #apt-get --assume-yes install lightdm
 
 #for i3 
-#apt-get --assume-yes install i3lock i3blocks 
+#apt-get --assume-yes install i3lock 
 
-#installs rofi
-#apt-get -t jessie-backports --assume-yes install rofi
+#installs i3blocks without recomenededd packages
+#apt-get --no-install-recommends install i3blocks
 
+#installs i3blocks dependencies
+#apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl
+
+#installs rofi !!!!!!must be installed from stretch
+#apt-get --assume-yes install rofi
+
+#install of vim 
+apt-get --assume-yes install vim-gtk
+
+#rxvt terminal emulator
+#apt-get --assume-yes install rxvt-unicode

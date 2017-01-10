@@ -13,7 +13,14 @@
 
 ##removes all dot files that will be added
 
-#rm -v ~/.vim ~/.vimrc ~/.bash_aliases ~/.bashrc 
+rm -rv /home/dave/.vim 
+rm -v /home/dave/.vimrc 
+rm -v /home/dave/.bash_aliases 
+rm -v /home/dave/.bashrc 
+rm -rv /home/dave/.i3 
+rm -v /home/dave/.gitconfig
+rm -v /home/dave/.Xresources
+rm -v /home/dave/.fonts
 
 #------install section-----#
 
@@ -45,7 +52,7 @@ ln -sv /home/dave/.dotFiles/fonts /home/dave/.fonts
 
 
 #adds vundle to vim folder
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git /home/dave/.vim/bundle/Vundle.vim
 
 #prompt for install of curl
 echo "#---Password for install of curl---#\n"
