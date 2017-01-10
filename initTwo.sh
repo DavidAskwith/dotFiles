@@ -55,7 +55,7 @@
 #apt-get --assume-yes install rofi
 
 #install of vim 
-apt-get --assume-yes install vim-gtk
+#apt-get --assume-yes install vim-gtk
 
 #rxvt terminal emulator
-#apt-get --assume-yes install rxvt-unicode
+#apt-get --assume-yes install rxvt-unicode-256color

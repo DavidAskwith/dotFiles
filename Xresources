@@ -23,6 +23,9 @@ URxvt.letterSpace: -6
 !removes scrollbar
 URxvt.scrollBar: false
 
+!adds inner padding
+URxvt.internalBorder: 10
+
 ! do not scroll with output
 !URxvt*scrollTtyOutput: false
 

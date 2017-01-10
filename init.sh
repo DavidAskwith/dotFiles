@@ -52,7 +52,7 @@ ln -sv /home/dave/.dotFiles/fonts /home/dave/.fonts
 
 
 #adds vundle to vim folder
-git clone https://github.com/VundleVim/Vundle.vim.git /home/dave/.vim/bundle/Vundle.vim
+sudo -u dave git clone https://github.com/VundleVim/Vundle.vim.git /home/dave/.dotFiles/vim/bundle/Vundle.vim
 
 #prompt for install of curl
 echo "#---Password for install of curl---#\n"
