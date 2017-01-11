@@ -5,7 +5,7 @@
 #jessie backports must be enabled for i3 dependencies
 
 #remove the cdrom repo from /etc/apt/sources.list
-#TODO:set up pinning for the stretch repo
+#TODO:set up pinning for the stretch repo for rofi and libcairo2 package
 
 #----Installs Programs----#
 
@@ -83,15 +83,15 @@ apt-get --assume-yes install compton
 #rm /etc/lightdm/lightdm-gtk-greeter.conf
 #ln -sv /home/dave/.dotFiles/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 
-#----Backlight for Ashltyn----#
+#----Backlight for Ashlyn----#
 
 #!!!!! only works with intel remove for bertha
-apt-get install xbacklight
+apt-get --assume-yes install xbacklight
 
 #----audio----#
 #installs alsa pulseaudio pavucontrol to control sound alsa-utils
 #gets you amixer for volume control
-apt-get install pulseaudio pavucontrol alsa-utils
+apt-get --asssume-yes install pulseaudio pavucontrol alsa-utils
 
 #used to set up the order of the sound devices
 #both may be needed unsure test it
@@ -103,7 +103,7 @@ apt-get install pulseaudio pavucontrol alsa-utils
 #---Arc Theme----#
 echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /' > /etc/apt/sources.list.d/arc-theme.list
 apt-get update
-apt-get install arc-theme
+apt-get --assume-yes install arc-theme
 
 #solves backlight error
 #created /etc/X11/xorg.conf with this content

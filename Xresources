@@ -1,6 +1,9 @@
 !----------------!
 !----SETTINGS----!
-!----------------!
+!-------text---------!
+!
+!TODO 
+!find a write up on colors for urxvt
 
 !----Display Settings---!
 
@@ -62,20 +65,21 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 *fadeColor:               bg
 *cursorColor:             purpleText
 *pointerColorBackground:  red
-*pointerColorForeground:  red
+*pointerColorForeground:  blue
 
-*color0:                  red
-*color1:                  red
-*color2:                  red
-*color3:                  red
+*color0:                  green
+*color1:                  orange
+*color2:                  yellow
+*color3:                  black
 *color4:                  red
-*color5:                  red
-*color6:                  red
-*color7:                  red
-*color9:                  red
-*color8:                  red
-*color10:                 red
-*color11:                 red
+*color5:                  white
+*color6:                  purple
+*color7:                  blue
+*color9:                  green
+*color8:                  yellow
+!executable file
+*color10:                 purpleText
+*color11:                 white
 ! Most folders
 *color12:                 text
 ! File Path
