@@ -40,7 +40,7 @@
 #sudo make install
 
 #compton for display effects eg. transparency
-apt-get --assume-yes install compton
+#apt-get --assume-yes install compton
 
 #lightdm display manager
 #apt-get --assume-yes install lightdm
@@ -86,12 +86,12 @@ apt-get --assume-yes install compton
 #----Backlight for Ashlyn----#
 
 #!!!!! only works with intel remove for bertha
-apt-get --assume-yes install xbacklight
+#apt-get --assume-yes install xbacklight
 
 #----audio----#
 #installs alsa pulseaudio pavucontrol to control sound alsa-utils
 #gets you amixer for volume control
-apt-get --asssume-yes install pulseaudio pavucontrol alsa-utils
+#apt-get --asssume-yes install pulseaudio pavucontrol alsa-utils
 
 #used to set up the order of the sound devices
 #both may be needed unsure test it
@@ -100,10 +100,20 @@ apt-get --asssume-yes install pulseaudio pavucontrol alsa-utils
 #printf "#switches the order of sound devices\ndefaults.pcm.card=1" > /home/dave/.asoundrc
 #printf "#switches the order of sound devices\noptions snd_hda_intel index=1,0" > /etc/modprobe.d/thinkpad-t450s.conf
 
-#---Arc Theme----#
-echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /' > /etc/apt/sources.list.d/arc-theme.list
-apt-get update
-apt-get --assume-yes install arc-theme
+#---Theme----#
+#echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /' > /etc/apt/sources.list.d/arc-theme.list
+#apt-get update
+#apt-get --assume-yes install arc-theme
+
+#lxapearance
+#installed in order to allow for theme changes
+#apt-get --assume-yes install lxappearance
+
+#background
+mkdir /usr/share/images/backgrounds
+cp /home/dave/.dotFiles/AshlynBg.png /usr/share/images/backgrounds/background.png
+#mv /usr/share/images/backgrounds/AshlynBg.png /usr/share/backgrounds/background.png
+#!!! copy BirthaBg to same location
 
 #solves backlight error
 #created /etc/X11/xorg.conf with this content
