@@ -15,10 +15,10 @@ Xft.dpi:       125
 !----RXVT settings----!
 
 !font
-URxvt.font: xft:Monospace Regular:pixelsize=20
+URxvt.font: xft:Dejavu Sans Mono:pixelsize=23
 
 !fonts spacing
-URxvt.letterSpace: -6
+!URxvt.letterSpace: -6
 
 !removes scrollbar
 URxvt.scrollBar: false

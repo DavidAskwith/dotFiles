@@ -22,28 +22,31 @@
 #i3gaps
 
 #dependencies
-#apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev 
+#apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
 
 #must be installed from stretch!!!!!!! not backports
-#apt-get --assume-yes install libcairo2-dev  
+#apt-get --assume-yes install libcairo2-dev
 
-#clones the i3gaps repo to ~/.gitInstalled 
-#git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps 
+#clones the i3gaps repo to ~/.gitInstalled
+#git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps
 
 #compile and install all must be perfoemed in i3-gaps folder
-#TODO: make it work from script 
-#autoreconf --force --install 
+#TODO: make it work from script
+#autoreconf --force --install
 #rm -rf build
 #mkdir -p ap:build && cd build
 #../configure --prefix=/usr --sysconfdir=/etc
 #make
-#sudo make install 
+#sudo make install
 
-#lightdm display manager 
+#compton for display effects eg. transparency
+apt-get --assume-yes install compton
+
+#lightdm display manager
 #apt-get --assume-yes install lightdm
 
-#for i3 
-#apt-get --assume-yes install i3lock 
+#for i3
+#apt-get --assume-yes install i3lock
 
 #installs i3blocks without recomenededd packages
 #apt-get --no-install-recommends install i3blocks
@@ -54,8 +57,63 @@
 #installs rofi !!!!!!must be installed from stretch
 #apt-get --assume-yes install rofi
 
-#install of vim 
+#install of vim
 #apt-get --assume-yes install vim-gtk
 
 #rxvt terminal emulator
 #apt-get --assume-yes install rxvt-unicode-256color
+
+#chrome install
+#wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+#sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+#apt-get update
+#apt-get --assume-yes install google-chrome-stable
+
+#ntfs-3g for working with ntfs eg. windows
+#apt-get --assume-yes install ntfs-3g
+
+#----Networking---#
+#apt-get --assume-yes install firmware-iwlwifi network-manager network-manager-gnome
+
+#sim links file to allow for ethernet management with nm-applet
+#rm /etc/NetworkManager/NetworkManager.conf
+#ln -sv /home/dave/.dotFiles/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
+
+#----Lightdm----#
+#rm /etc/lightdm/lightdm-gtk-greeter.conf
+#ln -sv /home/dave/.dotFiles/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+
+#----Backlight for Ashltyn----#
+
+#!!!!! only works with intel remove for bertha
+apt-get install xbacklight
+
+#----audio----#
+#installs alsa pulseaudio pavucontrol to control sound alsa-utils
+#gets you amixer for volume control
+apt-get install pulseaudio pavucontrol alsa-utils
+
+#used to set up the order of the sound devices
+#both may be needed unsure test it
+
+#allow user to edit .asoundrc !!!
+#printf "#switches the order of sound devices\ndefaults.pcm.card=1" > /home/dave/.asoundrc
+#printf "#switches the order of sound devices\noptions snd_hda_intel index=1,0" > /etc/modprobe.d/thinkpad-t450s.conf
+
+#---Arc Theme----#
+echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /' > /etc/apt/sources.list.d/arc-theme.list
+apt-get update
+apt-get install arc-theme
+
+#solves backlight error
+#created /etc/X11/xorg.conf with this content
+#Section "Device"
+    #Identifier  "Card0"
+    #Driver      "intel"
+    #Option      "Backlight"  "intel_backlight"
+#EndSection
+
+#----File locations for copied files---##
+
+#lightdm-gtk-greeter.conf located in /etc/lightdm
+#NetworkManager.conf located in /etc/NetworkManager
