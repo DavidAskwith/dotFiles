@@ -110,10 +110,13 @@
 #apt-get --assume-yes install lxappearance
 
 #background
-mkdir /usr/share/images/backgrounds
-cp /home/dave/.dotFiles/AshlynBg.png /usr/share/images/backgrounds/background.png
+#mkdir /usr/share/images/backgrounds
+#cp /home/dave/.dotFiles/AshlynBg.png /usr/share/images/backgrounds/background.png
 #mv /usr/share/images/backgrounds/AshlynBg.png /usr/share/backgrounds/background.png
 #!!! copy BirthaBg to same location
+
+#installs unzip
+#apt-get --assume-yes install unzip
 
 #solves backlight error
 #created /etc/X11/xorg.conf with this content

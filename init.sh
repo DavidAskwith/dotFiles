@@ -50,6 +50,8 @@ ln -sv /home/dave/.dotFiles/Xresources /home/dave/.Xresources
 #.fonts
 ln -sv /home/dave/.dotFiles/fonts /home/dave/.fonts
 
+#.urxvt
+ln -sv /home/dave/.dotFiles/urxvt /home/dave/.urxvt
 
 #adds vundle to vim folder
 sudo -u dave git clone https://github.com/VundleVim/Vundle.vim.git /home/dave/.dotFiles/vim/bundle/Vundle.vim
@@ -58,7 +60,7 @@ sudo -u dave git clone https://github.com/VundleVim/Vundle.vim.git /home/dave/.d
 echo "#---Password for install of curl---#\n"
 
 #installs the curl dependency for vundle
-sudo apt-get install curl
+sudo apt-get install curldd
 
 #adds the packages included in the vimrc
 vim +PluginInstall +qall

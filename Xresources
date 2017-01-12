@@ -2,7 +2,7 @@
 !----SETTINGS----!
 !-------text---------!
 !
-!TODO 
+!TODO
 !find a write up on colors for urxvt
 
 !----Display Settings---!
@@ -14,6 +14,11 @@ Xft.rgba:      rgb
 Xft.hintstyle: hintfull
 Xft.dpi:       125
 
+!----Plugins----!
+
+!keyboard-select for vim like features
+URxvt.perl-ext-common: ...,keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
 
 !----RXVT settings----!
 

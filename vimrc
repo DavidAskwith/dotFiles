@@ -175,7 +175,7 @@ set hls
 set noic
 
 "used to stop wrapping of text
-set nowrap
+"set nowrap
 
 "sets the max line length to 89 characters
 set textwidth=69
