@@ -5,6 +5,8 @@
 #jessie backports must be enabled for i3 dependencies
 
 #remove the cdrom repo from /etc/apt/sources.list
+#added - UUID=4E34BCFC34BCE85B /media/Windows ntfs-3g defaults 0 0 -to /etc/fstab for Windows partition mounting Ashlyn
+#libreoffice-gtk to enablt gtk theme
 #TODO:set up pinning for the stretch repo for rofi and libcairo2 package
 
 #----Installs Programs----#
@@ -116,7 +118,23 @@
 #!!! copy BirthaBg to same location
 
 #installs unzip
-#apt-get --assume-yes install unzip
+#apt-get --force-yes --assume-yes install unzip
+
+#used to add apt feature such as add-apt-repository
+#apt-get --assume-yes install software-properties-common
+
+#drive install
+#sudo apt-get --assume-yes -t jessie-backports install golang mercurial
+#go get -u github.com/odeke-em/drive/cmd/drive
+
+#!!!!! Ashlyn ONLY
+#ln -sv /media/Windows/Users/dkask/ /home/dave/GoogleDrive
+
+#libreoffice and package for gtk theme suport
+#apt-get --assume-yes --force-yes install libreoffice libreoffice-gtk
+
+#transmission
+#apt-get --assume-yes install transmission
 
 #solves backlight error
 #created /etc/X11/xorg.conf with this content
@@ -130,3 +148,9 @@
 
 #lightdm-gtk-greeter.conf located in /etc/lightdm
 #NetworkManager.conf located in /etc/NetworkManager
+
+#----Random Notes----#
+#must run below in order to have virtualbox run without errors
+# sudo apt-get install build-essential linux-headers-`uname -r`
+# sudo dpkg-reconfigure virtualbox-dkms
+

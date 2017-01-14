@@ -120,3 +120,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export GOPATH=$HOME/.gopath
+export PATH=$GOPATH:$GOPATH/bin:$PATH
