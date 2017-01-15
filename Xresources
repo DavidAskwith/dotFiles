@@ -66,7 +66,7 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 !----RXVT Color----!
 
 *background:              bg
-*foreground:              text
+*foreground:              gray 
 *fading:                  40
 *fadeColor:               bg
 *cursorColor:             purpleText
@@ -91,5 +91,5 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 ! File Path
 *color13:                 purpleText
 ! Comp Name
-*color14:                 blueText
+*color14:                 text  
 *color15:                 S_base3
