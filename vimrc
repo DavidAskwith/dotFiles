@@ -5,25 +5,19 @@
 "lets vim play nice with debian
 runtime! debian.vim
 
-"TO DO {{{1
+"TODO 
+" folding
+" ctags
+" html skeleton/other snippets
+" better colors for merge! and Diff!
+" shortcuts for errors
+" backewards ctrl e brackets
+" omni completion ??
+" vim wiki
 "
-"
-"
-"
-" * folding
-" * ctags
-" * html skeleton/other snippets
-" * better colors for merge! and Diff!
-" * shortcuts for errors
-" * backewards ctrl e brackets
-" * omni completion ??
-" * vim wiki
-"
-"}}}
+"----Plugins----"
 
-"Plugins {{{1
-
-"Vundle Config{{{2
+"----Vundle Config----"
 
 "required for for vundle to run properly
 set nocompatible              " be iMproved, required
@@ -33,10 +27,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"}}}
 
-
-"Plugin Links{{{2
+"----Plugin Links----"
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -49,11 +41,10 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-syntastic/syntastic'
 
-"}}}
 
 "----plugin Settings----"
 
-"Vim-Airline {{{2
+"----Vim-Airline----#
 
 "display status bar all the time
 set laststatus=2
@@ -71,8 +62,7 @@ let g:airline_right_sep=''
 "remove encoding
 let g:airline_section_y=''
 
-"}}}
-"NERCTree {{{2
+"----NERCTree---"
 
 "used to toggle nerd tree
 map <C-n> :NERDTreeToggle<CR>
@@ -81,8 +71,7 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-"}}}
-"----Auto-Pairs----"{{{2
+"----Auto-Pairs----"
 
 "mapping for fast wrap
 let g:AutoPairsShortcutFastWrap = '<C-e>'
@@ -90,8 +79,7 @@ let g:AutoPairsShortcutFastWrap = '<C-e>'
 "enables fly mode
 let g:AutoPairsFlyMode = 1
 
-"}}}
-"----Syntastic---"{{{2
+"----Syntastic---"
 
 
 "default settings to make shit usable asap
@@ -104,15 +92,12 @@ let g:syntastic_auto_loc_list = 1
 
 
 
-"----Vundle Config----"{{{2
+"----Vundle Config----"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"}}}
-
-"}}}
 
 "---miscellaneous---"
 
@@ -175,7 +160,7 @@ set hls
 set noic
 
 "used to stop wrapping of text
-"set nowrap
+set nowrap
 
 "sets the max line length to 89 characters
 set textwidth=69
@@ -256,8 +241,3 @@ au FileType java noremap <f6> :!java %:r<CR>
 
 "used to run a python file
 au FileType python noremap <F5> :w <bar> :!python %<CR>
-
-"---------------------"
-"------For Vim--------"
-"---------------------"
-

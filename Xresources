@@ -1,5 +1,6 @@
 !----------------!
 !----SETTINGS----!
+
 !-------text---------!
 !
 !TODO
@@ -79,7 +80,7 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 *color4:                  red
 *color5:                  white
 *color6:                  purple
-*color7:                  blue
+*color7:                  gray
 *color9:                  green
 *color8:                  yellow
 !executable file

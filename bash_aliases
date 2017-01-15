@@ -24,7 +24,3 @@ alias aptu='sudo apt-get update'
 
 #used for upgrade
 alias aptupg='sudo apt-get dist-upgrade'
-
-#--------shortcut to media/dave/
-#you have to take in an argument for the usb name
-#alias usb=''
