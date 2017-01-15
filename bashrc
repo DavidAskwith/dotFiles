@@ -61,7 +61,7 @@ fi
 if [ "$color_prompt" = yes ]; then
 
     PS1='\[$(tput bold)\]\[$(tput setaf 6)\]\h \[$(tput bold)\]\[$(tput setaf 5)\][\w] \[$(tput setaf 6)\]\[$(tput bold)\]$ \[$(tput sgr0)\]'
-	    
+
 
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -120,5 +120,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export GOPATH=$HOME/.gopath
-export PATH=$GOPATH:$GOPATH/bin:$PATH

@@ -153,4 +153,5 @@
 #must run below in order to have virtualbox run without errors
 # sudo apt-get install build-essential linux-headers-`uname -r`
 # sudo dpkg-reconfigure virtualbox-dkms
+# sudo modprobe vboxdrv
 
