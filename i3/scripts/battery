@@ -19,11 +19,13 @@ use utf8;
 my $acpi;
 my $status;
 my $percent;
+my $ac_adapt;
 my $full_text;
 my $short_text;
+my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
 
 # read the first line of the "acpi" command output
-open (ACPI, 'acpi -b |') or die "Can't exec acpi: $!\n";
+open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
 $acpi = <ACPI>;
 close(ACPI);
 
@@ -36,11 +38,30 @@ $status = $1;
 $percent = $2;
 $full_text = "$percent%";
 
+if ($status eq 'Discharging') {
+	$full_text .= ' DIS';
+} elsif ($status eq 'Charging') {
+	$full_text .= ' CHR';
+} elsif ($status eq 'Unknown') {
+	open (AC_ADAPTER, "acpi -a |") or die;
+	$ac_adapt = <AC_ADAPTER>;
+	close(AC_ADAPTER);
+
+	if ($ac_adapt =~ /: ([\w-]+)/) {
+		$ac_adapt = $1;
+
+		if ($ac_adapt eq 'on-line') {
+			$full_text .= ' CHR';
+		} elsif ($ac_adapt eq 'off-line') {
+			$full_text .= ' DIS';
+		}
+	}
+}
 
 $short_text = $full_text;
 
 if ($acpi =~ /(\d\d:\d\d):/) {
-	$full_text .= " - $1";
+	$full_text .= " ($1)";
 }
 
 # print text

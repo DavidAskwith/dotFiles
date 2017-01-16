@@ -54,7 +54,7 @@
 #apt-get --no-install-recommends install i3blocks
 
 #installs i3blocks dependencies
-#apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl
+#apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl 
 
 #installs rofi !!!!!!must be installed from stretch
 #apt-get --assume-yes install rofi
