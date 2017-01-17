@@ -9,6 +9,29 @@
 #libreoffice-gtk to enablt gtk theme
 #TODO:set up pinning for the stretch repo for rofi and libcairo2 package
 
+#microsoft fonts
+#apt-get install ttf-mscorefonts-installer
+#ln -s /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
+
+#middle scroll
+#/usr/share/X11/xorg.conf.d
+#Section "InputClass"
+	#Identifier	"Trackpoint Wheel Emulation"
+	#MatchProduct	"TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint"
+	#MatchDevicePath	"/dev/input/event*"
+	#Option		"EmulateWheel"		"true"
+	#Option		"EmulateWheelButton"	"2"
+	#Option		"Emulate3Buttons"	"false"
+	#Option		"XAxisMapping"		"6 7"
+	#Option		"YAxisMapping"		"4 5"
+#EndSection
+
+#trackpad disabled
+#/usr/share/X11/xorg.conf.d/50-synaptic....?
+#added to Default clickpad buttons
+#option "AreaBottomEdge" "1"
+
+
 #----Installs Programs----#
 
 #echo "\n#-----xorg Install----#\n"
@@ -54,7 +77,7 @@
 #apt-get --no-install-recommends install i3blocks
 
 #installs i3blocks dependencies
-#apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl 
+#apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl
 
 #installs rofi !!!!!!must be installed from stretch
 #apt-get --assume-yes install rofi

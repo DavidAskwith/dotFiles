@@ -129,8 +129,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #sets system wide colors
-set $bg-color 	          #ffffff
-set $inactive-bg-color   #ffffff
+set $bg-color 	          #262626
+set $inactive-bg-color   #262626
 set $text-color          #af87d7
 set $inactive-text-color #008787
 set $bar-bg-color        #262626
@@ -184,6 +184,14 @@ for_window [class="^.*"] border pixel 0
 gaps inner 15
 gaps outer 10
 
+#----Hide---#
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
 #---Default floating---#
 
 #pavucontrol
@@ -193,5 +201,4 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Lxappearance"] floating enable
 
 #virtualbox
-for_window [class="Virtualbox"] floating enable
 

@@ -5,7 +5,7 @@
 "lets vim play nice with debian
 runtime! debian.vim
 
-"TODO 
+"TODO:
 " folding
 " ctags
 " html skeleton/other snippets
@@ -45,6 +45,15 @@ Plugin 'vim-syntastic/syntastic'
 "----plugin Settings----"
 
 "----Vim-Airline----#
+
+"alows powerline font to work
+"set encoding=utf-8
+
+"enables powerline font
+"let g:airline_powerline_fonts = 1
+
+"shows bar top for tabs
+"let g:airline#extensions#tabline#enabled = 1
 
 "display status bar all the time
 set laststatus=2
@@ -119,9 +128,9 @@ set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+"if has("autocmd")
+  "au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
