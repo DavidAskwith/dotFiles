@@ -13,6 +13,8 @@
 #apt-get install ttf-mscorefonts-installer
 #ln -s /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
 
+#installed grive2 in .gitInstalled info on install at https://github.com/vitalif/grive2.git
+
 #middle scroll
 #/usr/share/X11/xorg.conf.d
 #Section "InputClass"
