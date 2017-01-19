@@ -200,7 +200,12 @@ for_window [class="Pavucontrol"] floating enable
 #lxappearance
 for_window [class="Lxappearance"] floating enable
 
+#vmware-view
+for_window [class="Vmware-view"] floating enable
+
 #virtualbox
 #wont float ..... ??
 for_window [class="Virtualbox"] floating enable
 
+#spotify
+for_window [class="Spotify"] floating enable
