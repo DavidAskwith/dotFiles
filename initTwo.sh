@@ -15,17 +15,21 @@
 
 #installed grive2 in .gitInstalled info on install at https://github.com/vitalif/grive2.git
 
+#vmware-view
+#ln -s /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
+#solves the error on install
+
 #middle scroll
 #/usr/share/X11/xorg.conf.d
 #Section "InputClass"
-	#Identifier	"Trackpoint Wheel Emulation"
-	#MatchProduct	"TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint"
-	#MatchDevicePath	"/dev/input/event*"
-	#Option		"EmulateWheel"		"true"
-	#Option		"EmulateWheelButton"	"2"
-	#Option		"Emulate3Buttons"	"false"
-	#Option		"XAxisMapping"		"6 7"
-	#Option		"YAxisMapping"		"4 5"
+   #Identifier	"Trackpoint Wheel Emulation"
+   #MatchProduct	"TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint"
+   #MatchDevicePath	"/dev/input/event*"
+   #Option		"EmulateWheel"		"true"
+   #Option		"EmulateWheelButton"	"2"
+   #Option		"Emulate3Buttons"	"false"
+   #Option		"XAxisMapping"		"6 7"
+   #Option		"YAxisMapping"		"4 5"
 #EndSection
 
 #trackpad disabled
