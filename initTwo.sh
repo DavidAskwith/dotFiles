@@ -165,13 +165,8 @@
 #transmission
 #apt-get --assume-yes install transmission
 
-#solves backlight error
-#created /etc/X11/xorg.conf with this content
-#Section "Device"
-    #Identifier  "Card0"
-    #Driver      "intel"
-    #Option      "Backlight"  "intel_backlight"
-#EndSection
+#install to allow for mstat cpu 
+#apt-get --assume-yes  install sysstat
 
 #----File locations for copied files---##
 
