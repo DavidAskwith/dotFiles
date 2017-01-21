@@ -71,6 +71,15 @@ let g:airline_right_sep=''
 "remove encoding
 let g:airline_section_y=''
 
+"enables tabline
+let g:airline#extensions#tabline#enabled = 1
+
+"only shows tabline if more than 2 tabs
+let g:airline#extensions#tabline#tab_min_count = 2
+
+"only shows tabline if more than 2 buffers
+let g:airline#extensions#tabline#buffer_min_count = 2
+
 "----NERCTree---"
 
 "used to toggle nerd tree
