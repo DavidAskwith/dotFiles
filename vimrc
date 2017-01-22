@@ -225,9 +225,7 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 
-"-----------------------"
-"------For Web Dev------"
-"-----------------------"
+"----For Web Dev----"
 
 "for auto save on unfocus
 autocmd BufLeave,FocusLost * silent! wall<CR>
@@ -243,9 +241,7 @@ au FileType html noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h
 au FileType php noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
 
 
-"----------------------"
-"-----For Java Dev-----"
-"----------------------"
+"----For Java Dev----"
 
 "used to compile java current java file
 au FileType java noremap <F5> :w <bar> :!javac %<CR>
@@ -253,9 +249,13 @@ au FileType java noremap <F5> :w <bar> :!javac %<CR>
 "used to run the current java file
 au FileType java noremap <f6> :!java %:r<CR>
 
-"---------------------"
-"-----For Python------"
-"---------------------"
+"----For Python-----"
 
 "used to run a python file
 au FileType python noremap <F5> :w <bar> :!python %<CR>
+
+"----Bash-----"
+
+"runs bash scripts
+au FileType bash noremap <F5> :w <bar> :!sh %<CR>
+
