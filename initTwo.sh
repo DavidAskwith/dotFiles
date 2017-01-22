@@ -52,6 +52,8 @@
 
 #i3gaps
 
+#echo "\n#----I3 Gaps Dependencies----#\n"
+
 #dependencies
 #apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
 
@@ -165,8 +167,15 @@
 #transmission
 #apt-get --assume-yes install transmission
 
-#install to allow for mstat cpu 
+#install to allow for mstat cpu
 #apt-get --assume-yes  install sysstat
+
+#java and javafx install
+#apt-get --assume-yes install openjdk-8-jdk openjfx
+
+#scene builder
+#apt-get --assume-yes install scenebuilder
+#TODO: create a PATH variable for opt/
 
 #----File locations for copied files---##
 
