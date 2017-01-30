@@ -262,3 +262,8 @@ au FileType python noremap <F5> :w <bar> :!python %<CR>
 "runs bash scripts
 au FileType bash noremap <F5> :w <bar> :!sh %<CR>
 
+"----perl----"
+
+"runs perl scripts with f5
+au FileType perl noremap <F5> :w <bar> :!perl %<CR>
+
