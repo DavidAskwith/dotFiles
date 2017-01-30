@@ -122,3 +122,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#node module path
+export NODE_PATH="/usr/local/lib/node_modules/"

@@ -1,10 +1,8 @@
-!----------------!
 !----SETTINGS----!
 
-!-------text---------!
+!----TODO:----!
 !
-!TODO
-!find a write up on colors for urxvt
+!TODO:find a write up on colors for urxvt
 
 !----Display Settings---!
 
@@ -44,9 +42,7 @@ URxvt.internalBorder: 10
 ! scroll back to the bottom on keypress
 !URxvt*scrollTtyKeypress: true
 
-!--------------!
 !----COLORS----!
-!--------------!
 
 !----variables---!
 

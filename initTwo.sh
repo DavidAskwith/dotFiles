@@ -37,6 +37,7 @@
 #added to Default clickpad buttons
 #option "AreaBottomEdge" "1"
 
+#TODO:installed tlp for power management
 
 #----Installs Programs----#
 

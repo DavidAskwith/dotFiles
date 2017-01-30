@@ -38,7 +38,6 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-fugitive'
 Plugin 'vim-syntastic/syntastic'
 
 
@@ -223,6 +222,10 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 
 "Remove all trailing whitespace by pressing F3
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+"new lines below in normal mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
 
 "----For Web Dev----"

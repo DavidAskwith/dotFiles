@@ -182,7 +182,7 @@ for_window [class="^.*"] border pixel 0
 
 #gap stuff
 gaps inner 15
-gaps outer 10
+gaps outer -5
 
 #----Hide---#
 
