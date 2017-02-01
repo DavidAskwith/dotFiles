@@ -6,6 +6,7 @@
 runtime! debian.vim
 
 "TODO:
+"mapping fo insert mode
 " folding
 " ctags
 " html skeleton/other snippets
@@ -79,7 +80,7 @@ let g:airline#extensions#tabline#tab_min_count = 2
 "only shows tabline if more than 2 buffers
 let g:airline#extensions#tabline#buffer_min_count = 2
 
-"----NERCTree---"
+"----NERDTree---"
 
 "used to toggle nerd tree
 map <C-n> :NERDTreeToggle<CR>
@@ -107,7 +108,9 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 
-
+"perl error checker enabled
+let g:syntastic_perl_checkers = ['perl']
+let g:syntastic_enable_perl_checker = 1
 
 "----Vundle Config----"
 
@@ -224,14 +227,12 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 "new lines below in normal mode
-nmap <S-Enter> O<Esc>
+"not working....
+"nmap <S-CR>O<Esc>
 nmap <CR> o<Esc>
 
 
 "----For Web Dev----"
-
-"for auto save on unfocus
-autocmd BufLeave,FocusLost * silent! wall<CR>
 
 "used to launch current html in CHROME
 au FileType javascript noremap <F5> :!google-chrome %<CR>
@@ -266,4 +267,3 @@ au FileType bash noremap <F5> :w <bar> :!sh %<CR>
 
 "runs perl scripts with f5
 au FileType perl noremap <F5> :w <bar> :!perl %<CR>
-
