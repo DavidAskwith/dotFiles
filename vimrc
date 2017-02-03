@@ -112,6 +112,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_enable_perl_checker = 1
 
+"sets the height of the window
+let g:syntastic_loc_list_height=3
+
+
 "----Vundle Config----"
 
 " All of your Plugins must be added before the following line
