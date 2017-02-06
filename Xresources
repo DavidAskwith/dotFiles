@@ -13,11 +13,6 @@ Xft.rgba:      rgb
 Xft.hintstyle: hintfull
 Xft.dpi:       125
 
-!----Plugins----!
-
-!keyboard-select for vim like features
-URxvt.perl-ext-common: ...,keyboard-select
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
 
 !----RXVT settings----!
 
