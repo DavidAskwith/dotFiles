@@ -106,7 +106,10 @@
 #ntfs-3g for working with ntfs eg. windows
 #apt-get --assume-yes install ntfs-3g
 
-#----Networking---#
+#----Power Managment----#
+#apt-get --assume-yes install xfce4-power-manager
+
+#----Networking----#
 #apt-get --assume-yes install firmware-iwlwifi network-manager network-manager-gnome
 
 #sim links file to allow for ethernet management with nm-applet
