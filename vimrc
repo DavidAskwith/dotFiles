@@ -40,7 +40,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
-
+Plugin 'tpope/vim-surround'
 
 "----plugin Settings----"
 
@@ -197,8 +197,8 @@ set textwidth=69
 
 "comeneted out due to the new theme with suport for spelling
 "sets spell colors
-"hi clear SpellBad
-"hi SpellBad cterm=underline ctermfg=red
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
 
 "vim diff colors temp location
 "hi DiffText   cterm=none ctermfg=Black ctermbg=Red gui=none guifg=Black guibg=Red
