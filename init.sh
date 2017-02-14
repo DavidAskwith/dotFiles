@@ -21,6 +21,7 @@ rm -rv /home/dave/.i3
 rm -v /home/dave/.gitconfig
 rm -v /home/dave/.Xresources
 rm -v /home/dave/.fonts
+rm -v /home/dave/.urxvt
 
 #------install section-----#
 
@@ -60,9 +61,10 @@ sudo -u dave git clone https://github.com/VundleVim/Vundle.vim.git /home/dave/.d
 echo "#---Password for install of curl---#\n"
 
 #installs the curl dependency for vundle
-sudo apt-get install curldd
+sudo apt-get --assume-yes install curl
 
 #adds the packages included in the vimrc
+#TODO: Run as dave not root!
 vim +PluginInstall +qall
 
 echo "#----Install Complete!!----#"
