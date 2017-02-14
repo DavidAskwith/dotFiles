@@ -125,3 +125,8 @@ fi
 
 #node module path
 export NODE_PATH="/usr/local/lib/node_modules/"
+
+#go path
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
