@@ -5,15 +5,12 @@
 #jessie backports must be enabled for i3 dependencies
 
 #remove the cdrom repo from /etc/apt/sources.list
-#added - UUID=4E34BCFC34BCE85B /media/Windows ntfs-3g defaults 0 0 -to /etc/fstab for Windows partition mounting Ashlyn
+#added - "UUID=4E34BCFC34BCE85B /media/Windows ntfs-3g defaults 0 0 " to /etc/fstab for Windows partition mounting Ashlyn
 #libreoffice-gtk to enablt gtk theme
 #TODO:set up pinning for the stretch repo for rofi and libcairo2 package
 
-#microsoft fonts
-#apt-get install ttf-mscorefonts-installer
-#ln -s /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
-
-#installed grive2 in .gitInstalled info on install at https://github.com/vitalif/grive2.git
+#TODO: 
+#update Network setup to print into /etc/NetworkManager/NetworkManager.conf
 
 #vmware-view
 #ln -s /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
@@ -33,11 +30,15 @@
 #EndSection
 
 #trackpad disabled
-#/usr/share/X11/xorg.conf.d/50-synaptic....?
+#/usr/share/X11/xorg.conf.d/50-synaptic.conf
 #added to Default clickpad buttons
 #option "AreaBottomEdge" "1"
 
-#TODO:installed tlp for power management
+#must run below in order to have virtualbox run without errors
+# sudo apt-get install build-essential linux-headers-`uname -r`
+# sudo dpkg-reconfigure virtualbox-dkms
+# sudo modprobe vboxdrv
+
 
 #----Installs Programs----#
 
@@ -58,19 +59,25 @@
 #dependencies
 #apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
 
-#must be installed from stretch!!!!!!! not backports
+#----must be installed from stretch!!!!!!!---- not backports
 #apt-get --assume-yes install libcairo2-dev
+
+#----installs rofi !!!!!!----#must be installed from stretch
+#apt-get --assume-yes install rofi
+
+#make a directory for i3-gaps
+#sudo -u dave mkdir /home/dave/.gitInstalled
 
 #clones the i3gaps repo to ~/.gitInstalled
 #git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps
 
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script
-#autoreconf --force --install
+#sudo autoreconf --force --install
 #rm -rf build
-#mkdir -p ap:build && cd build
-#../configure --prefix=/usr --sysconfdir=/etc
-#make
+#mkdir -p build && cd build
+#sudo ../configure --prefix=/usr --sysconfdir=/etc
+#sudo make
 #sudo make install
 
 #compton for display effects eg. transparency
@@ -82,14 +89,11 @@
 #for i3
 #apt-get --assume-yes install i3lock
 
-#installs i3blocks without recomenededd packages
-#apt-get --no-install-recommends install i3blocks
-
 #installs i3blocks dependencies
 #apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl
 
-#installs rofi !!!!!!must be installed from stretch
-#apt-get --assume-yes install rofi
+#installs i3blocks without recomenededd packages
+#apt-get --no-install-recommends install i3blocks
 
 #install of vim
 #apt-get --assume-yes install vim-gtk
@@ -103,6 +107,8 @@
 #apt-get update
 #apt-get --assume-yes install google-chrome-stable
 
+#----drives----#
+
 #ntfs-3g for working with ntfs eg. windows
 #apt-get --assume-yes install ntfs-3g
 
@@ -113,8 +119,8 @@
 #apt-get --assume-yes install firmware-iwlwifi network-manager network-manager-gnome
 
 #sim links file to allow for ethernet management with nm-applet
-#rm /etc/NetworkManager/NetworkManager.conf
-#ln -sv /home/dave/.dotFiles/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
+rm /etc/NetworkManager/NetworkManager.conf
+ln -sv /home/dave/.dotFiles/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
 
 #----Lightdm----#
 #rm /etc/lightdm/lightdm-gtk-greeter.conf
@@ -128,19 +134,12 @@
 #----audio----#
 #installs alsa pulseaudio pavucontrol to control sound alsa-utils
 #gets you amixer for volume control
-#apt-get --asssume-yes install pulseaudio pavucontrol alsa-utils
-
-#used to set up the order of the sound devices
-#both may be needed unsure test it
-
-#allow user to edit .asoundrc !!!
-#printf "#switches the order of sound devices\ndefaults.pcm.card=1" > /home/dave/.asoundrc
-#printf "#switches the order of sound devices\noptions snd_hda_intel index=1,0" > /etc/modprobe.d/thinkpad-t450s.conf
+#apt-get --assume-yes install pulseaudio pavucontrol alsa-utils
 
 #---Theme----#
 #echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /' > /etc/apt/sources.list.d/arc-theme.list
 #apt-get update
-#apt-get --assume-yes install arc-theme
+#apt-get --force-yes --assume-yes install arc-theme
 
 #lxapearance
 #installed in order to allow for theme changes
@@ -152,18 +151,16 @@
 #mv /usr/share/images/backgrounds/AshlynBg.png /usr/share/backgrounds/background.png
 #!!! copy BirthaBg to same location
 
-#installs unzip
-#apt-get --force-yes --assume-yes install unzip
+#installs unzip and zip
+#apt-get --force-yes --assume-yes install unzip zip
 
 #used to add apt feature such as add-apt-repository
 #apt-get --assume-yes install software-properties-common
 
 #drive install
 #sudo apt-get --assume-yes -t jessie-backports install golang mercurial
+#sudo -u dave mkdir /home/dave/.go
 #go get -u github.com/odeke-em/drive/cmd/drive
-
-#!!!!! Ashlyn ONLY
-#ln -sv /media/Windows/Users/dkask/ /home/dave/GoogleDrive
 
 #libreoffice and package for gtk theme suport
 #apt-get --assume-yes --force-yes install libreoffice libreoffice-gtk
@@ -181,14 +178,8 @@
 #apt-get --assume-yes install scenebuilder
 #TODO: create a PATH variable for opt/
 
-#----File locations for copied files---##
+#microsoft fonts
+#apt-get install ttf-mscorefonts-installer
+#ln -s /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
 
-#lightdm-gtk-greeter.conf located in /etc/lightdm
-#NetworkManager.conf located in /etc/NetworkManager
-
-#----Random Notes----#
-#must run below in order to have virtualbox run without errors
-# sudo apt-get install build-essential linux-headers-`uname -r`
-# sudo dpkg-reconfigure virtualbox-dkms
-# sudo modprobe vboxdrv
 
