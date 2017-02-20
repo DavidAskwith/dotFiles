@@ -2,7 +2,7 @@
 "are properly set to work with the Vim-related packages available
 
 "in Debian.
-"lets vim play nice with debian
+"lets vimingo-library.vim  play nice with debian
 runtime! debian.vim
 
 "TODO:
@@ -41,7 +41,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
-Plugin 'SpellCheck'
 
 "----plugin Settings----"
 
@@ -235,6 +234,9 @@ nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 "not working....
 "nmap <S-CR>O<Esc>
 nmap <CR> o<Esc>
+
+"enables taging jumping with %
+runtime macros/matchit.vim
 
 
 "----For Web Dev----"
