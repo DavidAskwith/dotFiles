@@ -2,6 +2,9 @@
 #--this file holds all my custom aliases--#
 #-----------------------------------------#
 
+#sudo 
+alias s='sudo'
+
 #opening files in gui
 alias op='xdg-open'
 
