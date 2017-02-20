@@ -192,7 +192,7 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-#---Default floating---#
+#----Default floating----#
 
 #pavucontrol
 for_window [class="Pavucontrol"] floating enable
@@ -209,3 +209,6 @@ for_window [class="Virtualbox"] floating enable
 
 #spotify
 for_window [class="Spotify"] floating enable
+
+#----Start Up Apps----#
+exec --no-startup-id xfce4-power-manager
