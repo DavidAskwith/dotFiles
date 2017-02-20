@@ -11,13 +11,14 @@ Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.hintstyle: hintfull
-Xft.dpi:       125
+!115 for bertha 125 for seven
+Xft.dpi:       115
 
 
 !----RXVT settings----!
 
-!font
-URxvt.font: xft:Dejavu Sans Mono:pixelsize=23
+!font 18 for bertha 23 for ashlyn
+URxvt.font: xft:Dejavu Sans Mono:pixelsize=18
 
 !fonts spacing
 !URxvt.letterSpace: -6
