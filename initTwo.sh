@@ -39,6 +39,11 @@
 # sudo dpkg-reconfigure virtualbox-dkms
 # sudo modprobe vboxdrv
 
+#Networking
+#remove
+# The primary network interface
+#allow-hotplug eth0
+#iface eth0 inet dhcp
 
 #----Installs Programs----#
 
