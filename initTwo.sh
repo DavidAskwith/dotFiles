@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 #-----Install notes----#
 
 #jessie backports must be enabled for i3 dependencies
@@ -9,7 +10,7 @@
 #libreoffice-gtk to enablt gtk theme
 #TODO:set up pinning for the stretch repo for rofi and libcairo2 package
 
-#TODO: 
+#TODO:
 #update Network setup to print into /etc/NetworkManager/NetworkManager.conf
 
 #vmware-view
@@ -44,6 +45,14 @@
 # The primary network interface
 #allow-hotplug eth0
 #iface eth0 inet dhcp
+
+#NodeJS
+#install both npm and nodejs
+# to avoid errors with global packages /usr/bin/nodejs /usr/bin/node
+
+#VMware View 
+#dependency issue fix
+#ln -sv /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
 
 #----Installs Programs----#
 
@@ -124,8 +133,8 @@
 #apt-get --assume-yes install firmware-iwlwifi network-manager network-manager-gnome
 
 #sim links file to allow for ethernet management with nm-applet
-rm /etc/NetworkManager/NetworkManager.conf
-ln -sv /home/dave/.dotFiles/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
+#rm /etc/NetworkManager/NetworkManager.conf
+#ln -sv /home/dave/.dotFiles/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
 
 #----Lightdm----#
 #rm /etc/lightdm/lightdm-gtk-greeter.conf
@@ -165,7 +174,9 @@ ln -sv /home/dave/.dotFiles/NetworkManager.conf /etc/NetworkManager/NetworkManag
 #drive install
 #sudo apt-get --assume-yes -t jessie-backports install golang mercurial
 #sudo -u dave mkdir /home/dave/.go
-#go get -u github.com/odeke-em/drive/cmd/drive
+
+#works when ran ouside of file as dave.......
+#sudo -u dave go get -u github.com/odeke-em/drive/cmd/drive
 
 #libreoffice and package for gtk theme suport
 #apt-get --assume-yes --force-yes install libreoffice libreoffice-gtk

@@ -115,6 +115,9 @@ let g:syntastic_enable_perl_checker = 1
 "sets the height of the window
 let g:syntastic_loc_list_height=3
 
+"enables eslint
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_checkers = ['jshint']
 
 "----Vundle Config----"
 
