@@ -17,8 +17,8 @@ Xft.dpi:       115
 
 !----RXVT settings----!
 
-!font 18 for bertha 23 for ashlyn
-URxvt.font: xft:Dejavu Sans Mono:pixelsize=18
+!font 20 for bertha 23 for ashlyn
+URxvt.font: xft:Dejavu Sans Mono:pixelsize=20
 
 !fonts spacing
 !URxvt.letterSpace: -6
@@ -65,7 +65,7 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 *pointerColorBackground:  text
 *pointerColorForeground:  blue
 
-*color0:                  green
+*color0:                  black 
 *color1:                  orange
 *color2:                  blueText
 *color3:                  black
