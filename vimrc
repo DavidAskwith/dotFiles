@@ -117,6 +117,7 @@ let g:syntastic_loc_list_height=3
 
 "allows for jshint js checking
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers = ['eslint']
 
 "----Vundle Config----"
 
