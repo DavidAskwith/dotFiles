@@ -115,6 +115,8 @@ let g:syntastic_enable_perl_checker = 1
 "sets the height of the window
 let g:syntastic_loc_list_height=3
 
+"allows for jshint js checking
+let g:syntastic_javascript_checkers = ['eslint']
 
 "----Vundle Config----"
 
@@ -187,7 +189,7 @@ set noic
 set nowrap
 
 "sets the max line length to 89 characters
-set textwidth=69
+"set textwidth=69
 
 "used to set a marker for number of columns
 "set colorcolumn=70
@@ -205,7 +207,7 @@ set textwidth=69
 "hi DiffChange cterm=none ctermfg=Black ctermbg=LightMagenta gui=none guifg=Black guibg=LightMagenta
 
 "to wrap text at 69
-set wrapmargin=69
+"set wrapmargin=69
 
 "used to set the terminals title to show the file name in xterm title
 let &titlestring =expand("%:t")
