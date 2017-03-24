@@ -27,3 +27,9 @@ alias aptu='sudo apt-get update'
 
 #used for upgrade
 alias aptupg='sudo apt-get dist-upgrade'
+
+#alias for redired to OrderAppProto
+alias oap='cd ~/VC/OrderAppProto'
+
+#alias for poweroff
+alias off='sudo poweroff'

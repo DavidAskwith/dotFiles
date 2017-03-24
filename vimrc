@@ -46,15 +46,6 @@ Plugin 'tpope/vim-surround'
 
 "----Vim-Airline----#
 
-"alows powerline font to work
-"set encoding=utf-8
-
-"enables powerline font
-"let g:airline_powerline_fonts = 1
-
-"shows bar top for tabs
-"let g:airline#extensions#tabline#enabled = 1
-
 "display status bar all the time
 set laststatus=2
 
@@ -117,7 +108,15 @@ let g:syntastic_loc_list_height=3
 
 "allows for jshint js checking
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_checkers = ['eslint']
+
+"----Super Tab----"
+
+"allows for omni complete with super tab
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+
+"lets super tab decide on completion type
+"let g:SuperTabDefaultCompletionType = "context"
+
 
 "----Vundle Config----"
 
@@ -130,6 +129,9 @@ filetype plugin indent on    " required
 
 "used to allow 256 colors in vim
 set t_Co=256
+
+"filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
 
 "sets the color scheme
 colorscheme space-vim-dark
@@ -161,23 +163,13 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
-"sets more bash like completion for comands
-
-
 "used to set the line numbers on load of vim
 set number
 
-" The width of a TAB is set to . Still it is a \t. It is just that
-" Vim will interpret it to be having width of 3.
+"indent settings
 set tabstop=3
-
-" Indents will have a width of 4
 set shiftwidth=3
-
-" Sets the number of columns for a TAB
 set softtabstop=3
-
-" Expand TABs to spaces
 set expandtab
 
 " Used to set the search to always highlight
@@ -188,38 +180,6 @@ set noic
 
 "used to stop wrapping of text
 set nowrap
-
-"sets the max line length to 89 characters
-"set textwidth=69
-
-"used to set a marker for number of columns
-"set colorcolumn=70
-
-"for colr of marker
-"highlight ColorColumn ctermbg=darkgrey
-
-"comeneted out due to the new theme with suport for spelling
-"sets spell colors
-"hi clear SpellBad
-"hi SpellBad cterm=underline ctermfg=red
-
-"vim diff colors temp location
-"hi DiffText   cterm=none ctermfg=Black ctermbg=Red gui=none guifg=Black guibg=Red
-"hi DiffChange cterm=none ctermfg=Black ctermbg=LightMagenta gui=none guifg=Black guibg=LightMagenta
-
-"to wrap text at 69
-"set wrapmargin=69
-
-"used to set the terminals title to show the file name in xterm title
-let &titlestring =expand("%:t")
-if &term == "screen"
-  set t_ts=^[k
-  set t_fs=^[\
-endif
-
-if &term == "screen" || &term == "xterm"
-  set title
-endif
 
 "used for mapping split navigation
 nmap <silent><C-l> :wincmd l<CR>
@@ -248,12 +208,6 @@ runtime macros/matchit.vim
 au FileType javascript noremap <F5> :!google-chrome %<CR>
 au FileType html noremap <F5> :!google-chrome %<CR>
 au FileType php  noremap <F5> :!google-chrome %<CR>
-
-"used to transfer just the current file
-au FileType javascript noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
-au FileType html noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
-au FileType php noremap <F6> :w <bar> !/etc/vim/scripts/ftpFile.sh '%:p' '%:p:h:t'<CR>
-
 
 "----For Java Dev----"
 
