@@ -73,20 +73,18 @@
 #dependencies
 #apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
 
-#----must be installed from stretch!!!!!!!---- not backports
-#apt-get --assume-yes install libcairo2-dev
+#final dependency needed from stretch
+#apt-get -t stretch-backports --assume-yes install libcairo2-dev
 
-#----installs rofi !!!!!!----#must be installed from stretch
-#apt-get --assume-yes install rofi
-
-#make a directory for i3-gaps
-#sudo -u dave mkdir /home/dave/.gitInstalled
+#rofi
+#apt-get -t stretch-backports --assume-yes install rofi
 
 #clones the i3gaps repo to ~/.gitInstalled
-#git clone https://www.github.com/Airblader/i3 /home/dave/.gitInstalled/i3-gaps
+#git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script
+#(cd /usr/local/bin && exec command-executed) could work?
 #sudo autoreconf --force --install
 #rm -rf build
 #mkdir -p build && cd build
@@ -115,18 +113,15 @@
 #rxvt terminal emulator
 #apt-get --assume-yes install rxvt-unicode-256color
 
-#chrome install
-#wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-#sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-#apt-get update
-#apt-get --assume-yes install google-chrome-stable
+#chromium install
+#apt-get --assume-yes install chromium
 
 #----drives----#
 
 #ntfs-3g for working with ntfs eg. windows
 #apt-get --assume-yes install ntfs-3g
 
-#----Power Managment----#
+#----Power Management----#
 #apt-get --assume-yes install xfce4-power-manager
 
 #----Networking----#
