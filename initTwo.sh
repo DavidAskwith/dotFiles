@@ -50,7 +50,7 @@
 #install both npm and nodejs
 # to avoid errors with global packages /usr/bin/nodejs /usr/bin/node
 
-#VMware View 
+#VMware View
 #dependency issue fix
 #ln -sv /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
 
@@ -59,18 +59,21 @@
 #echo "\n#-----xorg Install----#\n"
 
 #xorg
-#apt-get --assume-yes install xorg
+apt-get --assume-yes install xorg
 
 
 #----i3gaps----#
 
 #programs needed for install of i3gaps
-#apt-get --assume-yes install autoconf make gcc
+apt-get --assume-yes install autoconf make gcc
 
 #appends the stretch-backports repos to sources.list
 printf "%s\n# stretch for lib-cairo i3-gaps dependency
 deb http://ftp.ca.debian.org/debian/ stretch-backports main contrib non-free
-deb-src http://ftp.ca.debian.org/debian/ stretch-backports main contrib non-free" >> testing 
+deb-src http://ftp.ca.debian.org/debian/ stretch-backports main contrib non-free" >> \etc\apt\sources.list
+
+#updates the repo to include stretch-backports
+apt-get update
 
 #dependencies
 apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
@@ -87,15 +90,13 @@ git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script
 #(cd /usr/local/bin && exec command-executed) could work?
-(cd /usr/local/bin 
-&& exec autoreconf --force --install
-&& exec rm -rf build
-&& exec mkdir -pA build)
+(cd /usr/local/bin && exec autoreconf --force --install)
+(cd /usr/local/bin && exec rm -rf build)
+(cd /usr/local/bin && exec mkdir -pA build)
 
-(cd /usr/local/bin/build
-&& exec sudo ../configure --prefix=/usr --sysconfdir=/etc
-&& exec make
-&& make install)
+(cd /usr/local/bin/build/i3-gaps && exec sudo ../configure --prefix=/usr --sysconfdir=/etc)
+(cd /usr/local/bin && exec make)
+(cd /usr/local/bin && exec make install)
 
 #compton for display effects eg. transparency
 #apt-get --assume-yes install compton
