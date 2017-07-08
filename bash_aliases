@@ -17,12 +17,6 @@ alias oap='cd ~/VC/OrderAppProto'
 #alias for poweroff
 alias off='sudo poweroff'
 
-#alias for monitor setup
-alias 3-disp='xrandr --output eDP1 --left-of HDMI1 --output HDMI1 --left-of DP2 --output DP2 --rotate right'
-
-#alias for 2 monitor set up
-alias 2-disp='xrandr --output eDP1 --left-of HDMI1'
-
 #--------apt-get actions
 
 #used to for completely removing package and dependencies
