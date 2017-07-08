@@ -61,36 +61,41 @@
 #xorg
 #apt-get --assume-yes install xorg
 
-#echo "\n#-----aoutconf make gcc for i3gaps compilation from source----#\n"
+
+#----i3gaps----#
 
 #programs needed for install of i3gaps
 #apt-get --assume-yes install autoconf make gcc
 
-#i3gaps
-
-#echo "\n#----I3 Gaps Dependencies----#\n"
+#appends the stretch-backports repos to sources.list
+printf "%s\n# stretch for lib-cairo i3-gaps dependency
+deb http://ftp.ca.debian.org/debian/ stretch-backports main contrib non-free
+deb-src http://ftp.ca.debian.org/debian/ stretch-backports main contrib non-free" >> testing 
 
 #dependencies
-#apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
+apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
 
 #final dependency needed from stretch
-#apt-get -t stretch-backports --assume-yes install libcairo2-dev
+apt-get -t stretch-backports --assume-yes install libcairo2-dev
 
 #rofi
-#apt-get -t stretch-backports --assume-yes install rofi
+apt-get -t stretch-backports --assume-yes install rofi
 
 #clones the i3gaps repo to ~/.gitInstalled
-#git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
+git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script
 #(cd /usr/local/bin && exec command-executed) could work?
-#sudo autoreconf --force --install
-#rm -rf build
-#mkdir -p build && cd build
-#sudo ../configure --prefix=/usr --sysconfdir=/etc
-#sudo make
-#sudo make install
+(cd /usr/local/bin 
+&& exec autoreconf --force --install
+&& exec rm -rf build
+&& exec mkdir -pA build)
+
+(cd /usr/local/bin/build
+&& exec sudo ../configure --prefix=/usr --sysconfdir=/etc
+&& exec make
+&& make install)
 
 #compton for display effects eg. transparency
 #apt-get --assume-yes install compton
