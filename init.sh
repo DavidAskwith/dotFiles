@@ -1,10 +1,8 @@
 #!/usr/bin/bash
 
-#TODO
-
-#Research and change the file promitions for generated 
+#TODO:Research and change the file promitions for generated 
 #symbolic links
-#add .colors to .dotfile
+#TODO:Breakout vim for to allow for vim only installs
 
 #this file is used to setup symlinks for all the source 
 #controlled dot files
