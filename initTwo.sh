@@ -69,8 +69,19 @@ apt-get --assume-yes install autoconf make gcc
 
 #appends the stretch-backports repos to sources.list
 printf "%s\n# stretch for lib-cairo i3-gaps dependency
-deb http://ftp.ca.debian.org/debian/ stretch-backports main contrib non-free
-deb-src http://ftp.ca.debian.org/debian/ stretch-backports main contrib non-free" >> \etc\apt\sources.list
+         deb http://ftp.ca.debian.org/debian/ stretch main contrib non-free
+         deb-src http://ftp.ca.debian.org/debian/ stretch main contrib non-free" >> \etc\apt\sources.list
+
+#sets up apt pinning for stretch
+
+printf "%s#sets up pinnning to allowe specified packages to be installed from stretch
+         Package: *
+         Pin: release a=jessie
+         Pin-Priority: 900
+
+         Package: *
+         Pin: release a=stretch
+         Pin-Priority: 800" >> /etc/apt/preferences.d/stretchPinning
 
 #updates the repo to include stretch-backports
 apt-get update
