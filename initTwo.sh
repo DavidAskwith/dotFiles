@@ -70,18 +70,12 @@ apt-get --assume-yes install autoconf make gcc
 #appends the stretch-backports repos to sources.list
 printf "%s\n# stretch for lib-cairo i3-gaps dependency
          deb http://ftp.ca.debian.org/debian/ stretch main contrib non-free
-         deb-src http://ftp.ca.debian.org/debian/ stretch main contrib non-free" >> \etc\apt\sources.list
+        deb-src http://ftp.ca.debian.org/debian/ stretch main contrib non-free" >> /etc/apt/sources.list 
 
 #sets up apt pinning for stretch
 
-printf "%s#sets up pinnning to allowe specified packages to be installed from stretch
-         Package: *
-         Pin: release a=jessie
-         Pin-Priority: 900
-
-         Package: *
-         Pin: release a=stretch
-         Pin-Priority: 800" >> /etc/apt/preferences.d/stretchPinning
+#printf "%s#sets the default release to stop all pkgs from being install from stretch
+APT::Default-Release \"jessie\";" >> /etc/apt/apt.conf.d/01defaultRelease
 
 #updates the repo to include stretch-backports
 apt-get update
@@ -90,10 +84,10 @@ apt-get update
 apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
 
 #final dependency needed from stretch
-apt-get -t stretch-backports --assume-yes install libcairo2-dev
+apt-get -t stretch --assume-yes install libcairo2-dev
 
 #rofi
-apt-get -t stretch-backports --assume-yes install rofi
+apt-get -t stretch --assume-yes install rofi
 
 #clones the i3gaps repo to ~/.gitInstalled
 git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
@@ -101,13 +95,13 @@ git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script
 #(cd /usr/local/bin && exec command-executed) could work?
-(cd /usr/local/bin && exec autoreconf --force --install)
-(cd /usr/local/bin && exec rm -rf build)
-(cd /usr/local/bin && exec mkdir -pA build)
+(cd /usr/local/bin/i3-gaps && exec autoreconf --force --install)
+(cd /usr/local/bin/i3-gaps && exec rm -rf build)
+(cd /usr/local/bin/i3-gaps && exec mkdir -p build)
 
-(cd /usr/local/bin/build/i3-gaps && exec sudo ../configure --prefix=/usr --sysconfdir=/etc)
-(cd /usr/local/bin && exec make)
-(cd /usr/local/bin && exec make install)
+(cd /usr/local/bin/i3-gaps/build && exec sudo ../configure --prefix=/usr --sysconfdir=/etc)
+(cd /usr/local/bin/i3-gaps/build && exec make)
+(cd /usr/local/bin/i3-gaps/build && exec make install)
 
 #compton for display effects eg. transparency
 #apt-get --assume-yes install compton
