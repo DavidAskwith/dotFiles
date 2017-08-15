@@ -21,64 +21,71 @@ runtime! debian.vim
 "----Vundle Config----"
 
 "required for for vundle to run properly
-set nocompatible              " be iMproved, required
+set nocompatible              " be improved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+" set the runtime path to include vundle and initialize
+set rtp+=~/.vim/bundle/vundle.vim
 call vundle#begin()
 
 
-"----Plugin Links----"
+"----plugin links----"
 
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'vundlevim/vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+"plugin 'bling/vim-airline'
+"plugin 'vim-airline/vim-airline-themes'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
+Plugin 'micha/vim-colors-solarized'
+"----plugin settings----"
 
-"----plugin Settings----"
-
-"----Vim-Airline----#
+"----vim-airline----#
 
 "display status bar all the time
 set laststatus=2
 
+"for powerline
+
+
 "used to set the theme
-let g:airline_theme='violet'
+"let g:airline_theme='violet'
 
 "used to remove powerline stuff
 " the separator used on the left side
-let g:airline_left_sep=''
+"let g:airline_left_sep='>'
 
 " the separator used on the right side
-let g:airline_right_sep=''
+"let g:airline_right_sep='<'
 
 "remove encoding
-let g:airline_section_y=''
+"let g:airline_section_y=''
 
 "enables tabline
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 
 "only shows tabline if more than 2 tabs
-let g:airline#extensions#tabline#tab_min_count = 2
+"let g:airline#extensions#tabline#tab_min_count = 2
 
 "only shows tabline if more than 2 buffers
-let g:airline#extensions#tabline#buffer_min_count = 2
+"let g:airline#extensions#tabline#buffer_min_count = 2
 
-"----NERDTree---"
+"----nerdtree---"
 
 "used to toggle nerd tree
-map <C-n> :NERDTreeToggle<CR>
+map <c-n> :NERDTreeToggle<cr>
 
 "makes nerd tree prettier
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+"let g:nerdtreedirarrowexpandable = 'f065'
+"let g:nerdtreedirarrowcollapsible = ''
+"let g:NERDTreeDirArrowCollapsible = 'f065'
 
 "----Auto-Pairs----"
 
@@ -117,6 +124,8 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 "lets super tab decide on completion type
 "let g:SuperTabDefaultCompletionType = "context"
 
+"----javascript-libraries-syntax----""
+let g:used_javascript_libs = 'angularjs'
 
 "----Vundle Config----"
 
@@ -124,7 +133,9 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 "---miscellaneous---"
 
 "used to allow 256 colors in vim
@@ -164,15 +175,25 @@ set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
 "used to set the line numbers on load of vim
-set number
+set relativenumber
 
 "indent settings
-set tabstop=3
-set shiftwidth=3
-set softtabstop=3
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
-" Used to set the search to always highlight
+"Spacing for HTML
+au FileType html set tabstop=2
+au FileType html set shiftwidth=2
+au FileType html set softtabstop=2
+
+"Spacing for JavaScript
+au FileType javascript set tabstop=4
+au FileType javascript set shiftwidth=4
+au FileType javascript set softtabstop=4
+
+" ed to set the search to always highlight
 set hls
 
 "Used to disable the 'incremental Search'
