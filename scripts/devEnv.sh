@@ -4,11 +4,15 @@
 sudo -u dave git clone https://github.com/VundleVim/Vundle.vim.git /home/dave/.dotFiles/vim/bundle/Vundle.vim
 
 #installs the curl dependency for vundle
-sudo apt-get --assume-yes install curl
+apt-get --assume-yes install curl
 
 #adds the packages included in the vimrc
-#TODO: Run as dave not root!
 sudo -u dave vim +PluginInstall +qall
+
+#install powerline status line for terminal and vim
+apt-get --assume-yes install powerline
+
+
 
 #----Java Dev----#
 
