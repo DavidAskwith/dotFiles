@@ -25,7 +25,7 @@ set nocompatible              " be improved, required
 filetype off                  " required
 
 " set the runtime path to include vundle and initialize
-set rtp+=~/.vim/bundle/vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 
@@ -133,9 +133,9 @@ let g:used_javascript_libs = 'angularjs'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 "---miscellaneous---"
 
 "used to allow 256 colors in vim
