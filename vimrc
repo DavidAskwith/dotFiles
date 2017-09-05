@@ -17,8 +17,6 @@ runtime! debian.vim
 " omni completion ??
 " vim wiki
 "
-"----Plugins----"
-
 "----Vundle Config----"
 
 "required for for vundle to run properly

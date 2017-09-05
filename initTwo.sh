@@ -1,14 +1,8 @@
 #!/bin/sh
 
-
 #-----Install notes----#
 
-#jessie backports must be enabled for i3 dependencies
-
-#remove the cdrom repo from /etc/apt/sources.list
 #added - "UUID=4E34BCFC34BCE85B /media/Windows ntfs-3g defaults 0 0 " to /etc/fstab for Windows partition mounting Ashlyn
-#libreoffice-gtk to enablt gtk theme
-#TODO:set up pinning for the stretch repo for rofi and libcairo2 package
 
 #TODO:
 #update Network setup to print into /etc/NetworkManager/NetworkManager.conf
@@ -59,49 +53,33 @@
 #echo "\n#-----xorg Install----#\n"
 
 #xorg
-apt-get --assume-yes install xorg
+#apt-get --assume-yes install xorg
 
 
 #----i3gaps----#
 
 #programs needed for install of i3gaps
-apt-get --assume-yes install autoconf make gcc
-
-#appends the stretch-backports repos to sources.list
-printf "%s\n# stretch for lib-cairo i3-gaps dependency
-         deb http://ftp.ca.debian.org/debian/ stretch main contrib non-free
-        deb-src http://ftp.ca.debian.org/debian/ stretch main contrib non-free" >> /etc/apt/sources.list 
-
-#sets up apt pinning for stretch
-
-#printf "%s#sets the default release to stop all pkgs from being install from stretch
-APT::Default-Release \"jessie\";" >> /etc/apt/apt.conf.d/01defaultRelease
-
-#updates the repo to include stretch-backports
-apt-get update
+#apt-get --assume-yes install autoconf make gcc
 
 #dependencies
-apt-get -t jessie-backports --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev
-
-#final dependency needed from stretch
-apt-get -t stretch --assume-yes install libcairo2-dev
+#apt-get --assume-yes install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-icccm4-dev libcairo2-dev
 
 #rofi
-apt-get -t stretch --assume-yes install rofi
+#apt-get --assume-yes install rofi
 
 #clones the i3gaps repo to ~/.gitInstalled
-git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
+#git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 
 #compile and install all must be perfoemed in i3-gaps folder
 #TODO: make it work from script
 #(cd /usr/local/bin && exec command-executed) could work?
-(cd /usr/local/bin/i3-gaps && exec autoreconf --force --install)
-(cd /usr/local/bin/i3-gaps && exec rm -rf build)
-(cd /usr/local/bin/i3-gaps && exec mkdir -p build)
+#(cd /usr/local/bin/i3-gaps && exec autoreconf --force --install)
+#(cd /usr/local/bin/i3-gaps && exec rm -rf build)
+#(cd /usr/local/bin/i3-gaps && exec mkdir -p build)
 
-(cd /usr/local/bin/i3-gaps/build && exec sudo ../configure --prefix=/usr --sysconfdir=/etc)
-(cd /usr/local/bin/i3-gaps/build && exec make)
-(cd /usr/local/bin/i3-gaps/build && exec make install)
+#(cd /usr/local/bin/i3-gaps/build && exec sudo ../configure --prefix=/usr --sysconfdir=/etc)
+#(cd /usr/local/bin/i3-gaps/build && exec make)
+#(cd /usr/local/bin/i3-gaps/build && exec make install)
 
 #compton for display effects eg. transparency
 #apt-get --assume-yes install compton
@@ -131,9 +109,6 @@ git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 
 #ntfs-3g for working with ntfs eg. windows
 #apt-get --assume-yes install ntfs-3g
-
-#----Power Management----#
-#apt-get --assume-yes install xfce4-power-manager
 
 #----Networking----#
 #apt-get --assume-yes install firmware-iwlwifi network-manager network-manager-gnome
@@ -166,20 +141,19 @@ git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 #apt-get --assume-yes install lxappearance
 
 #background
-#mkdir /usr/share/images/backgrounds
-#cp /home/dave/.dotFiles/AshlynBg.png /usr/share/images/backgrounds/background.png
-#mv /usr/share/images/backgrounds/AshlynBg.png /usr/share/backgrounds/background.png
-#!!! copy BirthaBg to same location
+mkdir /usr/share/images/backgrounds
+cp /home/dave/.dotFiles/AshlynBg.png /usr/share/images/backgrounds/background.png
+mv /usr/share/images/backgrounds/AshlynBg.png /usr/share/backgrounds/background.png
 
 #installs unzip and zip
-#apt-get --force-yes --assume-yes install unzip zip
+apt-get --force-yes --assume-yes install unzip zip
 
 #used to add apt feature such as add-apt-repository
-#apt-get --assume-yes install software-properties-common
+apt-get --assume-yes install software-properties-common
 
 #drive install
-#sudo apt-get --assume-yes -t jessie-backports install golang mercurial
-#sudo -u dave mkdir /home/dave/.go
+sudo apt-get --assume-yes install golang mercurial
+sudo -u dave mkdir /home/dave/.go
 
 #works when ran ouside of file as dave.......
 #sudo -u dave go get -u github.com/odeke-em/drive/cmd/drive
