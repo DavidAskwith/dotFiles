@@ -1,4 +1,5 @@
 "This line should not be removed as it ensures that various options
+"
 "are properly set to work with the Vim-related packages available
 
 "in Debian.
@@ -70,9 +71,7 @@ set laststatus=2
 
 "enables tabline
 "let g:airline#extensions#tabline#enabled = 1
-
-"only shows tabline if more than 2 tabs
-"let g:airline#extensions#tabline#tab_min_count = 2
+"only shows tabline if more than 2 tabs "let g:airline#extensions#tabline#tab_min_count = 2
 
 "only shows tabline if more than 2 buffers
 "let g:airline#extensions#tabline#buffer_min_count = 2
@@ -139,15 +138,20 @@ python3 del powerline_setup
 "---miscellaneous---"
 
 "used to allow 256 colors in vim
-set t_Co=256
+"set t_Co=256
 
 "filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
 
+"sets terminal for solarized theme
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+
 "sets the color scheme
-colorscheme space-vim-dark
+colorscheme solarized
 
 " Vim5 and later versions support syntax highlighting. uncommenting the next
+"
 " line enables syntax highlighting by default.
 if has("syntax")
   syntax on
