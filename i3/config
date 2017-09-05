@@ -78,8 +78,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 #for triple monitor display order
-workspace 1 output eDP1
-workspace 2 output HDMI1
+workspace 1 output HDMI1
+workspace 2 output eDP1
 workspace 3 output DP2
 
 # switch to workspace
@@ -158,8 +158,13 @@ bar {
    }
 }
 
+
+
+#starts compton for pretty stuff
+exec_always compton -f
+
 #launches rofi with pretty settings
-bindsym $mod+d exec rofi -show run -lines 5 -opacity "95" -font "UbuntuMono-R 20" -width 100 -padding 460 -bw 0
+bindsym $mod+d exec rofi -show run -lines 6 -opacity "95" -font "UbuntuMono-R 20" -width 50 -padding 100 -bw 3
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D default sset Master 5%+ #increase sound volume
@@ -171,9 +176,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 
 #things that are executed on start
 exec --no-startup-id nm-applet
-
-#starts compton for pretty stuff
-exec_always compton -f
 
 #removes the window title
 for_window [class="^.*"] border pixel 0
