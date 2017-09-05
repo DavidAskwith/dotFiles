@@ -12,13 +12,13 @@ Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.hintstyle: hintfull
 !115 for bertha 125 for seven
-Xft.dpi:       125
+Xft.dpi:       112
 
 
 !----RXVT settings----!
 
 !font 20 for bertha 23 for ashlyn
-URxvt.font: xft:Dejavu Sans Mono:pixelsize=23
+URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=18:antialias=true:hinting=true
 
 !fonts spacing
 !URxvt.letterSpace: -6
@@ -57,31 +57,87 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 
 !----RXVT Color----!
 
-*background:              bg
-*foreground:              gray
-*fading:                  40
-*fadeColor:               bg
-*cursorColor:             purpleText
-*pointerColorBackground:  text
-*pointerColorForeground:  blue
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
 
-*color0:                  black 
-*color1:                  orange
-*color2:                  blueText
-*color3:                  black
-*color4:                  black
-*color5:                  white
-*color6:                  purple
-*color7:                  gray
-*color9:                  purpleText
-*color8:                  blueText
-!executable file
-*color10:                 purpleText
-*color11:                 white
-! Most folders
-*color12:                 text
-! File Path
-*color13:                 purpleText
-! Comp Name
-*color14:                 text
-*color15:                 S_base3
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+!*background:              bg
+!*foreground:              gray
+!*fading:                  40
+!*fadeColor:               bg
+!*cursorColor:             purpleText
+!*pointerColorBackground:  text
+!*pointerColorForeground:  blue
+
+!*color0:                  black
+!*color1:                  orange
+!*color2:                  blueText
+!*color3:                  black
+!*color4:                  black
+!*color5:                  white
+!*color6:                  purple
+!*color7:                  gray
+!*color9:                  purpleText
+!*color8:                  blueText
+!!executable file
+!*color10:                 purpleText
+!*color11:                 white
+!! Most folders
+!*color12:                 text
+!! File Path
+!*color13:                 purpleText
+!! Comp Name
+!*color14:                 text
+!*color15:                 S_base3
