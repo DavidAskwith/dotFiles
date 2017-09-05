@@ -130,3 +130,10 @@ export NODE_PATH="/usr/local/lib/node_modules/"
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+#speed fix: continuation and select
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+
+#starts poerlines for bash:
+source /usr/share/powerline/bindings/bash/powerline.sh
