@@ -16,29 +16,13 @@ set $mod Mod1
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:System San Francisco Display Regular, Awesome 14
+font pango: SauceCodePro Nerd Font 14
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec rxvt
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -133,38 +117,35 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#sets system wide colors
-set $active-color        #af87d7
-set $inactive-color      #008787
-set $bar-bg-color        #262626
-set $urgent-bg-color     #ff8000
-
 # bar
 bar {
 
-   status_command i3blocks -c ~/.i3/i3blocks.conf
+    status_command i3blocks -c ~/.i3/i3blocks.conf
 
-   colors {
+        colors {
 
-      background $bar-bg-color
-      separator $bar-bg-color
-      statusline $inactive-color
-      #                   border             background         text
-      focused_workspace   $inactive-color    $bar-bg-color      $active-color
-      inactive_workspace  $bar-bg-color      $bar-bg-color      $active-color
-      urgent_workspace    $urgent-bg-color   $urgent-bg-color   $active-color
-      active_workspace    $bar-bg-color      $bar-bg-color      $active-color
+            separator #002b36
+            background #002b36
+            statusline #839496
+            #                  Border   Background  Text                   
+            focused_workspace  #fdf6e3  #6c71c4    #fdf6e3
+            active_workspace   #fdf6e3  #6c71c4    #fdf6e3
+            inactive_workspace #002b36  #586e75    #002b36
+            urgent_workspace   #d33682  #d33682    #fdf6e3
 
-   }
+        }
 }
 
-
+client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 #starts compton for pretty stuff
 exec_always compton -f
 
 #launches rofi with pretty settings
-bindsym $mod+d exec rofi -show run -lines 6 -opacity "95" -font "UbuntuMono-R 20" -width 50 -padding 100 -bw 3
+bindsym $mod+d exec rofi -show run -lines 6 -opacity "95" -font "SauceCodePro Nerd Font 20" -width 50 -padding 100 -bw 3
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D default sset Master 5%+ #increase sound volume
@@ -175,10 +156,11 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 #things that are executed on start
+exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 
 #removes the window title
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 3
 
 #gap stuff
 gaps inner 15
