@@ -18,7 +18,9 @@ Xft.dpi:       112
 !----RXVT settings----!
 
 !font 20 for bertha 23 for ashlyn
-URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=18:antialias=true:hinting=true
+!URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=18:antialias=true:hinting=true
+*font: xft:SauceCodePro\ Nerd\ Font:Regular:pixelsize=18:antialias=true:hinting=true
+URxvt.letterSpace: -1.5:
 
 !fonts spacing
 !URxvt.letterSpace: -6
@@ -28,32 +30,6 @@ URxvt.scrollBar: false
 
 !adds inner padding
 URxvt.internalBorder: 10
-
-! do not scroll with output
-!URxvt*scrollTtyOutput: false
-
-! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-!URxvt*scrollWithBuffer: true
-
-! scroll back to the bottom on keypress
-!URxvt*scrollTtyKeypress: true
-
-!----COLORS----!
-
-!----variables---!
-
-#define bg              #262626
-#define text            #008787
-#define purpleText      #af87d7
-#define blueText        #87d7ff
-
-!----ROFI Color----!
-
-rofi.color-enabled: true
-rofi.color-window: bg, text, bg
-rofi.color-normal: bg, text, bg, bg, purpleText
-rofi.color-active: bg, text, bg, bg, purpleText
-rofi.color-urgent: bg, text, bg, bg, purpleText
 
 !----RXVT Color----!
 
@@ -81,6 +57,13 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 #define S_blue          #268bd2
 #define S_cyan          #2aa198
 #define S_green         #859900
+
+!----Rofi Colors----!
+rofi.color-enabled: true
+rofi.color-window: S_base03, S_violet, S_base03
+rofi.color-normal: S_base03, S_base0, S_base03, S_base03, S_violet
+rofi.color-active: S_base03, S_base0, S_base03, S_base03, S_violet
+rofi.color-urgent: S_base03, S_base0, S_base03, S_base03, S_violet
 
 !! black dark/light
 *color0:                S_base02
@@ -113,31 +96,3 @@ rofi.color-urgent: bg, text, bg, bg, purpleText
 !! white dark/light
 *color7:                S_base2
 *color15:               S_base3
-!*background:              bg
-!*foreground:              gray
-!*fading:                  40
-!*fadeColor:               bg
-!*cursorColor:             purpleText
-!*pointerColorBackground:  text
-!*pointerColorForeground:  blue
-
-!*color0:                  black
-!*color1:                  orange
-!*color2:                  blueText
-!*color3:                  black
-!*color4:                  black
-!*color5:                  white
-!*color6:                  purple
-!*color7:                  gray
-!*color9:                  purpleText
-!*color8:                  blueText
-!!executable file
-!*color10:                 purpleText
-!*color11:                 white
-!! Most folders
-!*color12:                 text
-!! File Path
-!*color13:                 purpleText
-!! Comp Name
-!*color14:                 text
-!*color15:                 S_base3
