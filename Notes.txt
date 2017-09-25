@@ -8,3 +8,7 @@ hdd mounting
 * Entry in fstab in the following format
     * UUID=00000000 /media/Storage ntfs-3g uid=1000,gid=1000,dmask=022,fmask=133 0 0
 
+Installing VMware view 
+
+* libpng12-0 is a mssed dependency must install direct from debian site
+
