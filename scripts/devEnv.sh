@@ -12,7 +12,8 @@ sudo -u dave vim +PluginInstall +qall
 #install powerline status line for terminal and vim
 apt-get --assume-yes install powerline
 
-
+#install eslint for js syntax linting
+npm install -g eslint
 
 #----Java Dev----#
 
