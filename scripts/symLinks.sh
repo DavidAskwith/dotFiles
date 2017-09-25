@@ -1,9 +1,9 @@
 #TODO: Research and change the file promitions for generated 
 #symbolic links
 #TODO: Breakout vim for to allow for vim only installs
+#TODO: rmove font if not necessary
 #----- ~/ clean up--------#
 
-#TODO: does thius need to be here
 ##removes all dot files that will be added
 
 rm -rv /home/dave/.vim 
@@ -26,14 +26,17 @@ ln -sv /home/dave/.dotFiles/bash_aliases /home/dave/.bash_aliases
 ln -sv /home/dave/.dotFiles/gitconfig /home/dave/.gitconfig
 ln -sv /home/dave/.dotFiles/i3 /home/dave/.i3
 ln -sv /home/dave/.dotFiles/Xresources /home/dave/.Xresources
-ln -sv /home/dave/.dotFiles/fonts /home/dave/.fonts
+ln -sv /home/dave/.dotFiles/fonts /home/dave/.local/share/fonts
+
+# updates font cache
+fc-cache -f -v
 
 #TODO: use with sym link if possible
 #background
 mkdir /usr/share/images/backgrounds
 cp /home/dave/.dotFiles/AshlynBg.png /usr/share/images/backgrounds/background.png
-mv /usr/share/images/backgrounds/AshlynBg.png /usr/share/backgrounds/background.png
 
 #Lightdm#
+#TODO create with print statement
 rm /etc/lightdm/lightdm-gtk-greeter.conf
 ln -sv /home/dave/.dotFiles/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
