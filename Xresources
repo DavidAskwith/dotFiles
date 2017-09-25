@@ -20,7 +20,8 @@ Xft.dpi:       112
 !font 20 for bertha 23 for ashlyn
 !URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=18:antialias=true:hinting=true
 *font: xft:SauceCodePro\ Nerd\ Font:Regular:pixelsize=18:antialias=true:hinting=true
-URxvt.letterSpace: -1.5:
+!URxvt.letterSpace: -1.5
+URxvt.letterSpace: 0
 
 !fonts spacing
 !URxvt.letterSpace: -6
