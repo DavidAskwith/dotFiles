@@ -26,6 +26,7 @@ git clone https://www.github.com/Airblader/i3 /usr/local/bin/i3-gaps
 (cd /usr/local/bin/i3-gaps/build && exec make)
 (cd /usr/local/bin/i3-gaps/build && exec make install)
 
+
 #----i3 components----#
 
 echo "#----Installing i3 Components----#"
@@ -34,7 +35,7 @@ echo "#----Installing i3 Components----#"
 apt-get --assume-yes install i3lock
 
 #i3blocks dependencies
-apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl
+apt-get --assume-yes install alsa-utils gawk libanyevent-i3-perl libanyevent-perl libasound2 libasound2-data libasync-interrupt-perl libcommon-sense-perl libev-perl libguard-perl acpi
 
 #i3blocks without recomenededd packages
 apt-get --no-install-recommends install i3blocks
@@ -45,8 +46,6 @@ apt-get --assume-yes  install sysstat
 #rofi for alternate d menu
 apt-get --assume-yes install rofi
 
-#TODO: echo updates for below
-
 #compton for display effects eg. transparency
 apt-get --assume-yes install compton
 
@@ -55,11 +54,6 @@ apt-get --assume-yes install lightdm
 
 #backlight control
 apt-get --assume-yes install xbacklight
-
-#Arc Dark Themes
-echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /' > /etc/apt/sources.list.d/arc-theme.list
-apt-get update
-apt-get --force-yes --assume-yes install arc-theme
 
 #TODO: Manually add themes
 #lxapearance installed in order to allow for theme changes
