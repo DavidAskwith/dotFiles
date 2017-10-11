@@ -24,7 +24,7 @@ set nocompatible              " be improved, required
 filetype off                  " required
 
 " set the runtime path to include vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle.vim
 call vundle#begin()
 
 
@@ -35,54 +35,27 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-"plugin 'bling/vim-airline'
-"plugin 'vim-airline/vim-airline-themes'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax'
-Plugin 'jiangmiao/auto-pairs'
+"Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'micha/vim-colors-solarized'
+
 "----plugin settings----"
 
-"----vim-airline----#
+"----Powerline----#
 
 "display status bar all the time
 set laststatus=2
 
-"for powerline
-
-
-"used to set the theme
-"let g:airline_theme='violet'
-
-"used to remove powerline stuff
-" the separator used on the left side
-"let g:airline_left_sep='>'
-
-" the separator used on the right side
-"let g:airline_right_sep='<'
-
-"remove encoding
-"let g:airline_section_y=''
-
-"enables tabline
-"let g:airline#extensions#tabline#enabled = 1
-"only shows tabline if more than 2 tabs "let g:airline#extensions#tabline#tab_min_count = 2
-
-"only shows tabline if more than 2 buffers
-"let g:airline#extensions#tabline#buffer_min_count = 2
+"removes the staus below line
+set noshowmode
 
 "----nerdtree---"
 
 "used to toggle nerd tree
 map <c-n> :NERDTreeToggle<cr>
-
-"makes nerd tree prettier
-"let g:nerdtreedirarrowexpandable = 'f065'
-"let g:nerdtreedirarrowcollapsible = ''
-"let g:NERDTreeDirArrowCollapsible = 'f065'
 
 "----Auto-Pairs----"
 
@@ -93,7 +66,6 @@ let g:AutoPairsShortcutFastWrap = '<C-e>'
 let g:AutoPairsFlyMode = 1
 
 "----Syntastic---"
-
 
 "default settings to make shit usable asap
 set statusline+=%#warningmsg#
@@ -119,10 +91,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 "lets super tab decide on completion type
-"let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"
 
-"----javascript-libraries-syntax----""
-let g:used_javascript_libs = 'angularjs'
 
 "----Vundle Config----"
 
@@ -190,13 +160,15 @@ au FileType html set tabstop=2
 au FileType html set shiftwidth=2
 au FileType html set softtabstop=2
 
+"Spacing for markdown
+au FileType markdown set tabstop=2
+au FileType markdown set shiftwidth=2
+au FileType markdown set softtabstop=2
+
 "Spacing for JavaScript
 au FileType javascript set tabstop=4
 au FileType javascript set shiftwidth=4
 au FileType javascript set softtabstop=4
-
-" ed to set the search to always highlight
-set hls
 
 "Used to disable the 'incremental Search'
 set noic
@@ -224,6 +196,8 @@ nmap <CR> o<Esc>
 "enables taging jumping with %
 runtime macros/matchit.vim
 
+"Allows for saving as root
+cmap w!! w !sudo tee > /dev/null %
 
 "----For Web Dev----"
 
