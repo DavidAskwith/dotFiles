@@ -39,11 +39,16 @@ apt-get --assume-yes install pulseaudio pavucontrol alsa-utils
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 apt-get --assume-yes install nodejs
 
+#allows for checking for node package updates
+npm install -g npm-check-updates
+
 #Graphical version of htop for system monitoring
 npm install -g gtop
 
 #insatlls ranger file explorer
 apt-get --assume-yes install ranger 
+
+apt-get --assume-yes install galculator
 
 #TODO: test below
 #microsoft fonts
