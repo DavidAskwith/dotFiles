@@ -37,10 +37,14 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'jiangmiao/auto-pairs'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'micha/vim-colors-solarized'
+Plugin 'akz92/vim-ionic2'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'quramy/tsuquyomi'
 
 "----plugin settings----"
 
@@ -55,7 +59,7 @@ set noshowmode
 "----nerdtree---"
 
 "used to toggle nerd tree
-map <c-n> :NERDTreeToggle<cr>
+map <c-n> :NERDTreeTabsToggle<cr>
 
 "----Auto-Pairs----"
 
@@ -85,14 +89,17 @@ let g:syntastic_loc_list_height=3
 "allows for jshint js checking
 let g:syntastic_javascript_checkers = ['eslint']
 
+"typescript linting
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
+
 "----Super Tab----"
 
 "allows for omni complete with super tab
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 "lets super tab decide on completion type
-let g:SuperTabDefaultCompletionType = "context"
-
+"let g:SuperTabDefaultCompletionType = "context"
 
 "----Vundle Config----"
 
@@ -166,9 +173,14 @@ au FileType markdown set shiftwidth=2
 au FileType markdown set softtabstop=2
 
 "Spacing for JavaScript
-au FileType javascript set tabstop=4
-au FileType javascript set shiftwidth=4
-au FileType javascript set softtabstop=4
+au FileType javascript set tabstop=2
+au FileType javascript set shiftwidth=2
+au FileType javascript set softtabstop=2
+
+"Spacing for JavaScript
+au FileType typescript set tabstop=2
+au FileType typescript set shiftwidth=2
+au FileType typescript set softtabstop=2
 
 "Used to disable the 'incremental Search'
 set noic
