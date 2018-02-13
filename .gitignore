@@ -1,5 +1,7 @@
-#ignoreing bundle to allow vundle to perform vundle installed 
-#along with the packages in the init.sh
-
-#used to ignore the bundle folder
+# vim installed plugins
 vim/bundle
+
+# vim swap files
+*.swp
+*.swo
+*~
