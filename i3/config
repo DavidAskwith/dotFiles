@@ -9,6 +9,7 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# start up scripts
 exec /usr/local/bin/startUp.sh
 
 set $mod Mod1
@@ -170,8 +171,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D default sset Master 
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D default sset Master 5%- #decrease sound volume
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xrandr --output eDP-1 --brightness 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xrandr --output eDP-1 --brightness 0.5 # decrease screen brightness
 
 #things that are executed on start
 exec --no-startup-id blueman-applet
