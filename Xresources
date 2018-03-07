@@ -12,7 +12,7 @@ Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.hintstyle: hintfull
 !115 for bertha 125 for seven
-Xft.dpi:       112
+Xft.dpi:       118
 
 
 !----RXVT settings----!
