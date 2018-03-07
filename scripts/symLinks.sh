@@ -27,6 +27,7 @@ ln -sv /home/dave/.dotFiles/gitconfig /home/dave/.gitconfig
 ln -sv /home/dave/.dotFiles/i3 /home/dave/.i3
 ln -sv /home/dave/.dotFiles/Xresources /home/dave/.Xresources
 ln -sv /home/dave/.dotFiles/fonts /home/dave/.local/share/fonts
+ln -sv /home/dave/.dotFiles/git-completion.bash /home/dave/.git-completion.bash
 
 # updates font cache
 fc-cache -f -v
