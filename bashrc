@@ -137,3 +137,10 @@ POWERLINE_BASH_SELECT=1
 
 #starts poerlines for bash:
 source /usr/share/powerline/bindings/bash/powerline.sh
+
+#allows for git completion
+source ~/.git-completion.bash
+
+
+#used to allow for vim to be the default editor in ranger
+export EDITOR=vim
