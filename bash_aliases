@@ -6,13 +6,10 @@
 alias s='sudo'
 
 #opening files in gui
-alias op='xdg-open'
+alias open='xdg-open'
 
 #alias for logout
 alias logout='xfce4-session-logout --logout'
-
-#alias for redired to OrderAppProto
-alias oap='cd ~/VC/OrderAppProto'
 
 #alias for poweroff
 alias off='sudo poweroff'
@@ -31,5 +28,16 @@ alias apts='sudo apt-cache search'
 #used for updateing
 alias aptu='sudo apt-get update'
 
-#used for upgrade
+#upgrades the distrubution
 alias aptupg='sudo apt-get dist-upgrade'
+
+alias toh='vim ~/Dev/TourOfHeroes/src/app'
+
+#launches android studio
+alias android-studio='nohup /opt/android-studio/bin/studio.sh &'
+
+#launches android emulator
+alias emu='cd ~/Android/Sdk/emulator/ && nohup emulator -avd'
+
+#lists emulator devices
+alias emul='emulator -list-avds'
