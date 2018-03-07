@@ -13,12 +13,19 @@ The-Shit-I-Need-To-Know
 
 * libpng12-0 is a mssed dependency must install direct from debian site
 
+##Installing emulator for android
+
+* cd ~/Android/Sdk/emulator/lib64/libstdc++
+* sudo mv libstdc++.so.6 libstdc++.so.6.og 
+* sudo ln -s /usr/lib64/libstdc++.so.6 ~/Android/Sdk/emulator/lib64/libstdc++
+
 #TODO
 
 * eslint --intit after install
-* choose fonts and add to font file if not done
 * change bg color
 * go htrough TODO's in files
 * test install in VM 
+* there is somethin gup with the permission on the mounted storage drive
+* you need to configure powerline in the dotfiles
 
 
