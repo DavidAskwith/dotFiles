@@ -11,6 +11,8 @@ dt = difftool
 mt = mergetool
 c = commit -m
 a = add
+s = status
+d = diff
 
 [diff]
 tool = vimdiff
