@@ -13,7 +13,10 @@ sudo -u dave vim +PluginInstall +qall
 apt-get --assume-yes install powerline
 
 #install eslint for js syntax linting
-npm install -g eslint
+yarn global add eslint
+
+#installs type script tooling 
+yarn global add tsuquyomi tslint
 
 #----Java Dev----#
 
