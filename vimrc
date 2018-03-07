@@ -56,6 +56,9 @@ set laststatus=2
 "removes the staus below line
 set noshowmode
 
+"----nerdcomenter----"
+let NERDSpaceDelims=1
+
 "----nerdtree---"
 
 "used to toggle nerd tree
@@ -88,6 +91,9 @@ let g:syntastic_loc_list_height=3
 
 "allows for jshint js checking
 let g:syntastic_javascript_checkers = ['eslint']
+
+"allows for html angular template checking
+let g:syntastic_html_checkers = ['htmlhint-ng2']
 
 "typescript linting
 let g:tsuquyomi_disable_quickfix = 1
@@ -153,6 +159,12 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
+"used for mapping split navigation
+nmap <silent><C-l> :wincmd l<CR>
+nmap <silent><C-h> :wincmd h<CR>
+nmap <silent><C-j> :wincmd j<CR>
+nmap <silent><C-k> :wincmd k<CR>
+
 "used to set the line numbers on load of vim
 set relativenumber
 
@@ -182,17 +194,16 @@ au FileType typescript set tabstop=2
 au FileType typescript set shiftwidth=2
 au FileType typescript set softtabstop=2
 
+"Spacing for python
+au FileType python set tabstop=4
+au FileType python set shiftwidth=4
+au FileType python set softtabstop=4
+
 "Used to disable the 'incremental Search'
 set noic
 
 "used to stop wrapping of text
 set nowrap
-
-"used for mapping split navigation
-nmap <silent><C-l> :wincmd l<CR>
-nmap <silent><C-h> :wincmd h<CR>
-nmap <silent><C-j> :wincmd j<CR>
-nmap <silent><C-k> :wincmd k<CR>
 
 "used to enable spell check
 map <F2> :setlocal spell! spelllang=en_us<CR>
@@ -214,9 +225,7 @@ cmap w!! w !sudo tee > /dev/null %
 "----For Web Dev----"
 
 "used to launch current html in CHROME
-au FileType javascript noremap <F5> :!google-chrome %<CR>
-au FileType html noremap <F5> :!google-chrome %<CR>
-au FileType php  noremap <F5> :!google-chrome %<CR>
+au FileType html noremap <F5> :!chromium %<CR>
 
 "----For Java Dev----"
 
