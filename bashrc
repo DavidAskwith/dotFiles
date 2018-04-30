@@ -144,3 +144,16 @@ source ~/.git-completion.bash
 
 #used to allow for vim to be the default editor in ranger
 export EDITOR=vim
+
+#java home
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+#path for using the android emulator
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# dotnet environment variable
+export ASPNETCORE_Environment=Development:
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
