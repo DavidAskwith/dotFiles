@@ -41,3 +41,5 @@ alias emu='cd ~/Android/Sdk/emulator/ && nohup emulator -avd'
 
 #lists emulator devices
 alias emul='emulator -list-avds'
+
+alias home-display='xrandr --output HDMI-1 --primary --left-of eDP-1 --auto && i3-msg move workspace to output left'
