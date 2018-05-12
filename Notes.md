@@ -1,4 +1,4 @@
-The-Shit-I-Need-To-Know
+The-Stuff-I-Need-To-Know
 ======================
 
 ##HDD Mounting
@@ -18,6 +18,8 @@ The-Shit-I-Need-To-Know
 * cd ~/Android/Sdk/emulator/lib64/libstdc++
 * sudo mv libstdc++.so.6 libstdc++.so.6.og 
 * sudo ln -s /usr/lib64/libstdc++.so.6 ~/Android/Sdk/emulator/lib64/libstdc++
+
+##
 
 #TODO
 

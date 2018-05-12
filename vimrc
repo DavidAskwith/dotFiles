@@ -1,4 +1,5 @@
-"This line should not be removed as it ensures that various options
+"
+"his line should not be removed as it ensures that various options
 "
 "are properly set to work with the Vim-related packages available
 
@@ -32,7 +33,6 @@ call vundle#begin()
 
 Plugin 'vundlevim/vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ryanoasis/vim-devicons'
@@ -45,6 +45,7 @@ Plugin 'akz92/vim-ionic2'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'quramy/tsuquyomi'
+Plugin 'valloric/youcompleteme'
 
 "----plugin settings----"
 
@@ -102,7 +103,7 @@ let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 "----Super Tab----"
 
 "allows for omni complete with super tab
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+" let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 "lets super tab decide on completion type
 "let g:SuperTabDefaultCompletionType = "context"

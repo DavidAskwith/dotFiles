@@ -11,6 +11,7 @@ dt = difftool
 mt = mergetool
 cm = commit -m
 c = commit
+aa = add -A
 a = add
 s = status
 d = diff

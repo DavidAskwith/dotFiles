@@ -38,6 +38,5 @@ mkdir /usr/share/images/backgrounds
 cp /home/dave/.dotFiles/AshlynBg.png /usr/share/images/backgrounds/background.png
 
 #Lightdm#
-#TODO create with print statement
 rm /etc/lightdm/lightdm-gtk-greeter.conf
 ln -sv /home/dave/.dotFiles/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf

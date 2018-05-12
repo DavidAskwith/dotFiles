@@ -17,12 +17,3 @@ yarn global add eslint
 
 #installs type script tooling 
 yarn global add tsuquyomi tslint
-
-#----Java Dev----#
-
-#java and javafx install
-#apt-get --assume-yes install openjdk-8-jdk openjfx
-
-#scene builder
-#apt-get --assume-yes install scenebuilder
-#TODO: create a PATH variable for opt/
