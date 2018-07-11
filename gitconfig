@@ -9,10 +9,19 @@ lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 dt = difftool
 mt = mergetool
-c = commit -m
+cm = commit -m
+c = commit
 a = add
+aa = add -A
+au = add -u
 s = status
 d = diff
+f = fetch 
+plo = pull origin
+po = push origin
+pou = push -u origin
+co = checkout
+cob = checkout -b
 
 [diff]
 tool = vimdiff
