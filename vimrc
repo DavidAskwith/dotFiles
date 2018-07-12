@@ -1,4 +1,5 @@
-"This line should not be removed as it ensures that various options
+"
+"his line should not be removed as it ensures that various options
 "
 "are properly set to work with the Vim-related packages available
 
@@ -32,6 +33,7 @@ call vundle#begin()
 
 Plugin 'vundlevim/vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
+"win only
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -45,19 +47,21 @@ Plugin 'akz92/vim-ionic2'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'quramy/tsuquyomi'
+"unix only
+Plugin 'valloric/youcompleteme'
 
 "----plugin settings----"
 
 "----Powerline----#
 
 "display status bar all the time
-set laststatus=2
+ set laststatus=2
 
 "removes the staus below line
-set noshowmode
+" set noshowmode
 
 "----nerdcomenter----"
-let NERDSpaceDelims=1
+"let NERDSpaceDelims=1
 
 "----nerdtree---"
 
@@ -102,7 +106,8 @@ let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 "----Super Tab----"
 
 "allows for omni complete with super tab
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+"only unix
+" let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 "lets super tab decide on completion type
 "let g:SuperTabDefaultCompletionType = "context"
@@ -113,10 +118,18 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+
+if has("unix")
+    python3 from powerline.vim import setup as powerline_setup
+    python3 powerline_setup()
+    python3 del powerline_setup
+endif 
 "---miscellaneous---"
+
+
+"allows for regular backspace in gvim
+set backspace=2
+set backspace=indent,eol,start
 
 "used to allow 256 colors in vim
 "set t_Co=256
@@ -141,6 +154,9 @@ endif
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
+
+" Sets the guifont for gvim
+set guifont=consolas:h12
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -249,3 +265,4 @@ au FileType bash noremap <F5> :w <bar> :!sh %<CR>
 
 "runs perl scripts with f5
 au FileType perl noremap <F5> :w <bar> :!perl %<CR>
+
