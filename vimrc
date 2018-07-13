@@ -33,8 +33,6 @@ call vundle#begin()
 
 Plugin 'vundlevim/vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
-"win only
-Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ryanoasis/vim-devicons'
@@ -48,11 +46,17 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'quramy/tsuquyomi'
 "unix only
-Plugin 'valloric/youcompleteme'
+"Plugin 'valloric/youcompleteme'
+"win only
+Plugin 'ervandew/supertab'
+Plugin 'vim-airline/vim-airline'
 
 "----plugin settings----"
 
-"----Powerline----#
+"----Airline----"
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"----Powerline----"
 
 "display status bar all the time
  set laststatus=2
@@ -67,6 +71,8 @@ Plugin 'valloric/youcompleteme'
 
 "used to toggle nerd tree
 map <c-n> :NERDTreeTabsToggle<cr>
+let NERDTreeQuitOnOpen=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 "----Auto-Pairs----"
 
@@ -124,8 +130,14 @@ if has("unix")
     python3 powerline_setup()
     python3 del powerline_setup
 endif 
+if has("win")
+    set shell=c:\cygwin64\bin\bash.exe
+endif 
 "---miscellaneous---"
-
+:set guioptions -=T
+":set guioptions -=m
+:set guioptions -=r
+:set guioptions -=L
 
 "allows for regular backspace in gvim
 set backspace=2

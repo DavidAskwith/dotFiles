@@ -24,10 +24,15 @@ co = checkout
 cob = checkout -b
 
 [diff]
-tool = vimdiff
+tool = gvimdiff
+#tool = vimdiff
 
 [merge]
-tool = vimdiff
+tool = gvimdiff
+#tool = vimdiff
+
+[difftool "gvimdiff"]
+    path = C:/Program Files (x86)/Vim/vim80/gvim.exe 
 
 [credential]
 	helper = cache
