@@ -19,7 +19,7 @@ d = diff
 f = fetch 
 plo = pull origin
 po = push origin
-pou = push -u origin
+pou = push -u origin HEAD
 co = checkout
 cob = checkout -b
 
@@ -34,5 +34,5 @@ tool = gvimdiff
 [difftool "gvimdiff"]
     path = C:/Program Files (x86)/Vim/vim80/gvim.exe 
 
-[credential]
-	helper = cache
+[core]
+	editor = 'C:\\Program Files (x86)\\Vim\\vim80\\gvim.exe' -f -i NONE

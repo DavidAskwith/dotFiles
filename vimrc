@@ -56,6 +56,7 @@ Plugin 'vim-airline/vim-airline'
 "----Airline----"
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
+"
 "----Powerline----"
 
 "display status bar all the time
@@ -129,15 +130,30 @@ if has("unix")
     python3 from powerline.vim import setup as powerline_setup
     python3 powerline_setup()
     python3 del powerline_setup
-endif 
-if has("win")
+endif
+if has("win32")
+
+    " Allows for diff launch from git bash
     set shell=c:\cygwin64\bin\bash.exe
-endif 
+    let $TMP="C:/tmp"
+    set encoding=utf-8
+
+    let g:airline_powerline_fonts = 1
+    
+    " Fullscreen for diff
+    if has("gui_running")
+      if &diff
+        autocmd VimResized * wincmd =
+        autocmd GuiEnter * simalt ~x
+      endif
+    endif
+endif
 "---miscellaneous---"
 :set guioptions -=T
 ":set guioptions -=m
 :set guioptions -=r
 :set guioptions -=L
+set lines=40 columns=150
 
 "allows for regular backspace in gvim
 set backspace=2
@@ -168,7 +184,7 @@ endif
 set background=dark
 
 " Sets the guifont for gvim
-set guifont=consolas:h12
+set guifont=consolas\ NF:h12
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -201,6 +217,22 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+"
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+" Search within visual selction
+vnoremap / <Esc>/\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
+vnoremap ? <Esc>?\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
 
 "Spacing for HTML
 au FileType html set tabstop=2
