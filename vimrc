@@ -135,7 +135,7 @@ if has("win32")
 
     " Allows for diff launch from git bash
     set shell=c:\cygwin64\bin\bash.exe
-    let $TMP="C:/tmp"
+    let $TMP="C:\tmp"
     set encoding=utf-8
 
     let g:airline_powerline_fonts = 1
