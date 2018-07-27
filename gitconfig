@@ -12,14 +12,22 @@ mt = mergetool
 cm = commit -m
 c = commit
 a = add
+aa = add -A
+au = add -u
 s = status
 d = diff
+f = fetch 
+plo = pull origin
+po = push origin
+pou = push -u origin HEAD
+co = checkout
+cob = checkout -b
 
 [diff]
+#tool = gvimdiff
 tool = vimdiff
 
 [merge]
+#tool = gvimdiff
 tool = vimdiff
 
-[credential]
-helper = cache
