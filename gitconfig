@@ -5,21 +5,36 @@ name = David Askwith
 default = simple
 
 [alias]
+
+#Logs
 lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-dt = difftool
+
+#Merging
 mt = mergetool
+
+#Adding and committing
 cm = commit -m
 c = commit
 a = add
 aa = add -A
 au = add -u
+auc = !git add -u && git commit
+aucm = !git add -u && git commit -m
 s = status
+
+#Diff
+dt = difftool
 d = diff
-f = fetch 
+df = diff-tree --no-commit-id --name-only -r
+
+#Pushing, Pulling and Fetching
+f = fetch
 plo = pull origin
 po = push origin
 pou = push -u origin HEAD
+
+#Checkouts
 co = checkout
 cob = checkout -b
 
@@ -30,9 +45,3 @@ tool = gvimdiff
 [merge]
 tool = gvimdiff
 #tool = vimdiff
-
-[difftool "gvimdiff"]
-    path = C:/Program Files (x86)/Vim/vim80/gvim.exe 
-
-[core]
-	editor = 'C:\\Program Files (x86)\\Vim\\vim80\\gvim.exe' -f -i NONE

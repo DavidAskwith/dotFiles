@@ -1,21 +1,12 @@
-"
-"his line should not be removed as it ensures that various options
-"
-"are properly set to work with the Vim-related packages available
-
 "in Debian.
 "lets vimingo-library.vim  play nice with debian
 runtime! debian.vim
 
 "TODO:
-"mapping fo insert mode
-" folding
 " ctags
 " html skeleton/other snippets
-" better colors for merge! and Diff!
 " shortcuts for errors
 " backewards ctrl e brackets
-" omni completion ??
 " vim wiki
 "
 "----Vundle Config----"
