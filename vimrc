@@ -1,26 +1,27 @@
-"in Debian.
-"lets vimingo-library.vim  play nice with debian
-runtime! debian.vim
-
 "TODO:
+" ---------------------------------------------------
+
 " ctags
 " html skeleton/other snippets
 " shortcuts for errors
 " backewards ctrl e brackets
 " vim wiki
-"
-"----Vundle Config----"
 
-"required for for vundle to run properly
-set nocompatible              " be improved, required
-filetype off                  " required
+" ---------------------------------------------------
 
-" set the runtime path to include vundle and initialize
+"in Debian.
+"lets vimingo-library.vim  play nice with debian
+runtime! debian.vim
+
+"---- Vundle Config
+
+" Required for for vundle to run properly
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/vundle.vim
 call vundle#begin()
 
-
-"----plugin links----"
+" ---- Plugins
 
 Plugin 'vundlevim/vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -28,7 +29,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'micha/vim-colors-solarized'
@@ -36,86 +36,81 @@ Plugin 'akz92/vim-ionic2'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'quramy/tsuquyomi'
-"unix only
-"Plugin 'valloric/youcompleteme'
-"win only
-Plugin 'ervandew/supertab'
-Plugin 'vim-airline/vim-airline'
 
-"----plugin settings----"
+" Linux specific
+if has("unix")
+    Plugin 'valloric/youcompleteme'
+endif
 
-"----Airline----"
+" Windows specific
+if has("win32")
+    Plugin 'ervandew/supertab'
+    Plugin 'vim-airline/vim-airline'
+endif
+
+" ---- Plugin settings
+
+" ---- Airline
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"
-"----Powerline----"
 
-"display status bar all the time
- set laststatus=2
+" ---- Powerline
 
-"removes the staus below line
-" set noshowmode
+" Display status bar all the time
+set laststatus=2
+" Removes the status below line
+set noshowmode
 
-"----nerdcomenter----"
-"let NERDSpaceDelims=1
+" ---- NerdCommenter
 
-"----nerdtree---"
+let NERDSpaceDelims=1
 
-"used to toggle nerd tree
+" ---- NERDTree
+
 map <c-n> :NERDTreeTabsToggle<cr>
 let NERDTreeQuitOnOpen=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 "----Auto-Pairs----"
 
-"mapping for fast wrap
 let g:AutoPairsShortcutFastWrap = '<C-e>'
-
-"enables fly mode
 let g:AutoPairsFlyMode = 1
 
-"----Syntastic---"
+" ---- Syntastic
 
-"default settings to make shit usable asap
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height=3
 
-"perl error checker enabled
 let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_enable_perl_checker = 1
 
-"sets the height of the window
-let g:syntastic_loc_list_height=3
-
-"allows for jshint js checking
 let g:syntastic_javascript_checkers = ['eslint']
 
-"allows for html angular template checking
 let g:syntastic_html_checkers = ['htmlhint-ng2']
 
-"typescript linting
-let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
+let g:tsuquyomi_disable_quickfix = 1
 
-"----Super Tab----"
+" ---- Super Tab
 
+" Might cause issues with youcompleteme
 "allows for omni complete with super tab
-"only unix
-" let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+set omnifunc=syntaxcomplete#Complete
+set completeopt=menu,longest
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 "lets super tab decide on completion type
-"let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"
 
 "----Vundle Config----"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 if has("unix")
     python3 from powerline.vim import setup as powerline_setup
@@ -124,13 +119,8 @@ if has("unix")
 endif
 if has("win32")
 
-    " Allows for diff launch from git bash
-    set shell=c:\cygwin64\bin\bash.exe
-    let $TMP="C:\tmp"
-    set encoding=utf-8
-
     let g:airline_powerline_fonts = 1
-    
+
     " Fullscreen for diff
     if has("gui_running")
       if &diff
@@ -139,11 +129,12 @@ if has("win32")
       endif
     endif
 endif
+
 "---miscellaneous---"
-:set guioptions -=T
+set guioptions -=T
 ":set guioptions -=m
-:set guioptions -=r
-:set guioptions -=L
+set guioptions -=r
+set guioptions -=L
 set lines=40 columns=150
 
 "allows for regular backspace in gvim
@@ -152,9 +143,6 @@ set backspace=indent,eol,start
 
 "used to allow 256 colors in vim
 "set t_Co=256
-
-"filetype plugin on
-"set omnifunc=syntaxcomplete#Complete
 
 "sets terminal for solarized theme
 let g:solarized_termcolors=256
