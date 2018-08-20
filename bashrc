@@ -92,13 +92,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-#----aliases----#
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -144,3 +137,16 @@ source ~/.git-completion.bash
 
 #used to allow for vim to be the default editor in ranger
 export EDITOR=vim
+
+#java home
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+#path for using the android emulator
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# dotnet environment variable
+export ASPNETCORE_Environment=Development:
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

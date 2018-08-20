@@ -39,9 +39,10 @@ co = checkout
 cob = checkout -b
 
 [diff]
-tool = gvimdiff
-#tool = vimdiff
+#tool = gvimdiff
+tool = vimdiff
 
 [merge]
 tool = gvimdiff
 #tool = vimdiff
+
