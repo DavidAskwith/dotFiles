@@ -39,8 +39,11 @@ co = checkout
 cob = checkout -b
 
 [diff]
-#tool = gvimdiff
-tool = vimdiff
+tool = gvimdiff
+#tool = vimdiff
+
+[difftool "gvimdiff"]
+  cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$LOCAL" "$REMOTE"
 
 [merge]
 tool = gvimdiff

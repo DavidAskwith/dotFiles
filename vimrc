@@ -36,6 +36,7 @@ Plugin 'akz92/vim-ionic2'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'quramy/tsuquyomi'
+Plugin 'PProvost/vim-ps1'
 
 " Linux specific
 if has("unix")
@@ -182,6 +183,10 @@ set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
+"
+" Disables middle mouse paste
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
 
 "used for mapping split navigation
 nmap <silent><C-l> :wincmd l<CR>
@@ -223,16 +228,6 @@ au FileType html set softtabstop=2
 au FileType markdown set tabstop=2
 au FileType markdown set shiftwidth=2
 au FileType markdown set softtabstop=2
-
-"Spacing for JavaScript
-au FileType javascript set tabstop=2
-au FileType javascript set shiftwidth=2
-au FileType javascript set softtabstop=2
-
-"Spacing for JavaScript
-au FileType typescript set tabstop=2
-au FileType typescript set shiftwidth=2
-au FileType typescript set softtabstop=2
 
 "Spacing for python
 au FileType python set tabstop=4
