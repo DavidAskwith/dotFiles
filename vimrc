@@ -4,7 +4,6 @@
 " ctags
 " html skeleton/other snippets
 " shortcuts for errors
-" backewards ctrl e brackets
 " vim wiki
 
 " ---------------------------------------------------
@@ -151,6 +150,13 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 
 "sets the color scheme
+if !empty($CONEMUBUILD)
+    set term=pcansi
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+    set bs=indent,eol,start
+endif                   
 colorscheme solarized
 
 " Vim5 and later versions support syntax highlighting. uncommenting the next
@@ -169,20 +175,20 @@ set guifont=consolas\ NF:h12
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
-"if has("autocmd")
-  "au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
-set incsearch		" Incremental search
-set autowrite		" Automatically save before commands like :next and :make
-set hidden		" Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
+set showcmd        " Show (partial) command in status line.
+set showmatch        " Show matching brackets.
+set ignorecase        " Do case insensitive matching
+set smartcase        " Do smart case matching
+set incsearch        " Incremental search
+set autowrite        " Automatically save before commands like :next and :make
+set hidden        " Hide buffers when they are abandoned
+set mouse=a        " Enable mouse usage (all modes)
 "
 " Disables middle mouse paste
 map <MiddleMouse> <Nop>
@@ -233,9 +239,33 @@ au FileType markdown set softtabstop=2
 au FileType python set tabstop=4
 au FileType python set shiftwidth=4
 au FileType python set softtabstop=4
+"
+"SeeWs: toggles between showing tabs and using standard listchars
+fu! SeeWs()
+  if !exists("g:SeeTabEnabled")
+    let g:SeeTabEnabled = 1
+    let g:SeeTab_list = &list
+    let g:SeeTab_listchars = &listchars
+    let regA = @a
+    redir @a
+    silent hi SpecialKey
+    redir END
+    let g:SeeTabSpecialKey = @a
+    let @a = regA
+    silent! hi SpecialKey guifg=Gray ctermfg=Gray  
+    "#073642 num bar color
+    set list
+    set listchars=tab:/-,space:~
+  else
+    let &list = g:SeeTab_list
+    let &listchars = &listchars
+    silent! exe "hi ".substitute(g:SeeTabSpecialKey,'xxx','','e')
+    unlet g:SeeTabEnabled g:SeeTab_list g:SeeTab_listchars
+  endif
+endfunc
+com! -nargs=0 SeeTab :call SeeTab()
 
-"Used to disable the 'incremental Search'
-set noic
+set ic
 
 "used to stop wrapping of text
 set nowrap
@@ -247,8 +277,6 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 "new lines below in normal mode
-"not working....
-"nmap <S-CR>O<Esc>
 nmap <CR> o<Esc>
 
 "enables taging jumping with %
@@ -283,5 +311,4 @@ au FileType bash noremap <F5> :w <bar> :!sh %<CR>
 "----perl----"
 
 "runs perl scripts with f5
-au FileType perl noremap <F5> :w <bar> :!perl %<CR>
-
+au FileType perl noremap <F5> :w <bar> :!perl %
