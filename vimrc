@@ -17,23 +17,26 @@ runtime! debian.vim
 " Required for for vundle to run properly
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/vundle.vim
+"call vundle#begin()
+
+set rtp+=$HOME/.vim/bundle/Vundle.vim/
+call vundle#begin('$HOME/.vim/bundle/')
 
 " ---- Plugins
 
-Plugin 'vundlevim/vundle.vim'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
 Plugin 'micha/vim-colors-solarized'
 Plugin 'akz92/vim-ionic2'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'quramy/tsuquyomi'
 Plugin 'PProvost/vim-ps1'
 
@@ -60,20 +63,11 @@ set laststatus=2
 " Removes the status below line
 set noshowmode
 
-" ---- NerdCommenter
-
-let NERDSpaceDelims=1
-
 " ---- NERDTree
 
 map <c-n> :NERDTreeTabsToggle<cr>
 let NERDTreeQuitOnOpen=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-
-"----Auto-Pairs----"
-
-let g:AutoPairsShortcutFastWrap = '<C-e>'
-let g:AutoPairsFlyMode = 1
 
 " ---- Syntastic
 
@@ -101,10 +95,16 @@ let g:tsuquyomi_disable_quickfix = 1
 "allows for omni complete with super tab
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
-"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
-"lets super tab decide on completion type
 let g:SuperTabDefaultCompletionType = "context"
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \ endif
+
+
+" ---- vim-repeat
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 "----Vundle Config----"
 
@@ -124,11 +124,10 @@ if has("win32")
 
     " Fullscreen for diff
     if has("gui_running")
-      if &diff
         autocmd VimResized * wincmd =
         autocmd GuiEnter * simalt ~x
-      endif
     endif
+
 endif
 
 "---miscellaneous---"
@@ -149,14 +148,6 @@ set backspace=indent,eol,start
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 
-"sets the color scheme
-if !empty($CONEMUBUILD)
-    set term=pcansi
-    set t_Co=256
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
-    set bs=indent,eol,start
-endif                   
 colorscheme solarized
 
 " Vim5 and later versions support syntax highlighting. uncommenting the next
@@ -201,14 +192,32 @@ nmap <silent><C-j> :wincmd j<CR>
 nmap <silent><C-k> :wincmd k<CR>
 
 "used to set the line numbers on load of vim
-set relativenumber
+set number relativenumber
 
-"indent settings
-set tabstop=4
+" virtual tabstops using spaces
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-"
+
+" displays complete option in vim cmd line above
+set wildmenu
+
+" allow toggling between local and default mode
+function TabToggle()
+  if &expandtab
+    set softtabstop=0
+    set noexpandtab
+  else
+    set softtabstop=4
+    set expandtab
+  endif
+endfunction
+nmap <F9> mz:execute TabToggle()<CR>'z
+
+" Sets indent tabs
+au FileType aspvbs setlocal softtabstop=0 noexpandtab
+au FileType sql setlocal softtabstop=0 noexpandtab
+
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -239,31 +248,11 @@ au FileType markdown set softtabstop=2
 au FileType python set tabstop=4
 au FileType python set shiftwidth=4
 au FileType python set softtabstop=4
-"
-"SeeWs: toggles between showing tabs and using standard listchars
-fu! SeeWs()
-  if !exists("g:SeeTabEnabled")
-    let g:SeeTabEnabled = 1
-    let g:SeeTab_list = &list
-    let g:SeeTab_listchars = &listchars
-    let regA = @a
-    redir @a
-    silent hi SpecialKey
-    redir END
-    let g:SeeTabSpecialKey = @a
-    let @a = regA
-    silent! hi SpecialKey guifg=Gray ctermfg=Gray  
-    "#073642 num bar color
-    set list
-    set listchars=tab:/-,space:~
-  else
-    let &list = g:SeeTab_list
-    let &listchars = &listchars
-    silent! exe "hi ".substitute(g:SeeTabSpecialKey,'xxx','','e')
-    unlet g:SeeTabEnabled g:SeeTab_list g:SeeTab_listchars
-  endif
-endfunc
-com! -nargs=0 SeeTab :call SeeTab()
+
+" Show white space settings
+silent hi SpecialKey
+silent! hi SpecialKey guifg=Gray ctermfg=Gray  
+set listchars=tab:/-,trail:*
 
 set ic
 
@@ -285,30 +274,6 @@ runtime macros/matchit.vim
 "Allows for saving as root
 cmap w!! w !sudo tee > /dev/null %
 
-"----For Web Dev----"
-
 "used to launch current html in CHROME
 au FileType html noremap <F5> :!chromium %<CR>
 
-"----For Java Dev----"
-
-"used to compile java current java file
-au FileType java noremap <F5> :w <bar> :!javac %<CR>
-
-"used to run the current java file
-au FileType java noremap <f6> :!java %:r<CR>
-
-"----For Python-----"
-
-"used to run a python file
-au FileType python noremap <F5> :w <bar> :!python %<CR>
-
-"----Bash-----"
-
-"runs bash scripts
-au FileType bash noremap <F5> :w <bar> :!sh %<CR>
-
-"----perl----"
-
-"runs perl scripts with f5
-au FileType perl noremap <F5> :w <bar> :!perl %
