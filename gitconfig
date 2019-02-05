@@ -1,5 +1,5 @@
 [user]
-email = dkaskwith@hotmail.com
+email = daskwith@aviationintertec.com
 name = David Askwith
 [push]
 default = simple
@@ -14,8 +14,9 @@ lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 mt = mergetool
 
 # Adding and committing
-cm = commit -m
 c = commit
+cm = commit -m
+ca = commit --amend --no-edit
 a = add
 aa = !git add -A && git status
 au = !git add -u && git status
@@ -30,17 +31,30 @@ df = diff-tree --no-commit-id --name-only -r
 
 # Pushing, Pulling and Fetching
 f = fetch
-plo = pull origin
-po = push origin
-pou = push -u origin HEAD
+pl = pull
+p = push
+pu = push --set-upstream origin HEAD
+pdev = fetch origin develop:develop 
 
 # Checkouts
 # Comented due to override in powershell for COMS
 co = checkout
 cob = checkout -b
 
-[diff]
-tool = gvimdif
+# Resolving conflicts
+keep-ours =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --ours
+keep-theirs =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --theirs
 
+# There is a bash script aliasing gvim in C:/Windows with this content
+# needed since gvim isn't recognized in bash
+# #!/bin/sh
+# exec "/c/Program Files (x86)/Vim/Vim81/gvim.exe" "$@"
 [merge]
-tool = gvimdiff
+    tool = gvimdiff
+[difftool "gvimdiff"]
+  cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$LOCAL" "$REMOTE"
+
+[diff]
+    tool = gvimdiff
+[difftool "gvimdiff"]
+  cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"

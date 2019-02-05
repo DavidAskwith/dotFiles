@@ -206,9 +206,11 @@ set wildmenu
 function TabToggle()
   if &expandtab
     set softtabstop=0
+    set shiftwidth=0
     set noexpandtab
   else
     set softtabstop=4
+    set shiftwidth=4
     set expandtab
   endif
 endfunction

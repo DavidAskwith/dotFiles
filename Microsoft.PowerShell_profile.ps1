@@ -60,13 +60,3 @@ $rps = @{
     eml = 'C:\Project.Repositories\RAAS\Misc\CordovaEML'
     dot = $HOME + '\.dotFiles'
 }
-
-# Aliases
-Set-Alias com-remove C:\Users\DAskwith\Documents\RAASComSwitcher\RAASComRemove.exe
-Set-Alias com-add C:\Users\DAskwith\Documents\RAASComSwitcher\RAASComAdd.exe
-
-function git-co {
-    com-remove
-    git checkout $args
-}
-	
