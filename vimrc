@@ -34,7 +34,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
-Plugin 'micha/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 Plugin 'akz92/vim-ionic2'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'quramy/tsuquyomi'
@@ -71,14 +71,14 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 " ---- Syntastic
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" :set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=3
-
+:
 let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_enable_perl_checker = 1
 
@@ -131,11 +131,12 @@ if has("win32")
 endif
 
 "---miscellaneous---"
-set guioptions -=T
-":set guioptions -=m
-set guioptions -=r
-set guioptions -=L
-set lines=40 columns=150
+if has("gui_running")
+    set guioptions -=T
+    set guioptions -=r
+    set guioptions -=L
+    set lines=40 columns=150
+endif
 
 "allows for regular backspace in gvim
 set backspace=2
@@ -144,18 +145,14 @@ set backspace=indent,eol,start
 "used to allow 256 colors in vim
 "set t_Co=256
 
-"sets terminal for solarized theme
-let g:solarized_termcolors=256
-let g:solarized_termtrans = 1
+colorscheme gruvbox
 
-colorscheme solarized
-
-" Vim5 and later versions support syntax highlighting. uncommenting the next
-"
 " line enables syntax highlighting by default.
 if has("syntax")
   syntax on
 endif
+
+autocmd BufEnter *.cls :setlocal filetype=vb
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
@@ -207,18 +204,20 @@ function TabToggle()
   if &expandtab
     set softtabstop=0
     set shiftwidth=0
+    set tabstop=8
     set noexpandtab
   else
     set softtabstop=4
     set shiftwidth=4
+    set tabstop=4
     set expandtab
   endif
 endfunction
 nmap <F9> mz:execute TabToggle()<CR>'z
 
 " Sets indent tabs
-au FileType aspvbs setlocal softtabstop=0 noexpandtab
-au FileType sql setlocal softtabstop=0 noexpandtab
+au FileType aspvbs setlocal tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
+au FileType sql setlocal tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -256,7 +255,7 @@ silent hi SpecialKey
 silent! hi SpecialKey guifg=Gray ctermfg=Gray  
 set listchars=tab:/-,trail:*
 
-set ic
+set ignorecase
 
 "used to stop wrapping of text
 set nowrap

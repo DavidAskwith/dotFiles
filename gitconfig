@@ -49,12 +49,12 @@ keep-theirs =  !git diff --name-only --relative --diff-filter=U | xargs git chec
 # needed since gvim isn't recognized in bash
 # #!/bin/sh
 # exec "/c/Program Files (x86)/Vim/Vim81/gvim.exe" "$@"
-[merge]
+[diff]
     tool = gvimdiff
 [difftool "gvimdiff"]
   cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$LOCAL" "$REMOTE"
 
-[diff]
+[merge]
     tool = gvimdiff
-[difftool "gvimdiff"]
+[mergetool "gvimdiff"]
   cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
