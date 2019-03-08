@@ -89,6 +89,10 @@ let g:syntastic_html_checkers = ['htmlhint-ng2']
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:tsuquyomi_disable_quickfix = 1
 
+" ---- CtrlP 
+let g:ctrlp_working_path_mode = 'ra'
+
+
 " ---- Super Tab
 
 " Might cause issues with youcompleteme
@@ -112,26 +116,17 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-if has("unix")
-    python3 from powerline.vim import setup as powerline_setup
-    python3 powerline_setup()
-    python3 del powerline_setup
-endif
+let g:airline_powerline_fonts = 1
+
 if has("win32")
-
     set encoding=utf-8
-    let g:airline_powerline_fonts = 1
-
-    " Fullscreen for diff
-    if has("gui_running")
-        autocmd VimResized * wincmd =
-        autocmd GuiEnter * simalt ~x
-    endif
-
 endif
 
 "---miscellaneous---"
 if has("gui_running")
+    autocmd VimResized * wincmd =
+    autocmd GuiEnter * simalt ~x
+
     set guioptions -=T
     set guioptions -=r
     set guioptions -=L
@@ -196,6 +191,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+set autoindent
+
 " displays complete option in vim cmd line above
 set wildmenu
 
@@ -257,14 +254,12 @@ set listchars=tab:/-,trail:*
 
 set ignorecase
 
-"used to stop wrapping of text
-set nowrap
-
 "used to enable spell check
 map <F2> :setlocal spell! spelllang=en_us<CR>
 
 "Remove all trailing whitespace by pressing F3
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <Leader>b :ls<CR>:b<Space>
 
 "new lines below in normal mode
 nmap <CR> o<Esc>
