@@ -36,10 +36,18 @@ p = push
 pu = push --set-upstream origin HEAD
 pdev = fetch origin develop:develop 
 
+# Resets CR moded files from commit
+rcr = reset aspsrc/web.config aspsrc/App/Reports/*
+
 # Checkouts
-# Comented due to override in powershell for COMS
 co = checkout
-cob = checkout -b
+cofr = "!f() { FEATURE=$1; shift; git checkout $@ feature/RGM-$FEATURE; }; f"
+cof = "!f() { FEATURE=$1; shift; git checkout $@ feature/$FEATURE; }; f"
+
+# Branching
+b = branch
+cobdfr = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/RGM-$FEATURE develop; }; f"
+cobdf = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/$FEATURE develop; }; f"
 
 # Resolving conflicts
 keep-ours =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --ours
@@ -56,5 +64,8 @@ keep-theirs =  !git diff --name-only --relative --diff-filter=U | xargs git chec
 
 [merge]
     tool = gvimdiff
+    conflictstyle = diff3
 [mergetool "gvimdiff"]
   cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+[core]
+	editor = gvim

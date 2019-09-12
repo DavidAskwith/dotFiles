@@ -39,6 +39,8 @@ Plugin 'akz92/vim-ionic2'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'quramy/tsuquyomi'
 Plugin 'PProvost/vim-ps1'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdcommenter'
 
 " Linux specific
 if has("unix")
@@ -71,14 +73,14 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 " ---- Syntastic
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" :set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=3
-:
+
 let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_enable_perl_checker = 1
 
