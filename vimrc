@@ -17,8 +17,6 @@ runtime! debian.vim
 " Required for for vundle to run properly
 set nocompatible
 filetype off
-"set rtp+=~/.vim/bundle/vundle.vim
-"call vundle#begin()
 
 set rtp+=$HOME/.vim/bundle/Vundle.vim/
 call vundle#begin('$HOME/.vim/bundle/')
@@ -27,7 +25,10 @@ call vundle#begin('$HOME/.vim/bundle/')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-syntastic/syntastic'
@@ -35,9 +36,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
 Plugin 'morhetz/gruvbox'
-Plugin 'akz92/vim-ionic2'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'quramy/tsuquyomi'
 Plugin 'PProvost/vim-ps1'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
@@ -71,6 +69,22 @@ map <c-n> :NERDTreeTabsToggle<cr>
 let NERDTreeQuitOnOpen=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
+" ---- FZF
+nmap <leader>f :Files<CR>
+nmap <leader>g :GFiles<CR>
+nnoremap <Leader>b :Buffers<CR>
+
+" Buffers
+nnoremap <Leader>p :bprevious<CR>
+nnoremap <Leader>n :bnext<CR>
+
+
+
+" ---- UtilSnips
+"let g:UltiSnipsExpandTrigger="<c-s>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 " ---- Syntastic
 
 set statusline+=%#warningmsg#
@@ -90,10 +104,6 @@ let g:syntastic_html_checkers = ['htmlhint-ng2']
 
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:tsuquyomi_disable_quickfix = 1
-
-" ---- CtrlP 
-let g:ctrlp_working_path_mode = 'ra'
-
 
 " ---- Super Tab
 
@@ -122,6 +132,8 @@ let g:airline_powerline_fonts = 1
 
 if has("win32")
     set encoding=utf-8
+    " Fucks with FZF :(
+    "set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 endif
 
 "---miscellaneous---"
@@ -169,24 +181,27 @@ endif
 set showcmd        " Show (partial) command in status line.
 set showmatch        " Show matching brackets.
 set ignorecase        " Do case insensitive matching
-set smartcase        " Do smart case matching
 set incsearch        " Incremental search
 set autowrite        " Automatically save before commands like :next and :make
 set hidden        " Hide buffers when they are abandoned
-set mouse=a        " Enable mouse usage (all modes)
+set mouse=vn        " Enable mouse usage (all modes)
 "
 " Disables middle mouse paste
 map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
 
-"used for mapping split navigation
+" Windows
 nmap <silent><C-l> :wincmd l<CR>
 nmap <silent><C-h> :wincmd h<CR>
 nmap <silent><C-j> :wincmd j<CR>
 nmap <silent><C-k> :wincmd k<CR>
+set splitbelow
 
 "used to set the line numbers on load of vim
 set number relativenumber
+
+" Terminal
+set termwinsize=10*0
 
 " virtual tabstops using spaces
 set shiftwidth=4
@@ -261,7 +276,6 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 
 "Remove all trailing whitespace by pressing F3
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-nnoremap <Leader>b :ls<CR>:b<Space>
 
 "new lines below in normal mode
 nmap <CR> o<Esc>
@@ -271,7 +285,3 @@ runtime macros/matchit.vim
 
 "Allows for saving as root
 cmap w!! w !sudo tee > /dev/null %
-
-"used to launch current html in CHROME
-au FileType html noremap <F5> :!chromium %<CR>
-
