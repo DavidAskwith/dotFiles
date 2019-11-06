@@ -6,10 +6,6 @@ default = simple
 
 [alias]
 
-# Logs
-lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-
 # Merging
 mt = mergetool
 
@@ -22,7 +18,10 @@ aa = !git add -A && git status
 au = !git add -u && git status
 auc = !git add -u && git commit
 aucm = !git add -u && git commit -m
+
+# Viewing
 s = status
+ls = log --stat-width=144
 
 # Diff
 dt = difftool
@@ -37,7 +36,7 @@ pu = push --set-upstream origin HEAD
 pdev = fetch origin develop:develop 
 
 # Resets CR moded files from commit
-rcr = reset aspsrc/web.config aspsrc/App/Reports/*
+rcr = reset aspsrc/web.config aspsrc/App/RaasReports/*
 
 # Checkouts
 co = checkout
