@@ -35,6 +35,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
 Plugin 'morhetz/gruvbox'
 Plugin 'PProvost/vim-ps1'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -75,10 +76,9 @@ nmap <leader>g :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
 
 " Buffers
-nnoremap <Leader>p :bprevious<CR>
-nnoremap <Leader>n :bnext<CR>
-
-
+nmap <Leader>p :bprevious<CR>
+nmap <Leader>n :bnext<CR>
+nmap <Leader>bd :bufdo bd<CR>
 
 " ---- UtilSnips
 "let g:UltiSnipsExpandTrigger="<c-s>"
@@ -213,6 +213,12 @@ set autoindent
 " displays complete option in vim cmd line above
 set wildmenu
 
+set wrap
+
+set diffopt+=iwhite
+" Sets wrap when in diff mode 
+au VimEnter * if &diff | execute 'windo set wrap' | endif
+
 " allow toggling between local and default mode
 function TabToggle()
   if &expandtab
@@ -263,6 +269,9 @@ au FileType markdown set softtabstop=2
 au FileType python set tabstop=4
 au FileType python set shiftwidth=4
 au FileType python set softtabstop=4
+
+" Set spel when commiting with git
+autocmd FileType gitcommit setlocal spell
 
 " Show white space settings
 silent hi SpecialKey
