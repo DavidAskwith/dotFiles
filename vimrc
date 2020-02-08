@@ -16,7 +16,6 @@ runtime! debian.vim
 
 " Required for for vundle to run properly
 set nocompatible
-filetype off
 
 set rtp+=$HOME/.vim/bundle/Vundle.vim/
 call vundle#begin('$HOME/.vim/bundle/')
@@ -40,17 +39,9 @@ Plugin 'morhetz/gruvbox'
 Plugin 'PProvost/vim-ps1'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'ervandew/supertab'
 
-" Linux specific
-if has("unix")
-    Plugin 'valloric/youcompleteme'
-endif
-
-" Windows specific
-if has("win32")
-    Plugin 'ervandew/supertab'
-    Plugin 'vim-airline/vim-airline'
-endif
 
 " ---- Plugin settings
 
