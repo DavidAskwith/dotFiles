@@ -12,10 +12,16 @@ mt = mergetool
 # Adding and committing
 c = commit
 ca = commit --amend --no-edit
+
 a = add
+
 aa = !git add -A && git status
+aac = !git add -A && git commit
+aacm = !git add -A && git commit -m
+
 au = !git add -u && git status
 auc = !git add -u && git commit
+aum = !git add -u && git commit -m
 
 # Viewing
 s = status
@@ -26,19 +32,24 @@ ls = log --stat-width=144
 dt = difftool
 d = diff
 df = diff --name-only
+dd = !git diff $(git merge-base --fork-point develop)
+dfd = !git diff --name-only $(git merge-base --fork-point develop)
+dtd = !git difftool $(git merge-base --fork-point develop)
+
 
 # Pushing, Pulling and Fetching
 f = fetch
 pl = pull
-pu = push
-puu = push --set-upstream origin HEAD
-pud = fetch origin develop:develop 
+pld = fetch origin develop:develop
+ps = push
+psu = push --set-upstream origin HEAD
 
 # Resets CR moded files from commit
 rcr = reset aspsrc/web.config aspsrc/App/RaasReports/*
 
 # Checkouts
 co = checkout
+cod = checkout develop
 cofr = "!f() { FEATURE=$1; shift; git checkout feature/RGM-$FEATURE; }; f"
 cof = "!f() { FEATURE=$1; shift; git checkout feature/$FEATURE; }; f"
 
@@ -49,11 +60,103 @@ cobdf = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b fe
 cobfr = "!f() { FEATURE=$1; git checkout -b feature/RGM-$FEATURE; }; f"
 cobf = "!f() { FEATURE=$1; git checkout -b feature/$FEATURE; }; f"
 
+# Merge
+mfr = "!f() { FEATURE=$1; git merge feature/RGM-$FEATURE }; f"
+mf = "!f() { FEATURE=$1; git merge feature/$FEATURE }; f"
+
 # Resolving conflicts
 keep-ours =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --ours
 keep-theirs =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --theirs
 
-total-clean = !git checkout -- . && git clean -fd 
+total-clean = !git checkout -- . && git clean -fd
+
+# There is a bash script aliasing gvim in C:/Windows with this content
+# needed since gvim isn't recognized in bash
+# #!/bin/sh
+# exec "/c/Program Files (x86)/Vim/Vim81/gvim.exe" "$@"
+[diff]
+    tool = gvimdiff
+[difftool "gvimdiff"]
+  cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = gvimdiff
+    conflictstyle = diff3
+[mergetool "gvimdiff"]
+  cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+[core]
+	editor = gvim
+[user]
+email = daskwith@aviationintertec.com
+name = David Askwith
+[push]
+default = simple
+
+[alias]
+
+# Merging
+mt = mergetool
+
+# Adding and committing
+c = commit
+ca = commit --amend --no-edit
+
+a = add
+
+aa = !git add -A && git status
+aac = !git add -A && git commit
+aacm = !git add -A && git commit -m
+
+au = !git add -u && git status
+auc = !git add -u && git commit
+aum = !git add -u && git commit -m
+
+# Viewing
+s = status
+l = log
+ls = log --stat-width=144
+
+# Diff
+dt = difftool
+d = diff
+df = diff --name-only
+dd = !git diff $(git merge-base --fork-point develop)
+dfd = !git diff --name-only $(git merge-base --fork-point develop)
+dtd = !git difftool $(git merge-base --fork-point develop)
+
+
+# Pushing, Pulling and Fetching
+f = fetch
+pl = pull
+pld = fetch origin develop:develop
+ps = push
+psu = push --set-upstream origin HEAD
+
+# Resets CR moded files from commit
+rcr = reset aspsrc/web.config aspsrc/App/RaasReports/*
+
+# Checkouts
+co = checkout
+cod = checkout develop
+cofr = "!f() { FEATURE=$1; shift; git checkout feature/RGM-$FEATURE; }; f"
+cof = "!f() { FEATURE=$1; shift; git checkout feature/$FEATURE; }; f"
+
+# Branching
+b = branch
+cobdfr = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/RGM-$FEATURE develop; }; f"
+cobdf = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/$FEATURE develop; }; f"
+cobfr = "!f() { FEATURE=$1; git checkout -b feature/RGM-$FEATURE; }; f"
+cobf = "!f() { FEATURE=$1; git checkout -b feature/$FEATURE; }; f"
+
+# Merge
+mfr = "!f() { FEATURE=$1; git merge feature/RGM-$FEATURE }; f"
+mf = "!f() { FEATURE=$1; git merge feature/$FEATURE }; f"
+
+# Resolving conflicts
+keep-ours =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --ours
+keep-theirs =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --theirs
+
+total-clean = !git checkout -- . && git clean -fd
 
 # There is a bash script aliasing gvim in C:/Windows with this content
 # needed since gvim isn't recognized in bash

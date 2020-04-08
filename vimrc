@@ -78,7 +78,7 @@ nnoremap <Leader>b :Buffers<CR>
 " Buffers
 nmap <Leader>p :bprevious<CR>
 nmap <Leader>n :bnext<CR>
-nmap <Leader>bd :bufdo bd<CR>
+nmap <Leader>bda :bufdo bd<CR>
 
 " ---- UtilSnips
 "let g:UltiSnipsExpandTrigger="<c-s>"
@@ -216,7 +216,8 @@ set wildmenu
 set wrap
 
 set diffopt+=iwhite
-" Sets wrap when in diff mode 
+
+" Sets wrap when in diff mode
 au VimEnter * if &diff | execute 'windo set wrap' | endif
 
 " allow toggling between local and default mode
@@ -272,10 +273,11 @@ au FileType python set softtabstop=4
 
 " Set spel when commiting with git
 autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown setlocal spell
 
 " Show white space settings
 silent hi SpecialKey
-silent! hi SpecialKey guifg=Gray ctermfg=Gray  
+silent! hi SpecialKey guifg=Gray ctermfg=Gray
 set listchars=tab:/-,trail:*
 
 set ignorecase
@@ -283,8 +285,8 @@ set ignorecase
 "used to enable spell check
 map <F2> :setlocal spell! spelllang=en_us<CR>
 
-"Remove all trailing whitespace by pressing F3
-nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+"Remove all trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
 
 "new lines below in normal mode
 nmap <CR> o<Esc>
