@@ -41,6 +41,12 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'ervandew/supertab'
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'posva/vim-vue'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vimwiki/vimwiki'
+Plugin 'michal-h21/vim-zettel'
+
 
 
 " ---- Plugin settings
@@ -64,7 +70,7 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " ---- FZF
 nmap <leader>f :Files<CR>
 nmap <leader>g :GFiles<CR>
-nnoremap <Leader>b :Buffers<CR>
+nmap <Leader>b :Buffers<CR>
 
 " Buffers
 nmap <Leader>p :bprevious<CR>
@@ -82,7 +88,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=3
 
@@ -93,25 +98,49 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_html_checkers = ['htmlhint-ng2']
 
+let g:syntastic_cs_checkers = ['code_checker']
+
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:tsuquyomi_disable_quickfix = 1
 
 " ---- Super Tab
 
-" Might cause issues with youcompleteme
-"allows for omni complete with super tab
+" Sets omni completion
 set omnifunc=syntaxcomplete#Complete
-set completeopt=menu,longest
 
-let g:SuperTabDefaultCompletionType = "context"
+"completion menu options
+set completeopt=longest,menuone,preview
+
+" for omni func only change to file type
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+
+" Does omni complete serve my needs
+" you can always specify file or whatever else
+" omni fun does not play nice with context style completion
+"let g:SuperTabDefaultCompletionType = "context"
+
+" ---- NERD Commenter
+let g:NERDSpaceDelims = 1
+
+" super tab chain?
 autocmd FileType *
   \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \   call SuperTabChain(&omnifunc, "<c-n>") |
   \ endif
 
 
 " ---- vim-repeat
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+" ---- OmniSharp
+" syntax highlighting as you type
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_highlight_types = 3
+let g:OmniSharp_selector_ui = 'fzf'
+
+" ---- Vim-Wiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "----Vundle Config----"
 
@@ -252,6 +281,10 @@ au FileType html set tabstop=2
 au FileType html set shiftwidth=2
 au FileType html set softtabstop=2
 
+au FileType vue set tabstop=2
+au FileType vue set shiftwidth=2
+au FileType vue set softtabstop=2
+
 "Spacing for markdown
 au FileType markdown set tabstop=2
 au FileType markdown set shiftwidth=2
@@ -278,9 +311,6 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 
 "Remove all trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
-
-"new lines below in normal mode
-nmap <CR> o<Esc>
 
 "enables taging jumping with %
 runtime macros/matchit.vim
