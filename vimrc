@@ -23,9 +23,6 @@ call vundle#begin('$HOME/.vim/bundle/')
 " ---- Plugins
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 Plugin 'ryanoasis/vim-devicons'
@@ -39,38 +36,29 @@ Plugin 'morhetz/gruvbox'
 Plugin 'PProvost/vim-ps1'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-airline/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'posva/vim-vue'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'vimwiki/vimwiki'
-Plugin 'michal-h21/vim-zettel'
 
-
-
-" ---- Plugin settings
-
-" ---- Airline
+Plugin 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
-
-" ---- Powerline
-
 " Display status bar all the time
 set laststatus=2
 " Removes the status below line
 set noshowmode
 
-" ---- NERDTree
-
+Plugin 'scrooloose/nerdtree'
 map <c-n> :NERDTreeTabsToggle<cr>
 let NERDTreeQuitOnOpen=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-" ---- FZF
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 nmap <leader>f :Files<CR>
 nmap <leader>g :GFiles<CR>
 nmap <Leader>b :Buffers<CR>
+
 
 " Buffers
 nmap <Leader>p :bprevious<CR>
@@ -137,10 +125,6 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_highlight_types = 3
 let g:OmniSharp_selector_ui = 'fzf'
-
-" ---- Vim-Wiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "----Vundle Config----"
 
@@ -240,22 +224,6 @@ set diffopt+=iwhite
 " Sets wrap when in diff mode
 au VimEnter * if &diff | execute 'windo set wrap' | endif
 
-" allow toggling between local and default mode
-function TabToggle()
-  if &expandtab
-    set softtabstop=0
-    set shiftwidth=0
-    set tabstop=8
-    set noexpandtab
-  else
-    set softtabstop=4
-    set shiftwidth=4
-    set tabstop=4
-    set expandtab
-  endif
-endfunction
-nmap <F9> mz:execute TabToggle()<CR>'z
-
 " Sets indent tabs
 au FileType aspvbs setlocal tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
 au FileType sql setlocal tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
@@ -317,3 +285,30 @@ runtime macros/matchit.vim
 
 "Allows for saving as root
 cmap w!! w !sudo tee > /dev/null %
+
+" ---- Notes
+
+nmap <leader>nz :ZettelNew<space>
+
+command! -nargs=* ZettelNew call ZettelNew(<f-args>)
+
+" TODO: File could be created from templae with :read but you would still need
+" to add things so it might not be worth it
+func! ZettelNew(name, openTab=0)
+    let l:notes_path = '$HOME/Notes/'
+
+    let l:fname = expand(notes_path) . strftime("%y%m%d%H%M") . '-' . a:name . '.md'
+
+    if a:openTab == 1
+        exec "tabe " . l:fname
+    else
+        exec "e " . l:fname
+    endif
+
+    exec "normal i#" . substitute(a:name, '\(\u\)', ' \1', 'g') . "\<CR>\<ESC>"
+    exec "normal iDate: \<c-r>=strftime('%Y-%m-%d %H:%M')\<CR>\<CR>\<CR>\<CR>\<CR>\<ESC>"
+    exec "normal iLinks:\<CR>\<CR>\<ESC>"
+    exec "normal iTags: \<ESC>:4\<CR>"
+
+    exec "lcd " . expand(notes_path)
+endfunc
