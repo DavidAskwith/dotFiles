@@ -1,0 +1,7 @@
+# vim installed plugins
+vim/bundle
+
+# vim swap files
+*.swp
+*.swo
+*~
