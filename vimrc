@@ -61,9 +61,11 @@ nmap <Leader>b :Buffers<CR>
 
 
 " Buffers
-nmap <Leader>p :bprevious<CR>
-nmap <Leader>n :bnext<CR>
-nmap <Leader>bda :bufdo bd<CR>
+nmap <silent> [b :bprevious<CR>
+nmap <silent> ]b :bnext<CR>
+nmap <silent> [B :bfirst<CR>
+nmap <silent> ]B :blast<CR>
+nmap <silent> <Leader>bda :bufdo bd<CR>
 
 " ---- UtilSnips
 "let g:UltiSnipsExpandTrigger="<c-s>"
@@ -141,6 +143,7 @@ if has("win32")
 endif
 
 "---miscellaneous---"
+" sets initail gui size
 if has("gui_running")
     autocmd VimResized * wincmd =
     autocmd GuiEnter * simalt ~x
@@ -150,6 +153,9 @@ if has("gui_running")
     set guioptions -=L
     set lines=40 columns=150
 endif
+
+" enables unix slashes in windows for file completion
+set shellslash
 
 "allows for regular backspace in gvim
 set backspace=2
@@ -221,6 +227,9 @@ set wrap
 
 set diffopt+=iwhite
 
+" set to store 200 ex comands instead of 20
+set history=200
+
 " Sets wrap when in diff mode
 au VimEnter * if &diff | execute 'windo set wrap' | endif
 
@@ -270,15 +279,27 @@ autocmd FileType markdown setlocal spell
 " Show white space settings
 silent hi SpecialKey
 silent! hi SpecialKey guifg=Gray ctermfg=Gray
-set listchars=tab:/-,trail:*
 
 set ignorecase
+set noerrorbells
 
 "used to enable spell check
 map <F2> :setlocal spell! spelllang=en_us<CR>
 
 "Remove all trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+func! <SID>StripTrailingWhitespaces()
+    " TODO: Save search register state
+    " save curent position
+    let l:l = line(".")
+    let l:c = col(".")
+
+    %s/\s\+$//e
+
+    " reset postion
+    call cursor(l:l, l:c)
+endfun
 
 "enables taging jumping with %
 runtime macros/matchit.vim
@@ -294,12 +315,13 @@ command! -nargs=* ZettelNew call ZettelNew(<f-args>)
 
 " TODO: File could be created from templae with :read but you would still need
 " to add things so it might not be worth it
-func! ZettelNew(name, openTab=0)
+func! ZettelNew(name, ...)
+    let l:openTab = get(a:, 1, 0)
     let l:notes_path = '$HOME/Notes/'
 
     let l:fname = expand(notes_path) . strftime("%y%m%d%H%M") . '-' . a:name . '.md'
 
-    if a:openTab == 1
+    if l:openTab == 1
         exec "tabe " . l:fname
     else
         exec "e " . l:fname
