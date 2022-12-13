@@ -1,6 +1,7 @@
 [user]
-email = daskwith@aviationintertec.com
-name = David Askwith
+	email = daskwith@aviationintertec.com
+	name = David Askwith
+	signingkey = ""
 [push]
 default = simple
 
@@ -54,6 +55,7 @@ co = checkout
 cod = checkout develop
 cofr = "!f() { FEATURE=$1; shift; git checkout feature/RGM-$FEATURE; }; f"
 cof = "!f() { FEATURE=$1; shift; git checkout feature/$FEATURE; }; f"
+cop= "!f() { FEATURE=$1; git checkout project/$FEATURE; }; f"
 
 # Branching
 b = branch
@@ -62,6 +64,11 @@ cobdf = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b fe
 cobdfr = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/RGM-$FEATURE develop; }; f"
 cobfr = "!f() { FEATURE=$1; git checkout -b feature/RGM-$FEATURE; }; f"
 cobf = "!f() { FEATURE=$1; git checkout -b feature/$FEATURE; }; f"
+
+# Reskin
+cor = "!f() { FEATURE=$1; git checkout project/Reskin/RGM-$FEATURE; }; f"
+cord = checkout project/Reskin/develop
+
 
 # Merge
 mfr = "!f() { FEATURE=$1; git merge feature/RGM-$FEATURE }; f"
@@ -84,8 +91,7 @@ tlc = !git checkout -- . && git clean -fd
 
 [merge]
     tool = gvimdiff
-    conflictstyle = diff3
-[mergetool "gvimdiff"]
-  cmd = "gvim -c 'set columns=250' -c 'wincmd =' -d" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+[ssh]
+	variant = ssh
 [core]
-	editor = gvim
+    editor = gvim

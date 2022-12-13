@@ -216,6 +216,7 @@ set termwinsize=10*0
 " virtual tabstops using spaces
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 set expandtab
 
 set autoindent
@@ -230,12 +231,19 @@ set diffopt+=iwhite
 " set to store 200 ex comands instead of 20
 set history=200
 
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
+
 " Sets wrap when in diff mode
 au VimEnter * if &diff | execute 'windo set wrap' | endif
 
 " Sets indent tabs
-au FileType aspvbs setlocal tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
-au FileType sql setlocal tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
+"au FileType aspvbs set tabstop=8
+au FileType aspvbs set softtabstop=0
+au FileType aspvbs set shiftwidth=0
+au FileType aspvbs set noexpandtab
+
+au FileType sql set tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -254,9 +262,9 @@ vnoremap / <Esc>/\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
 vnoremap ? <Esc>?\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
 
 "Spacing for HTML
-au FileType html set tabstop=2
-au FileType html set shiftwidth=2
-au FileType html set softtabstop=2
+"au FileType html set tabstop=2
+"au FileType html set shiftwidth=2
+"au FileType html set softtabstop=2
 
 au FileType vue set tabstop=2
 au FileType vue set shiftwidth=2
