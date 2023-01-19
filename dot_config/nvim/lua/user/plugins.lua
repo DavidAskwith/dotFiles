@@ -84,11 +84,18 @@ return packer.startup(function(use)
     }
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
+    use 'nvim-tree/nvim-web-devicons' -- Required for below
     use {
         'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        },
+    }
+
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "v3.*",
+    }
+
+    use {
+      'nvim-lualine/lualine.nvim',
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
