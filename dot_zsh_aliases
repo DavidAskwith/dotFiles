@@ -1,0 +1,9 @@
+alias vaultkey="$HOME/scripts/vault-key.sh"
+alias ch="chezmoi"
+alias g="git"
+alias s="sudo"
+alias cc="cirro-cli"
+
+# Navigation
+alias cirro="cd ~/repos/cirro"
+alias repos="cd ~/repos"

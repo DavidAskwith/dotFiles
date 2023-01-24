@@ -1,0 +1,6 @@
+set relativenumber
+set number
+set ignorecase
+set hls
+set commentary
+set surround

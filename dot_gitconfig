@@ -1,0 +1,92 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	name = David Askwith
+	email = david@air-suite.com
+
+[alias]
+
+# Merging
+mt = mergetool
+
+# Adding and committing
+c = commit
+ca = commit --amend --no-edit
+cm = commit --message
+
+a = !git add $@ && git status
+
+aa = !git add -A && git status
+aac = !git add -A && git commit
+aacm = !git add -A && git commit -m
+
+au = !git add -u && git status
+auc = !git add -u && git commit
+aucm = !git add -u && git commit -m
+
+# Viewing
+s = status
+l = log --topo-order
+ls = log --stat-width=144 --topo-order
+
+# Diff
+dt = difftool
+d = diff
+df = diff --name-only
+dd = !git diff $(git merge-base --fork-point develop)
+dfd = !git diff --name-only $(git merge-base --fork-point develop)
+dtd = !git difftool $(git merge-base --fork-point develop)
+
+
+# Pushing, Pulling and Fetching
+f = fetch
+fa = fetch --all
+pl = pull
+pld = fetch origin develop:develop
+ps = push
+psu = push --set-upstream origin HEAD
+
+# Resets CR moded files from commit
+rcr = reset aspsrc/web.config aspsrc/App/RaasReports/*
+
+# Checkouts
+co = checkout
+cod = checkout develop
+cofr = "!f() { FEATURE=$1; shift; git checkout feature/RGM-$FEATURE; }; f"
+cof = "!f() { FEATURE=$1; shift; git checkout feature/$FEATURE; }; f"
+cop= "!f() { FEATURE=$1; git checkout project/$FEATURE; }; f"
+
+# Branching
+b = branch
+cobd = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b $FEATURE develop; }; f"
+cobdf = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/$FEATURE develop; }; f"
+cobdfr = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/RGM-$FEATURE develop; }; f"
+cobfr = "!f() { FEATURE=$1; git checkout -b feature/RGM-$FEATURE; }; f"
+cobf = "!f() { FEATURE=$1; git checkout -b feature/$FEATURE; }; f"
+
+# Reskin
+cor = "!f() { FEATURE=$1; git checkout project/Reskin/RGM-$FEATURE; }; f"
+cord = checkout project/Reskin/develop
+
+
+# Merge
+mfr = "!f() { FEATURE=$1; git merge feature/RGM-$FEATURE }; f"
+mf = "!f() { FEATURE=$1; git merge feature/$FEATURE }; f"
+
+# Resolving conflicts
+keep-ours =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --ours
+keep-theirs =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --theirs
+
+tlc = !git checkout -- . && git clean -fd
+
+# There is a bash script aliasing gvim in C:/Windows with this content
+# needed since gvim isn't recognized in bash
+# #!/bin/sh
+# exec "/c/Program Files (x86)/Vim/Vim81/gvim.exe" "$@"
+[diff]
+    tool = nvimdiff
+[merge]
+    tool = nvimdiff
+[core]
+    editor = nvim

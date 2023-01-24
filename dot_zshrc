@@ -1,0 +1,103 @@
+export PATH="$PATH:$HOME/.local/bin"
+
+if command -v npm &> /dev/null
+then
+  export PATH=$PATH:$(npm -g bin)
+fi
+
+if command -v yarn &> /dev/null
+then
+  export PATH="$PATH:$(yarn global bin)"
+fi
+
+if command -v rbenv &> /dev/null
+then
+  eval "$(rbenv init - zsh)"
+fi
+
+if [ -d ~/.python_venv ]
+then
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
+  source ~/.python_venv/bin/activate
+fi
+
+# ZSH config
+HIST_STAMPS="yyyy-mm-dd"
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+EDITOR=vim
+
+setopt inc_append_history histignorealldups autocd extendedglob notify
+autoload -Uz compinit compaudit colors
+compinit
+compaudit
+colors
+
+zmodload -i zsh/complist
+setopt hash_list_all            # hash everything before completion
+setopt completealiases          # complete alisases
+setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word
+setopt complete_in_word         # allow completion from within a word/phrase
+setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} [%{$fg[blue]%}%b%{$reset_color%}] %{$fg[yellow]%}%s%{$reset_color%}:%r"
+precmd() {  # run before each prompt
+    vcs_info
+}
+
+
+if [[ $OSTYPE == darwin* ]];
+then
+  alias l='ls -lahFG'
+  bindkey "^[[A" history-beginning-search-backward
+  bindkey "^[[B" history-beginning-search-forward
+
+  export ANDROID_SDK_ROOT="$HOME/Library/Android/Sdk"
+
+  alias clp='pbcopy <'
+  alias pst='pbpaste'
+else
+  alias l='ls -lahF --color=auto'
+  bindkey "^[OA" history-beginning-search-backward
+  bindkey "^[OB" history-beginning-search-forward
+
+  alias clp='xclip -selection clipboard'
+  alias pst='xclip -selection clipboard -o'
+fi
+
+# allow funky stuff in prompt
+setopt PROMPT_SUBST
+color="blue"
+if [ "$USER" = "root" ];
+then
+  # root is red, user is blue
+  color="red"
+fi;
+
+# Set up architecture identifier icon
+archIcon=Σ
+if [[ $(arch) == *arm* ]];
+then
+  archIcon=λ
+fi
+
+prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u $archIcon %B%1~%b "
+RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
+
+alias clears=clear
+alias clear_scrollback='printf "\033c"'
+alias clear_history='cat /dev/null > ~/.bash_history && cat /dev/null > ~/.zsh_history && history -c'
+
+alias appcli="docker exec -ti cirro-app /bin/bash"
+export VAULT_ADDR='https://vault.air-suite.com'
+
+source ~/.zsh_aliases
+source /usr/share/zsh-antigen/antigen.zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle jeffreytse/zsh-vi-mode
+antigen apply
