@@ -1,6 +1,9 @@
 local servers = {
 	'sumneko_lua',
 	'jsonls',
+	'intelephense',
+	'tsserver',
+	'volar',
 }
 
 local settings = {
