@@ -5,5 +5,14 @@ alias s="sudo"
 alias cc="cirro-cli"
 
 # Navigation
-alias cirro="cd ~/repos/cirro"
 alias repos="cd ~/repos"
+
+alias ~="cd ~"
+# Cirro
+alias croot="cd ~/repos/cirro"
+alias cleg="cd ~/repos/cirro/cirro-legacy"
+alias crev="cd ~/repos/cirro/cirro-revamp"
+alias capi="cd ~/repos/cirro/cirro-capi"
+alias clib="cd ~/repos/cirro/cirro-capi"
+alias cdoc="cd ~/repos/cirro/cirro-docker"
+

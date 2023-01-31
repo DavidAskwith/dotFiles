@@ -1,5 +1,4 @@
 [credential "https://github.com"]
-	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [user]
 	name = David Askwith
@@ -53,26 +52,17 @@ rcr = reset aspsrc/web.config aspsrc/App/RaasReports/*
 # Checkouts
 co = checkout
 cod = checkout develop
-cofr = "!f() { FEATURE=$1; shift; git checkout feature/RGM-$FEATURE; }; f"
-cof = "!f() { FEATURE=$1; shift; git checkout feature/$FEATURE; }; f"
-cop= "!f() { FEATURE=$1; git checkout project/$FEATURE; }; f"
+cofi = "!f() { FEATURE=$1; shift; git checkout fix/$FEATURE; }; f"
+cofe = "!f() { FEATURE=$1; shift; git checkout feat/$FEATURE; }; f"
 
 # Branching
 b = branch
-cobd = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b $FEATURE develop; }; f"
-cobdf = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/$FEATURE develop; }; f"
-cobdfr = "!f() { FEATURE=$1; git fetch origin develop:develop; git checkout -b feature/RGM-$FEATURE develop; }; f"
-cobfr = "!f() { FEATURE=$1; git checkout -b feature/RGM-$FEATURE; }; f"
-cobf = "!f() { FEATURE=$1; git checkout -b feature/$FEATURE; }; f"
-
-# Reskin
-cor = "!f() { FEATURE=$1; git checkout project/Reskin/RGM-$FEATURE; }; f"
-cord = checkout project/Reskin/develop
-
-
-# Merge
-mfr = "!f() { FEATURE=$1; git merge feature/RGM-$FEATURE }; f"
-mf = "!f() { FEATURE=$1; git merge feature/$FEATURE }; f"
+cob = checkout -b 
+cobs = "!f() { FEATURE=$1; git fetch origin release/staging:release/staging; git checkout -b $FEATURE release/staging; }; f"
+cobsfi = "!f() { FEATURE=$1; git fetch origin release/staging:release/staging; git checkout -b fix/$FEATURE release/staging; }; f"
+cobsfe = "!f() { FEATURE=$1; git fetch origin realeas/staging:release/staging; git checkout -b feat/$FEATURE release/staging; }; f"
+cobfi = "!f() { FEATURE=$1; git checkout -b fix/$FEATURE; }; f"
+cobfe = "!f() { FEATURE=$1; git checkout -b feat/$FEATURE; }; f"
 
 # Resolving conflicts
 keep-ours =  !git diff --name-only --relative --diff-filter=U | xargs git checkout --ours

@@ -26,7 +26,8 @@ local options = {
     wrap = true,                             -- display lines as one long line
     guifont = "monospace:h17",               -- the font used in graphical neovim applications
     termguicolors = true,                    -- Use the terminals colors for more color support
-    formatoptions = "jcql"                   -- Remove auto comment continuation on new lines
+    formatoptions = "jcql",                  -- Remove auto comment continuation on new lines
+    showmode = false,                        -- Remove auto comment continuation on new lines
 }
 vim.opt.shortmess:append "c"                 -- Remove ins-completion-menu messages
 
