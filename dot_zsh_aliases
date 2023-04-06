@@ -1,18 +1,43 @@
 alias vaultkey="$HOME/scripts/vault-key.sh"
+
+# Programs
 alias ch="chezmoi"
 alias g="git"
 alias s="sudo"
-alias cc="cirro-cli"
+alias cat=batcat
 
 # Navigation
 alias repos="cd ~/repos"
 
 alias ~="cd ~"
+#
 # Cirro
 alias croot="cd ~/repos/cirro"
 alias cleg="cd ~/repos/cirro/cirro-legacy"
 alias crev="cd ~/repos/cirro/cirro-revamp"
 alias capi="cd ~/repos/cirro/cirro-capi"
-alias clib="cd ~/repos/cirro/cirro-capi"
+alias clib="cd ~/repos/cirro/cirro-api-library"
 alias cdoc="cd ~/repos/cirro/cirro-docker"
 
+# Cirro CLI
+alias cc="cirro-cli"
+
+# -- client
+alias ccc="cirro-cli client"
+alias cccb="cirro-cli client build"
+
+# -- server
+alias ccs="cirro-cli server"
+alias ccsq="cirro-cli server queue"
+
+# -- db
+alias ccdb="cirro-cli db"
+alias ccdbm="cirro-cli db migrate"
+alias ccdbr="cirro-cli db rollback"
+
+alias clears=clear
+
+alias clear_scrollback='printf "\033c"'
+alias clear_history='cat /dev/null > ~/.bash_history && cat /dev/null > ~/.zsh_history && history -c'
+
+alias appcli="docker exec -ti cirro-app /bin/bash"

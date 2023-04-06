@@ -4,3 +4,12 @@ set ignorecase
 set hls
 set commentary
 set surround
+
+sethandler <c-l> a:vim
+sethandler <c-h> a:vim
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k

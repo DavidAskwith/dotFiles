@@ -25,13 +25,24 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/david/Pictures/backgrounds/Trees.jpg fill
+
+
+# Home
+#set $laptop "eDP-1"
+#set $primaryMonitor "DP-7"
+#set $secondaryMonitor "DP-9"
+#output $primaryMonitor scale 1.1
+#output $secondaryMonitor scale 1.1
+#output $secondaryMonitor transform 90
+#output $laptop
 
 set $primaryMonitor "HDMI-A-1"
 set $secondaryMonitor "eDP-1"
 output $primaryMonitor scale 1.5
-output $secondaryMonitor scale 1.3
 output $primaryMonitor position 0 0
+output $secondaryMonitor scale 1.3
+output $secondaryMonitor position 2560 517
 
 input "type:keyboard" {
     xkb_options caps:escape
@@ -44,10 +55,10 @@ input "type:keyboard" {
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+# exec swayidle -w \
+#          timeout 1200 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          timeout 2000 'swaylock -f -c 000000' \
+#          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -80,6 +91,9 @@ exec swayidle -w \
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    # clear notifcations
+    bindsym $mod+Shift+n exec dunstctl close-all
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -92,6 +106,21 @@ exec swayidle -w \
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Screenshots:
+    # Super+P: Current window
+    # Super+Shift+p: Select area
+    # Super+Alt+p Current output
+    # Super+Ctrl+p Select a window
+    bindsym Mod4+p       exec grimshot copy active
+    bindsym Mod4+Shift+p exec grimshot copy area
+    bindsym Mod4+Mod1+p  exec grimshot copy output
+    bindsym Mod4+Ctrl+p  exec grimshot copy window
+#
+# Styling
+#
+    gaps inner 5
+    default_border pixel 2
 #
 # Moving around:
 #
@@ -119,27 +148,27 @@ exec swayidle -w \
 #
 # Workspaces:
 #
-    set $ws1 "1:ui"
-    set $ws2 "2:backend"
-    set $ws3 "3:browser"
+    set $ws1 "1"
+    set $ws2 "2"
+    set $ws3 "3"
     set $ws4 "4"
     set $ws5 "5"
-    set $ws6 "6:app"
-    set $ws7 "7:comun"
-    set $ws8 "8:notes"
+    set $ws6 "6"
+    set $ws7 "7"
+    set $ws8 "8"
     set $ws9 "9"
     set $ws10 "10"
 
-    workspace $ws1 output $primaryMonitor
-    workspace $ws2 output $primaryMonitor
-    workspace $ws3 output $primaryMonitor
-    workspace $ws4 output $primaryMonitor
-    workspace $ws5 output $primaryMonitor
-    workspace $ws6 output $secondaryMonitor
-    workspace $ws7 output $secondaryMonitor
-    workspace $ws8 output $secondaryMonitor
-    workspace $ws9 output $secondaryMonitor
-    workspace $ws10 output $secondaryMonitor
+    # workspace $ws1 output $primaryMonitor
+    # workspace $ws2 output $primaryMonitor
+    # workspace $ws3 output $primaryMonitor
+    # workspace $ws4 output $primaryMonitor
+    # workspace $ws5 output $primaryMonitor
+    # workspace $ws6 output $secondaryMonitor
+    # workspace $ws7 output $secondaryMonitor
+    # workspace $ws8 output $secondaryMonitor
+    # workspace $ws9 output $secondaryMonitor
+    # workspace $ws10 output $secondaryMonitor
 
     # Switch to workspace
     bindsym $mod+1 workspace $ws1
@@ -191,6 +220,15 @@ exec swayidle -w \
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+#
+# Moveing Woekspaces
+#
+
+    bindsym $mod+Control+Shift+$right move workspace to output right
+    bindsym $mod+Control+Shift+$left move workspace to output left
+    bindsym $mod+Control+Shift+$down move workspace to output down
+    bindsym $mod+Control+Shift+$up move workspace to output up
 #
 # Scratchpad:
 #
@@ -232,18 +270,36 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
+bar swaybar_command waybar
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+# bar {
+#     position top
+#
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#
+#     colors {
+#         statusline #ffffff
+#         background #1E2127
+#         inactive_workspace #1E2127 #1E2127 #5c5c5c
+#     }
+# }
 
-    colors {
-        statusline #ffffff
-        background #1E2127
-        inactive_workspace #1E2127 #1E2127 #5c5c5c
-    }
-}
+
+#
+# Program Specific 
+#
+for_window [app_id="Alacritty" floating] resize set 700 900
 
 include /etc/sway/config.d/*
+
+# Configures screen sharing
+# might need export of env variables required
+#
+# export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
+# export XDG_SESSION_DESKTOP=sway # systemd
+# export XDG_SESSION_TYPE=wayland # xdg/systemd
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+exec systemctl --user start pipewire-media-session

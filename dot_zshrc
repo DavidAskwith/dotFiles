@@ -28,6 +28,8 @@ then
   source ~/.python_venv/bin/activate
 fi
 
+export XDG_CURRENT_DESKTOP=sway
+
 # ZSH config
 HIST_STAMPS="yyyy-mm-dd"
 HISTSIZE=1000

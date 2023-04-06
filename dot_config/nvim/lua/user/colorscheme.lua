@@ -5,7 +5,7 @@ end
 
 -- Break if no theme
 onedark.setup {
-    style = 'darker'
+    style = 'deep'
 }
 
 onedark.load()
