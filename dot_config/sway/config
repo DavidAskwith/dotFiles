@@ -108,14 +108,7 @@ input "type:keyboard" {
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Screenshots:
-    # Super+P: Current window
-    # Super+Shift+p: Select area
-    # Super+Alt+p Current output
-    # Super+Ctrl+p Select a window
-    bindsym Mod4+p       exec grimshot copy active
-    bindsym Mod4+Shift+p exec grimshot copy area
-    bindsym Mod4+Mod1+p  exec grimshot copy output
-    bindsym Mod4+Ctrl+p  exec grimshot copy window
+    bindsym $mod+p       exec flameshot gui --raw | wl-copy
 #
 # Styling
 #
