@@ -2,8 +2,13 @@ set relativenumber
 set number
 set ignorecase
 set hls
+
+" Plugins
 set commentary
 set surround
+set ideamarks
+set ideajoin
+set match.it
 
 sethandler <c-l> a:vim
 sethandler <c-h> a:vim
@@ -13,3 +18,5 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
+
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>

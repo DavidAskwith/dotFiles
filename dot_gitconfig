@@ -46,12 +46,11 @@ pld = fetch origin develop:develop
 ps = push
 psu = push --set-upstream origin HEAD
 
-# Resets CR moded files from commit
-rcr = reset aspsrc/web.config aspsrc/App/RaasReports/*
-
 # Checkouts
 co = checkout
 cod = checkout develop
+cors = checkout release/staging
+coars = !cd ~/repos/cirro/cirro-api-library && git checkout release/staging && cd ~/repos/cirro/cirro-revamp && git checkout release/staging && cd ~/repos/cirro/cirro-capi && git checkout release/staging && cd ~/repos/cirro/cirro-legacy && git checkout release/staging
 cofi = "!f() { FEATURE=$1; shift; git checkout fix/$FEATURE; }; f"
 cofe = "!f() { FEATURE=$1; shift; git checkout feat/$FEATURE; }; f"
 

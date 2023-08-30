@@ -1,4 +1,6 @@
+# Misc
 alias vaultkey="$HOME/scripts/vault-key.sh"
+alias cls=clear
 
 # Programs
 alias ch="chezmoi"
@@ -18,22 +20,62 @@ alias crev="cd ~/repos/cirro/cirro-revamp"
 alias capi="cd ~/repos/cirro/cirro-capi"
 alias clib="cd ~/repos/cirro/cirro-api-library"
 alias cdoc="cd ~/repos/cirro/cirro-docker"
+alias ctri="cd ~/repos/cirro/3c/triple-c"
+alias ctril="cd ~/repos/cirro/3c/cirro-api-library"
 
 # Cirro CLI
-alias cc="cirro-cli"
+alias c="cirro-cli"
 
 # -- client
-alias ccc="cirro-cli client"
-alias cccb="cirro-cli client build"
+alias ccl="cirro-cli client"
+alias cclb="cirro-cli client build"
 
 # -- server
-alias ccs="cirro-cli server"
-alias ccsq="cirro-cli server queue"
+alias cse="cirro-cli server"
+alias cseq="cirro-cli server queue"
 
 # -- db
-alias ccdb="cirro-cli db"
-alias ccdbm="cirro-cli db migrate"
-alias ccdbr="cirro-cli db rollback"
+alias cdb="cirro-cli db"
+alias cdbm="cirro-cli db migrate"
+alias cdbr="cirro-cli db rollback"
+    # -- Snap
+alias cdbs="cirro-cli db snap"
+alias cdbsc="cirro-cli db snap create"
+alias cdbsr="cirro-cli db snap restore"
+alias cdbsl="cirro-cli db snap list"
+
+# -- docker
+alias cdo="cirro-cli docker"
+alias cdor="cirro-cli docker restart"
+alias cdod="cirro-cli docker down"
+alias cdou="cirro-cli docker up"
+
+# Custom CLIish 
+cgco() {
+    git fetch --all
+
+    crev
+    git stash
+    git checkout $1
+    git pull
+
+    cleg
+    git stash
+    git checkout $1
+    git pull
+
+    capi
+    git stash
+    git checkout $1
+    git pull
+
+    clib
+    git stash
+    git checkout $1
+    git pull
+}
+
+alias cgcor="cgco release/staging"
 
 alias clears=clear
 

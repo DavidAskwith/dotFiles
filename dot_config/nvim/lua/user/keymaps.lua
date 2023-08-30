@@ -27,10 +27,6 @@ keymap('n', '<leader>sp', 'setlocal spell!<CR>', opts)
 keymap('n', '<leader>e', ':NvimTreeToggle<cr>', opts)
 keymap('n', '<leader>s', ':source $MYVIMRC<CR>', opts)
 
--- Move text up and down
-keymap('n', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
-keymap('n', '<A-k>', '<Esc>:m .-2<CR>==gi', opts) 
-
 -- Telesscope
 local builtin = require('telescope.builtin')
 vim.keymap.set("n", "<leader>f", builtin.find_files, opts)
